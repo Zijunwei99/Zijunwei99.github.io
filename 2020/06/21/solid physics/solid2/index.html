@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="expand your horizons">
+  <meta name="author" content="Zijun Wei">
+  <meta name="keywords" content="">
+  <title>固体物理圣经咏唱——晶体结构及其描述 - My Web</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/gitalk/1.6.2/gitalk.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_yg9cfy8wd6.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Zijun Wei's space</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                about me
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="view intro-2" id="background" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              
+  <div class="mt-3 post-meta">
+    <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+    <time datetime="2020-06-21 00:00">
+      June 21, 2020 am
+    </time>
+  </div>
+
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.7k words
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      10
+       minutes
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <div class="post-content mx-auto" id="post">
+            
+            <article class="markdown-body">
+              <h1 id="晶体特征"><a href="#晶体特征" class="headerlink" title="晶体特征"></a>晶体特征</h1><h2 id="宏观特征"><a href="#宏观特征" class="headerlink" title="宏观特征"></a>宏观特征</h2><ul>
+<li>晶面规则的对称配置是晶体的宏观特征之一</li>
+<li>恒定不变的晶面间夹角</li>
+<li>存在由若干个晶面组合成的晶带</li>
+<li>晶体具有沿某些特定方位的晶面劈裂的性质</li>
+</ul>
+<p>在上述的特性中，只有特征夹角可以判断所及晶体属于何种类型的晶体。</p>
+<h2 id="微观结构特征"><a href="#微观结构特征" class="headerlink" title="微观结构特征"></a>微观结构特征</h2><p>在微观上，</p>
+<ul>
+<li>晶体是指既具有平移对称性又具有旋转对称性的固体。</li>
+<li>准晶体不具有平移对称性而只具有旋转对称性。</li>
+<li>非晶体既不具有平移对称性也不具有旋转对称性，长程无序。</li>
+</ul>
+<p>晶体具有固定的熔点，当加热晶体到熔点温度时，晶体开始熔化，即长程有序开始解体，非晶体没有长程有序，所以没有固定的熔点。</p>
+<h1 id="空间点阵"><a href="#空间点阵" class="headerlink" title="空间点阵"></a>空间点阵</h1><h2 id="概念名词"><a href="#概念名词" class="headerlink" title="概念名词"></a>概念名词</h2><ul>
+<li><strong>基元：</strong>晶体中最基本的重复单元。<em>说明：</em>任意两个基元中华的相应的原子周围的情况是相同的。</li>
+<li><strong>格点：</strong>用原子振动的平衡位置的几何点替代每一个原子。</li>
+<li><strong>结点：</strong>晶体内部的结构是由一些相同 的格点在空间中规则的作周期性分布构成的系统。</li>
+<li><strong>点阵：</strong>结点在空间中的周期性排列。<strong>晶体结构=点阵+基元</strong></li>
+<li><strong>晶格：</strong>将结点全部包括在内的网格。<ul>
+<li><strong>布喇菲格子：</strong>如果晶体由完全相同的一种原子组成，则称为布喇菲格子。</li>
+<li><strong>复式格子：</strong>基元中包含两种或两种以上的原子，则不同的原子各自构成自身的布喇菲格子。</li>
+</ul>
+</li>
+<li><strong>格矢：</strong><script type="math/tex">\vec{R}_l=l_1 \vec{a}_1+l_2 \vec{a}_2+l_3 \vec{a}_3</script>其中<script type="math/tex">l_i =0,\pm 1,\pm 2</script><br>为了描述晶格的周期性，我们引入</li>
+<li><strong>原胞:</strong>晶格中最小的周期性重复单元。<em>说明：</em>原胞中均只含有一个原子</li>
+<li><strong>基矢：</strong>原胞的边矢量<script type="math/tex">(\vec{a}_{1}, \vec{a}_{2},\vec{a}_{3})</script>。其中<script type="math/tex">\Omega=\vec{a}_{1} \bullet\left(\vec{a}_{2} \times \vec{a}_{3}\right)</script>表示原胞的体积或一个原子所占的体积</li>
+</ul>
+<p>当我们同时考虑晶格的周期性与特殊的对称性时，我们有</p>
+<ul>
+<li><strong>晶胞：</strong>最小单元的一倍或几倍的重复单元，反映晶格的周期性与晶体对称性。<em>说明：</em>晶胞中可以含有不止一个原子</li>
+<li><strong>基矢：</strong>原胞的边矢量<script type="math/tex">(\vec{a}, \vec{b},\vec{c})</script></li>
+</ul>
+<h1 id="典型的晶体结构即其原胞晶胞"><a href="#典型的晶体结构即其原胞晶胞" class="headerlink" title="典型的晶体结构即其原胞晶胞"></a>典型的晶体结构即其原胞晶胞</h1><p>晶体中原子排列的具体形式一般称为晶体格子，简称<strong>晶格</strong></p>
+<h2 id="单原子晶体"><a href="#单原子晶体" class="headerlink" title="单原子晶体"></a>单原子晶体</h2><h3 id="简单立方"><a href="#简单立方" class="headerlink" title="简单立方"></a>简单立方</h3><p><img src="/img_solid/3.png" srcset="/img/loading.gif" alt="">配位数：6<br>原胞：</p>
+<script type="math/tex; mode=display">\left\{\begin{array}{l} \vec{a}_{1}={a}\vec{i} \\ \vec{a}_{2}={a}\vec{j} \\ \vec{a}_{3}={a}\vec{k} \end{array}\right.</script><p>晶胞=原胞</p>
+<h3 id="体心立方结构"><a href="#体心立方结构" class="headerlink" title="体心立方结构"></a>体心立方结构</h3><p><img src="/img_solid/4.png" srcset="/img/loading.gif" alt="">配位数：8<br>原胞：</p>
+<script type="math/tex; mode=display">\left\{\begin{array}{l} \vec{a}_{1}=\frac{a}{2}(-\vec{i}+\vec{j}+\vec{k}) \\\vec{a}_{2}=\frac{a}{2}(\vec{i}-\vec{j}+\vec{k}) \\\vec{a}_{3}=\frac{a}{2}(\vec{i}-\vec{j}+\vec{k})\end{array}\right.</script><p>体积<script type="math/tex">\Omega=\vec{a}_{1} \bullet\left(\vec{a}_{2} \times \vec{a}_{3}\right)=\frac{1}{2} a^{3}</script></p>
+<p>晶胞</p>
+<script type="math/tex; mode=display">\left\{\begin{array}{l} \vec{a}={a}\vec{i} \\ \vec{b}={a}\vec{j} \\ \vec{c}={a}\vec{k} \end{array}\right.</script><p>体积<script type="math/tex">V=a^3</script>。晶胞中所含原子数：3</p>
+<h3 id="面心立方结构"><a href="#面心立方结构" class="headerlink" title="面心立方结构"></a>面心立方结构</h3><p><img src="/img_solid/5.png" srcset="/img/loading.gif" alt="">配位数：12</p>
+<script type="math/tex; mode=display">\left\{\begin{array}{l}\vec{a}_{1}=\frac{a}{2}(\vec{j}+\vec{k}) \\\vec{a}_{2}=\frac{a}{2}(\vec{i}+\vec{k}) \\\vec{a}_{3}=\frac{a}{2}(\vec{i}+\vec{j})\end{array}\right.</script><p>体积<script type="math/tex">\Omega=\frac{1}{4}a^3</script></p>
+<p>晶胞</p>
+<script type="math/tex; mode=display">\left\{\begin{array}{l} \vec{a}={a}\vec{i} \\ \vec{b}={a}\vec{j} \\ \vec{c}={a}\vec{k} \end{array}\right.</script><p>体积<script type="math/tex">V=a^3</script>。晶胞中所含原子数：4</p>
+<h3 id="六角密积结构"><a href="#六角密积结构" class="headerlink" title="六角密积结构"></a>六角密积结构</h3><p><img src="/img_solid/6.png" srcset="/img/loading.gif" alt=""><br>原胞</p>
+<script type="math/tex; mode=display">\left\{\begin{array}{l}\vec{a}_{1}=-\frac{a}{2} \vec{i}-\frac{\sqrt{3} a}{2} \vec{j} \\\vec{a}_{2}=a \vec{i} \\\vec{a}_{3}=c \vec{k}\end{array}\right.</script><p>当为最密堆积时</p>
+<script type="math/tex; mode=display">\frac{c}{a}=\sqrt(\frac{8}{3})</script><h3 id="金刚石结构"><a href="#金刚石结构" class="headerlink" title="金刚石结构"></a>金刚石结构</h3><p>为正四面体结构</p>
+<h2 id="化合物晶体"><a href="#化合物晶体" class="headerlink" title="化合物晶体"></a>化合物晶体</h2><h3 id="NaCl-型"><a href="#NaCl-型" class="headerlink" title="NaCl 型"></a>NaCl 型</h3><p>NaCl 型结构的晶体可看成是两套面心立方结 构相互位移套购而形成的。</p>
+<h3 id="CsCl-型"><a href="#CsCl-型" class="headerlink" title="CsCl 型"></a>CsCl 型</h3><p>其基本结构单元是一个立方体，一种元素在立方体顶角上，另一元素在立方体体心，两种元素各自形成简单立方结构。</p>
+<h3 id="CsF2-型"><a href="#CsF2-型" class="headerlink" title="CsF2 型"></a>CsF2 型</h3><p>每个立方体中共有四个 Ca元素和 8 个 F 元素，4 个 Ca 分别占据在立方体顶角和立方体面心处，形成面心 立方格子，8 个 F 占据在立方体的四条空间对角线上，每条空间对角线上有 2 个 F 元素，分别位于对角线两端 1/4 处，这 8 个 F 形成简单立方格子，整个晶体可看成是面心立方格子和简单立方格子套购而成。</p>
+<h1 id="晶列与晶面"><a href="#晶列与晶面" class="headerlink" title="晶列与晶面"></a>晶列与晶面</h1><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><ul>
+<li><strong>晶列：</strong>任意两个格点的连线，包括无数个格点。</li>
+<li><strong>晶列族：</strong>相互平行的晶列的集合。</li>
+<li><strong>晶向：</strong>晶列的取向。</li>
+<li><strong>晶向指数：</strong>用三个互质整数表示晶列的方向，记为<script type="math/tex">\left[l_{1}, l_{2}, l_{3}\right]</script>。若某一指数为负数则用<script type="math/tex">\overline{l}</script>表示。</li>
+<li><p><strong>晶列指数：</strong>在结晶学中用晶胞表示最小单位，同晶向指数，记为<script type="math/tex">\left[m,n,p\right]</script>。</p>
+</li>
+<li><p><strong>晶面：</strong>晶体中三个非共线格点组成的平面。</p>
+</li>
+<li><strong>晶面族：</strong>一系列平行的晶面。</li>
+<li><strong>密勒指数（晶面指数）：</strong>三个互质的整数<script type="math/tex">\left(h_1, h_2, h_3\right)</script><ul>
+<li>最靠近原点的晶面在3个基矢上的截距分别为<script type="math/tex">\frac{a_1}{h_1},\frac{a_2}{h_2},\frac{a_3}{h_3}</script></li>
+<li>以晶胞基矢为坐标表示晶面指数为<script type="math/tex">\left(h,k.l\right)</script></li>
+<li>与晶列指数相同，使用<script type="math/tex">\overline{h_i}</script>表示负值</li>
+<li>晶面距<script type="math/tex; mode=display">d_{h k l}=\frac{1}{\sqrt{\frac{h^{2}}{a^{2}}+\frac{k^{2}}{b^{2}}+\frac{l^{2}}{c^{2}}}}</script></li>
+<li>不同晶面族的晶面夹角余弦<script type="math/tex; mode=display">\cos \varphi=\frac{h_{1} h_{2}+k_{1} k_{2}+l_{1} l_{2}}{\left(h_{1}^{2}+k_{1}^{2}+l_{1}^{2}\right)^{1 / 2}+\left(h_{2}^{2}+k_{2}^{2}+l_{2}^{2}\right)^{1 / 2}}</script></li>
+</ul>
+</li>
+</ul>
+<h2 id="晶列指数的求法"><a href="#晶列指数的求法" class="headerlink" title="晶列指数的求法"></a>晶列指数的求法</h2><h3 id="1"><a href="#1" class="headerlink" title="1"></a>1</h3><ul>
+<li>找到含原点O的晶列</li>
+<li>在该晶列上找到距离O点最近的格点，其格矢为<script type="math/tex">\vec{R}_l=l_1 \vec{a}_1+l_2 \vec{a}_2+l_3 \vec{a}_3</script></li>
+<li>则晶列指数为<script type="math/tex">\left[l_{1}, l_{2}, l_{3}\right]</script></li>
+</ul>
+<h3 id="2"><a href="#2" class="headerlink" title="2"></a>2</h3><ul>
+<li>求出晶列所在直线的方向向量</li>
+<li><strong>晶列指数=直线的方向向量</strong></li>
+</ul>
+<h3 id="特殊的方向"><a href="#特殊的方向" class="headerlink" title="特殊的方向"></a>特殊的方向</h3><h2 id="晶面指数的求法"><a href="#晶面指数的求法" class="headerlink" title="晶面指数的求法"></a>晶面指数的求法</h2><h3 id="1-1"><a href="#1-1" class="headerlink" title="1"></a>1</h3><p>找截距，<script type="math/tex">\frac{a_1}{h_1},\frac{a_2}{h_2},\frac{a_3}{h_3}</script></p>
+<h3 id="2-1"><a href="#2-1" class="headerlink" title="2"></a>2</h3><ul>
+<li>找到面上的两个矢量<script type="math/tex">\vec{X}_1,\vec{X}_2</script></li>
+<li>得到晶面的法线方向<script type="math/tex">\vec{n}=\vec{X}_1-\vec{X}_2</script>，后简化</li>
+<li>**晶面指数=晶面的法线方向<script type="math/tex">\vec{n}</script></li>
+</ul>
+<h1 id="晶体对称操作"><a href="#晶体对称操作" class="headerlink" title="晶体对称操作"></a>晶体对称操作</h1>
+            </article>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/physics-note/">physics note</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%9C%A3%E7%BB%8F%E5%92%8F%E5%94%B1%E7%B3%BB%E5%88%97/">圣经咏唱系列</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，大部分都是我整理前人的工作或学习笔记 ，使用与转载需说明</p>
+              
+              
+                <div class="post-prevnext row">
+                  <div class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/06/22/solid%20physics/solid3/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">固体物理圣经咏唱——晶体衍射及其倒格子空间</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </div>
+                  <div class="post-next col-6">
+                    
+                    
+                      <a href="/2020/06/18/solid%20physics/solid1/">
+                        <span class="hidden-mobile">固体物理圣经咏唱——原子的凝聚</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </div>
+                </div>
+              
+            </div>
+
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="text-center mt-5 py-3">
+   
+  <!-- 添加网站运行时间 -->
+  <div class="footer-content">
+    <div>
+      <span id="timeDate">载入天数...</span>
+      <span id="times">载入时分秒...</span>
+      <script>
+      var now = new Date();
+      function createtime(){
+          var grt= new Date("05/20/2020 00:00:00");//此处修改你的建站时间或者网站上线时间
+          now.setTime(now.getTime()+250);
+          days = (now - grt ) / 1000 / 60 / 60 / 24;
+          dnum = Math.floor(days);
+          hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum);
+          hnum = Math.floor(hours);
+          if(String(hnum).length ==1 ){
+              hnum = "0" + hnum;
+          }
+          minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+          mnum = Math.floor(minutes);
+          if(String(mnum).length ==1 ){
+                    mnum = "0" + mnum;
+          }
+          seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+          snum = Math.round(seconds);
+          if(String(snum).length ==1 ){
+                    snum = "0" + snum;
+          }
+          document.getElementById("timeDate").innerHTML = "🚀 &nbsp"+dnum+"&nbsp天";  //此次自定义显示内容
+          document.getElementById("times").innerHTML = hnum + "&nbsp小时&nbsp" + mnum + "&nbsp分&nbsp" + snum + "&nbsp秒";
+      }  //此次自定义显示内容
+      setInterval("createtime()",250);
+      </script>
+    </div>
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/main.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: 'article.markdown-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "固体物理圣经咏唱——晶体结构及其描述&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.staticfile.org/mathjax/3.0.5/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+</body>
+</html>

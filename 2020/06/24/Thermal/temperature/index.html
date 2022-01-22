@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="expand your horizons">
+  <meta name="author" content="Zijun Wei">
+  <meta name="keywords" content="">
+  <title>热力学与统计物理圣经咏唱——热力学第零定理、态函数、温度 - My Web</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/gitalk/1.6.2/gitalk.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_yg9cfy8wd6.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Zijun Wei's space</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                about me
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="view intro-2" id="background" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              
+  <div class="mt-3 post-meta">
+    <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+    <time datetime="2020-06-24 00:00">
+      June 24, 2020 am
+    </time>
+  </div>
+
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      3.5k words
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      21
+       minutes
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <div class="post-content mx-auto" id="post">
+            
+            <article class="markdown-body">
+              <h1 id="热力学中的名词"><a href="#热力学中的名词" class="headerlink" title="热力学中的名词"></a>热力学中的名词</h1><ul>
+<li><strong>系统：</strong>宇宙中我们研究的对象。而其他部分称为<strong>环境</strong>。</li>
+<li>系统的<strong>分类：</strong><ul>
+<li><strong>孤立系统 (isolated system):</strong>系统与环境之间既没有能量交换，也没有物质交换。</li>
+<li><strong>封闭系统 (closed system):</strong>系统与环境之间有能量交换，但没有物质交换。</li>
+<li><strong>开放系统 (open system):</strong>系统与环境之间既有能量交换，也有物质交换。</li>
+</ul>
+</li>
+<li><strong>平衡态：</strong>对于孤立系统，当一段时间后，我们去测量宏观参量其平均值不会发生变化即达到平衡态。平衡态是一个动态的平衡。</li>
+<li><strong>宏观参量：</strong>也称为热力学量。</li>
+<li><strong>微观参量：</strong>描述系统粒子状态的量。</li>
+<li><strong>广延量：</strong>其大小随系统的大小改变的量，如体积，粒子数熵，能量等。</li>
+<li><strong>强度量：</strong>不随系统的大小改变而变化的量。如温度，化学势，粒子数密度等。</li>
+<li><strong>热力学极限：</strong>在粒子数保持不变，粒子数 $N \rightarrow \infty,$ 体积 $V \rightarrow \infty$ 的极限状态。</li>
+<li><strong>状态参量：</strong>对于一个处于平衡态的系统，我们往往只需要少数几个相互独立的宏观参量来描述其状态，而这些态就为状态参量。状态参量与过程无关。如体积$V$，压强$P$，温度$T$等。</li>
+<li><strong>过程量：</strong>只有指定了具体过程后才能确定下来的量，一般来说过程不同过程量也不同，</li>
+<li><strong>状态函数：</strong>在平衡态中选定一个状态参量，其他的状态参量即为其的函数。写程方程就为<strong>状态方程</strong></li>
+</ul>
+<h1 id="热容"><a href="#热容" class="headerlink" title="热容"></a>热容</h1><p><strong>热量</strong>表示的是两个系统在达到热平衡过程中进行的能量传递或转移，为过程量。<br><strong>热容</strong>描述的是一个物体存储能量的能力，定义为</p>
+<script type="math/tex; mode=display">C \equiv \frac{d Q}{d T}</script><p>即使物体温度升高单位温度需要传递给它的热量。热容是一个广延量，而比热容 (specific heat capacity)（表示单位质量的物质的热容）则为强度量。</p>
+<ul>
+<li><strong>定容热容</strong><script type="math/tex; mode=display">C_{V} \equiv\left(\frac{d Q}{d T}\right)_{V}</script></li>
+<li><strong>定压热容</strong>‘<script type="math/tex; mode=display">C_{P} \equiv\left(\frac{d Q}{d T}\right)_{P}</script></li>
+</ul>
+<h1 id="第零定律"><a href="#第零定律" class="headerlink" title="第零定律"></a>第零定律</h1><p><strong>热力学第零定律：</strong>如果两个系统中每一个都和第三个系统单独处于热平衡， 那么这两个系统之间也处于热平衡。<br>第零定律反映了热平衡的可传递性。</p>
+<h1 id="温度"><a href="#温度" class="headerlink" title="温度"></a>温度</h1><p>我们把系统 1（$P_1, V_1$ ）与系统3 $\left(P_3, V_3\right)$ 进行热接触。当达到热平衡时，调整其中一个量其他量也变化，这意味着这四个变量间应该存在一定的关系：</p>
+<script type="math/tex; mode=display">P_{3}=f_{31}\left(V_{3}, P_{1}, V_{1}\right)</script><p>当系统 2 和系统 3 达到热平衡</p>
+<script type="math/tex; mode=display">P_{3}=f_{32}\left(V_{3}, P_{2}, V_{2}\right)</script><p>我们有</p>
+<script type="math/tex; mode=display">f_{32}\left(V_{3}, P_{2}, V_{2}\right)=f_{31}\left(V_{3}, P_{1}, V_{1}\right)</script><p>使用热力学第零定律，我们有系统 1 和 2 也处于热平衡状态，</p>
+<script type="math/tex; mode=display">F_{21}\left(P_{2}, V_{2}, P_{1}, V_{1}\right)=0</script><p>也就是说上面两个式子等价，可以发现$V_3$只出现在一个式子中，这意味着我们可以在$f$中提取出$V_3$</p>
+<script type="math/tex; mode=display">\begin{array}{l}f_{31}\left(V_{3}, P_{1}, V_{1}\right)=a\left(V_{3}\right) f_{1}\left(P_{1}, V_{1}\right)+b\left(V_{3}\right) \\f_{32}\left(V_{3}, P_{2}, V_{2}\right)=a\left(V_{3}\right) f_{2}\left(P_{2}, V_{2}\right)+b\left(V_{3}\right)\end{array}</script><p>这时我们有</p>
+<script type="math/tex; mode=display">f_{2}\left(P_{2}, V_{2}\right)=f_{1}\left(P_{1}, V_{1}\right)</script><p>同理就可以得到</p>
+<script type="math/tex; mode=display">f_{1}\left(P_{1}, V_{1}\right)=f_{2}\left(P_{2}, V_{2}\right)=f_{3}\left(P_{3}, V_{3}\right)</script><p>这说明，每个系统都存在一个态函数<script type="math/tex">f_{i}\left(P_{i}, V_{i}\right)</script>, 当系统相互处于热平衡时, 该态函数彼此相等。于是我们定义一个状态参量“温度”$T$：</p>
+<script type="math/tex; mode=display">g\left(T_{i}\right)=f_{i}\left(P_{i}, V_{i}\right)</script><p>这样，当两个系统达到热平衡后，<script type="math/tex">g\left(T_{1}\right)=g\left(T_{2}\right)</script>。函数 $g$ 可以选取不同的形式。最为简单的选取就是<script type="math/tex">g(T)=T</script><br>这样当热平衡时我们就可以说是温度相同了。</p>
+<p>在前面讨论中的T与其他状态参量的函数关系我们称为<strong>状态方程</strong>。对理想气体来说<script type="math/tex">P V=N k_{B} T</script>。</p>
+<h2 id="温标"><a href="#温标" class="headerlink" title="温标"></a>温标</h2><ul>
+<li>摄氏温标 (<script type="math/tex">{ }^{\circ} \mathrm{C}</script>)：把一个标准大气压下，水的沸点定位 100 度，水的冰点定位 0 度。</li>
+<li>华氏温标 (<script type="math/tex">{ }^{\circ} \mathrm{F}</script>)：它与摄氏温标换算关系： $F=32+\frac{9}{5} C$</li>
+<li>理想气体温标 (K)：利用理想气体状态方程 $PV = \nu RT$ 定义温度，这样的 话，水的三相点温度为 273.16 K。与摄氏度换算关系为： $K=C-273.15$</li>
+<li>热力学温标 (K): 利用卡诺循环来定义。</li>
+</ul>
+<h1 id="统计物理的基本概念"><a href="#统计物理的基本概念" class="headerlink" title="统计物理的基本概念"></a>统计物理的基本概念</h1><h2 id="微观态"><a href="#微观态" class="headerlink" title="微观态"></a>微观态</h2><p><strong>基本思想：</strong>物理系统的热力学特征由宏观态所对应微观态的多重性决定。<br>在经典力学中，我们使用系统中每一个粒子的<em>广义坐标</em>与<em>广义动量</em>(<strong>正则变量</strong>)来表示系统的微观状态。我们称这个空间为<strong>相空间</strong>，系统的运动状态为<strong>代表点</strong>，当系统随时间演化时形成<strong>相轨道</strong>。此时系统的运动遵循哈密顿正则方程</p>
+<script type="math/tex; mode=display">\dot{q}_{i}=\frac{\partial H}{\partial p_{i}}, \quad \dot{p}_{i}=\frac{\partial H}{\partial q_{i}} \quad(i=1,2 \cdots, f)</script><p>由<strong>刘维尔定理</strong>代表点附近的数密度随着时间的演化是不变的，即。</p>
+<script type="math/tex; mode=display">\frac{d}{d t} \rho=0</script><p>或者</p>
+<script type="math/tex; mode=display">\frac{\partial \rho}{\partial t}=-\sum_{i}\left[\frac{\partial \rho}{\partial q_{i}} \frac{\partial H}{\partial p_{i}}-\frac{\partial H}{\partial q_{i}} \frac{\partial \rho}{\partial p_{i}}\right]=-[\rho, H]_{P . B .}</script><p>由此经典力学中力学状态变化是连续的。由此是不可分的。为统计上的方便我们常常将相空间分成很多小相格，不管系统的正则变量落在小相格的哪一部分，都看作是同一个微观状态。在一定的相空间体积中，能划分出多少个相格，就认为系统有多少个微观状态。这就为经典力学中微观状态的定义。</p>
+<p>在量子力学中微观状态用量子态来描述，即可以用一组量子数来表示，我们常用能量本征态来表述。同时我们还需考虑粒子的全同性。若粒子是可分辨的（非全同粒子或定域的全同粒子），则整个 N 粒子系统的微观状态可以由<strong>每个粒子分别处在哪个量子态来描述</strong>。但是，如果粒子是不可分新的全同粒子，系统的微观状态应该由<strong>每个单粒子态上有多少粒子来描述</strong>。<br>对于全同粒子，在考虑弱简并条件（每个粒子能量本征态上的粒子数远小于1）下时，我们可以近似认为每个粒子都处在不同的量子态。由此我们可以统一为：在<script type="math/tex">\Delta E \ll k_{B} T</script>时一个多粒子系统的能量本征态的求和可近似为对经典相空间的积分：</p>
+<script type="math/tex; mode=display">\sum_{i} \longrightarrow \frac{1}{N ! h^{f}} \int d q_{1} \cdots d q_{n} d p_{1} \cdots d p_{n}</script><p>其中因子<script type="math/tex">N !</script>仅对全同粒子时才需要，f为系统的自由度。（这个公式可以简单的理解为对谐振子微观态计算的一种推广）</p>
+<h2 id="系综和统计物理的基本假设：等概率原理"><a href="#系综和统计物理的基本假设：等概率原理" class="headerlink" title="系综和统计物理的基本假设：等概率原理"></a>系综和统计物理的基本假设：等概率原理</h2><p>当我们知道系统的微观态后，我们有两种方法得到宏观物理量B的平均值</p>
+<ol>
+<li>测定在一定时间<script type="math/tex">\tau</script>内的B的平均值<script type="math/tex; mode=display">\bar{B}\left(t_{0}\right)=\frac{1}{\tau} \int_{t_{0}}^{t_{0}+\tau} B(q(t), p(t)) d t</script>需要说明的是我们希望<script type="math/tex">\tau</script>对微观态来说足够的长对宏观来说又足够小，但这又很难操作，因此我们可以操作：在测量过程的时间段 $\tau$ 中均匀插入无穷多个时刻点，将 每个时刻所得到的测量结果加起来取平均。这样，宏观量 B 的测量值便可等价</li>
+<li>也可以在相空间内积分得到<script type="math/tex; mode=display">\bar{B}\left(t_{0}\right)=\int \rho\left(q, p, t_{0}\right) B(q, p) d q d p</script>由此我们可以发现可以将态密度理解为大量的、具有相同宏观性质的系统的概率密度。</li>
+</ol>
+<p>这种具有相同宏观性质的大量的系统副本的集合，其中每个系统副本都按照正则运动方程随时间演化，被称为<strong>系综</strong>（Ensemble），上述平均值的公式也被称为<strong>系综平均</strong>。<br>我们注意到系综的代表点运动时满足刘维尔定理，所以任意宏观量的平均值不随时间变化。当然这是针对<strong>平衡态</strong>而言的，即一个系统的宏观物理量的测量值是相应微观量的系综平均值。于是统计物理的主要任务就是确定系统在一定宏观条件（约束）下处在各个微观态上的概率分布。<br>为了确定概率分布引入了<em>各态历经假设</em>(Ergodic Hypothesis) :在足够长的时间内，孤立系统的代表点将会历经系统的等能量曲面上的每个微观态。可以证明，如果各态历经假设成立，则对于处在平衡态的孤立系统，一切可能的微观状态出现的概率都相等。这就引出统计物理中最重要的一条基本假设——<strong>等概率原理</strong>:对于处在平衡态的孤立系统，一切可能的微观状态出现的概率都相等。对于量子力学其也成立。</p>
+<p>统计物理中常见的三种系综：</p>
+<ol>
+<li>微正则系综 (microcanonical ensemble)： 由孤立系统构成（无热交换与物质交换）。即体系的能量、 体积、粒子数 $(E, V, N)$ 均恒定。</li>
+<li>正则系综（canonical ensemble)：系统与一个大的热源热接触（恒定的温度 T)，保持体积、粒子数仍恒定。正则系综中的系统中能量可以有涨落。即 $(T, V, N)$ 恒定。</li>
+<li>巨正则系综（grand canonical ensemble)：系统与一个大的热源和粒子源接触（恒定的温度 T 和化学势 $\mu$ )，但体积恒定。在巨正则系综中的系统中能量和粒子数都有涨落。即 $(T, V, \mu)$ 恒定。</li>
+</ol>
+<h1 id="温度的统计定义"><a href="#温度的统计定义" class="headerlink" title="温度的统计定义"></a>温度的统计定义</h1><p>通过上述的基本原理我们可以得到温度的统计定义。首先我们考虑两个孤立系统，其构成一个大的孤立系统（能量为E），其子能量为<script type="math/tex">E_1</script>与<script type="math/tex">E_2</script>。当两个系统平衡时，在某一能量分配下每个子系统的微观状态数分别为<script type="math/tex">\Omega_{1}\left(E_{1}\right)</script>和<script type="math/tex">\Omega_{2}\left(E_{2}\right)</script>则在这种能量分配下微观状态数为</p>
+<script type="math/tex; mode=display">\Omega\left(E_{1}\right)=\Omega_{1}\left(E_{1}\right) \Omega_{2}\left(E_{2}\right)</script><p>由于等概率原理，每个微观态出现的概率相同，因此对于最有可能出现的微观状态即为极大值</p>
+<script type="math/tex; mode=display">\frac{\partial}{\partial E_{1}} \Omega\left(E_{1}\right)=\frac{\partial}{\partial E_{1}}\left(\Omega_{1}\left(E_{1}\right) \Omega_{2}\left(E_{2}\right)\right)=0</script><p>整理后即得到最概然的能量分配满足:</p>
+<script type="math/tex; mode=display">\frac{\partial \ln \Omega_{1}\left(E_{1}\right)}{\partial E_{1}}=\frac{\partial \ln \Omega_{2}\left(E_{2}\right)}{\partial E_{2}}</script><p>由此我们可以将<strong>最概然分配对应的状态看作是达到平衡时系统的状态</strong>。<br>同时我们也可以将上式看为两个确定能量的<strong>孤立系统达到热平衡的判据</strong>。由此我们可以定义<strong>孤立平衡态系统的温度</strong>为：</p>
+<script type="math/tex; mode=display">g\left(T_{i}\right)=\frac{\partial \ln \Omega_{i}\left(E_{i}\right)}{\partial E_{i}}</script><p>同时由于最概然的能量分配，我们认为从非平衡态向平衡态演化的过程就是从微观态数少的能量分配向微观态数多的能量分配的演化过程。由此可知<strong>函数$g(T)$随T的增加而降低</strong>。由此我们定义温度为</p>
+<script type="math/tex; mode=display">g(T)=\frac{1}{k_{B} T}=\frac{\partial \ln \Omega(E)}{\partial E}</script><p>其中k为Boltzmann常数</p>
+<script type="math/tex; mode=display">k_{B}=1.3807 \times 10^{-23} \mathrm{J} \cdot \mathrm{K}^{-1}</script><h1 id="正则系综、Boltzmann因子"><a href="#正则系综、Boltzmann因子" class="headerlink" title="正则系综、Boltzmann因子"></a>正则系综、Boltzmann因子</h1><p>对于正则系综，系统处于状态k的概率正比与热源可能的微观状态数</p>
+<script type="math/tex; mode=display">P_{k} \propto 1 \times \Omega_{B}\left(E_{T}-\varepsilon_{k}\right)</script><p>其中<script type="math/tex">E_{T}</script>为总能量，<script type="math/tex">\varepsilon_{k}</script>为系统的能量。我们通过对<script type="math/tex">\Omega_{B}\left(E_{T}-\varepsilon_{k}\right)</script>展开并运用温度定义我们可以得到，系统处于能态$k$的概率正比于<strong>Boltzmann因子</strong>（<script type="math/tex">e^{-\beta \varepsilon_{k}}</script>）。</p>
+<script type="math/tex; mode=display">P_{k} \propto e^{-\beta \varepsilon_{k}}</script><p>其中<script type="math/tex">\beta=1 /\left(k_{B} T\right)</script>。<br>我们将概率归一化有</p>
+<script type="math/tex; mode=display">P_{k}=\frac{1}{Z} e^{-\beta \varepsilon_{k}}</script><p>这里有归一因子，我们称其为<strong>配分函数</strong>（Partition function），其意味着系统被“分配”到每一个可能微观状态的概率。</p>
+<script type="math/tex; mode=display">Z=\sum_{\text {微观态 } k} e^{-\beta \varepsilon_{k}}</script><p>在正则系综中内能为</p>
+<script type="math/tex; mode=display">\langle E\rangle=\frac{\sum_{k} \varepsilon_{k} e^{-\beta \varepsilon_{k}}}{\sum_{k} e^{-\beta \varepsilon_{k}}}=-\frac{\partial}{\partial \beta} \ln Z</script><p>能量涨落为</p>
+<script type="math/tex; mode=display">\frac{\sigma_{E}}{\langle E\rangle}=\frac{\sqrt{k_{B} T^{2} C_{V}}}{\langle E\rangle}</script><p>由于<script type="math/tex">C_{V}</script>和<script type="math/tex">\langle E\rangle</script>都是广延量，与粒子数正比。故能量涨落<script type="math/tex">\propto 1 / \sqrt{N}</script>很小，由此我们可以将正则系综作为微正则系综来处理。即，<strong>正则系综与微正则系综对于计算平衡态下的热力学量来说是等价的</strong></p>
+
+            </article>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/physics-note/">physics note</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%9C%A3%E7%BB%8F%E5%92%8F%E5%94%B1%E7%B3%BB%E5%88%97/">圣经咏唱系列</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，大部分都是我整理前人的工作或学习笔记 ，使用与转载需说明</p>
+              
+              
+                <div class="post-prevnext row">
+                  <div class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/06/27/solid%20physics/solid4/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">固体物理圣经咏唱——原子振动及其格波理论</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </div>
+                  <div class="post-next col-6">
+                    
+                    
+                      <a href="/2020/06/23/reviewreed/qeh/">
+                        <span class="hidden-mobile">A review about The Quantum Hall Effect</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </div>
+                </div>
+              
+            </div>
+
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="text-center mt-5 py-3">
+   
+  <!-- 添加网站运行时间 -->
+  <div class="footer-content">
+    <div>
+      <span id="timeDate">载入天数...</span>
+      <span id="times">载入时分秒...</span>
+      <script>
+      var now = new Date();
+      function createtime(){
+          var grt= new Date("05/20/2020 00:00:00");//此处修改你的建站时间或者网站上线时间
+          now.setTime(now.getTime()+250);
+          days = (now - grt ) / 1000 / 60 / 60 / 24;
+          dnum = Math.floor(days);
+          hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum);
+          hnum = Math.floor(hours);
+          if(String(hnum).length ==1 ){
+              hnum = "0" + hnum;
+          }
+          minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+          mnum = Math.floor(minutes);
+          if(String(mnum).length ==1 ){
+                    mnum = "0" + mnum;
+          }
+          seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+          snum = Math.round(seconds);
+          if(String(snum).length ==1 ){
+                    snum = "0" + snum;
+          }
+          document.getElementById("timeDate").innerHTML = "🚀 &nbsp"+dnum+"&nbsp天";  //此次自定义显示内容
+          document.getElementById("times").innerHTML = hnum + "&nbsp小时&nbsp" + mnum + "&nbsp分&nbsp" + snum + "&nbsp秒";
+      }  //此次自定义显示内容
+      setInterval("createtime()",250);
+      </script>
+    </div>
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/main.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: 'article.markdown-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "热力学与统计物理圣经咏唱——热力学第零定理、态函数、温度&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.staticfile.org/mathjax/3.0.5/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="expand your horizons">
+  <meta name="author" content="Zijun Wei">
+  <meta name="keywords" content="">
+  <title>固体物理圣经咏唱——固体能带论 - My Web</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/gitalk/1.6.2/gitalk.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_yg9cfy8wd6.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Zijun Wei's space</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                about me
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="view intro-2" id="background" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              
+  <div class="mt-3 post-meta">
+    <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+    <time datetime="2020-06-29 00:00">
+      June 29, 2020 am
+    </time>
+  </div>
+
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.6k words
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      10
+       minutes
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <div class="post-content mx-auto" id="post">
+            
+            <article class="markdown-body">
+              <h1 id="固体的能带的形成"><a href="#固体的能带的形成" class="headerlink" title="固体的能带的形成"></a>固体的能带的形成</h1><p>原子最外层电子，由于原子核对其束缚很弱，当大量原子结合成晶体时，这些电子易摆脱原子核的束缚而成为共有化电子，这部分电子称为<strong>价电子</strong>，而原子内层电子（芯电子）有较高的结合能，一般脱离不了原子核对其束缚，这些芯电子同原子核一起构成<strong>离子实</strong>，因此，固体中的原子又可分为带正电的离子实和带负电的价电子两部分。当N个原子相互靠近形成晶体时由于电子壳层的交叠，电子不再局限于某一个原子上，可以由一个原子转移到相邻的原子上去， 因而，电子将可以在整个晶体中运动，这种运动称为电子的<strong>公有化运动</strong>。<br>对于N个独立的单个原子，有其自身的能级系统，每个能级都有N个态与之对应，若不考虑原子本身的简并则是N重简并的。但当N个原子相互靠近结合成晶体后，每个原子中的电子除受到自身原子的势场外，还要受到周围其它原子的原子势场的作用，此时每一个N重简并的能级都分裂成彼此相距很近的能级。这N个彼此相距很近的能级就组成一个<strong>能带</strong>，如图所示<br><img src="/img_solid/30.png" srcset="/img/loading.gif" alt=""><br>因为N的数量很大能级的分裂也很小，因此每一个能带中的能级彼此非常靠近，以至于基本上可认为是连续的，我们称这些带为<strong>允带</strong>。相邻的两个能带之间隔以能量不可能为电子所有的范围，称为<strong>禁带</strong>。</p>
+<h1 id="固体能带的理论基础"><a href="#固体能带的理论基础" class="headerlink" title="固体能带的理论基础"></a>固体能带的理论基础</h1><p>固体中带负电荷的价电子是在大量带正电荷、周期性排列的离子实背景中作共有化运动。</p>
+<h2 id="哈密顿算符"><a href="#哈密顿算符" class="headerlink" title="哈密顿算符"></a>哈密顿算符</h2><p>假定体积为<script type="math/tex">V=L^{3}</script>的固体由N个原子周期性排列而成，每个原子有Z个价电子。用<script type="math/tex">\vec{r}_{i}</script>和<script type="math/tex">\vec{R}_{n}</script>分别表示第 $i$ 个价电子和第 $n$ 个离子实的位置矢量,则整个系统的哈密顿算符可表示为</p>
+<script type="math/tex; mode=display">\begin{aligned}\hat{H}=&-\sum_{i=1}^{N Z} \frac{\hbar^{2}}{2 m} \nabla_{i}^{2}+\frac{1}{2} \sum_{i, j}^{\prime} \frac{1}{4 \pi \varepsilon_{0}} \frac{e^{2}}{\left|\vec{r}_{i}-\vec{r}_{j}\right|} \\&-\sum_{n=1}^{N} \frac{\hbar^{2}}{2 M} \nabla_{n}^{2}+\frac{1}{2} \sum_{n, m}^{\prime} \frac{1}{4 \pi \varepsilon_{0}} \frac{(Z e)^{2}}{\left|\vec{R}_{n}-\vec{R}_{m}\right|} \\&-\sum_{i=1}^{N Z} \sum_{n=1}^{N Z} \frac{1}{4 \pi \varepsilon_{0}} \frac{Z e^{2}}{\left|\vec{r}_{i}-\vec{R}_{n}\right|}\end{aligned}</script><p>其中第一部分是$NZ$个价电子的动能和相互间库仑作用能，第二部分是N个离子实的动能和相互间库仑作用能，第三部分是N个离子实和<script type="math/tex">NZ</script>个价电子间的库仑作用能。可以发现这个哈密顿量是极度复杂的，接下来我们就通过近似来简化这个哈密顿量。</p>
+<h2 id="绝热近似"><a href="#绝热近似" class="headerlink" title="绝热近似"></a>绝热近似</h2><p>按照玻恩-奥本海姆绝热近似，电子可近似认为能绝热于离子实的运动，因此，可将电子和离子实的运动进行分开处理。由此我们只关系由NZ个电子构成的电子系统的哈密顿算符</p>
+<script type="math/tex; mode=display">\hat{H}_{e}=-\sum_{i=1}^{N Z} \frac{\hbar^{2}}{2 m} \nabla_{i}^{2}+\frac{1}{2} \sum_{i=1}^{N Z} \sum_{j \neq i} \frac{1}{4 \pi \varepsilon_{0}} \frac{e^{2}}{\left|\vec{r}_{i}-\vec{r}_{j}\right|}-\sum_{i=1}^{N Z} \sum_{n=1}^{N Z} \frac{1}{4 \pi \varepsilon_{0}} \frac{Z e^{2}}{\left|\vec{r}_{i}-\vec{R}_{n}\right|}</script><p>其中<script type="math/tex">\vec{R}_{n}</script>是第$n$个离子实的瞬时位置。在绝对零度的时候，离子实处在平衡位置<script type="math/tex">\vec{R}_{n}^{0}</script>，而在有限温度时，我们可以忽略晶格微小的振动可以认为离子实也在<script type="math/tex">\vec{R}_{n}^{0}</script>。</p>
+<h2 id="平均场近似"><a href="#平均场近似" class="headerlink" title="平均场近似"></a>平均场近似</h2><p>在引入绝热近似后虽然哈密顿量有所简化，但对于库仑关联项还是很复杂。由于库仑关联项的存在，电子的运动彼此是相互关联的。因此我们可以将所有其它电子对位于<script type="math/tex">\vec{r}_{i}</script>处第i个电子的影响用一个平均场<script type="math/tex">v_{e}\left(\vec{r}_{i}\right)</script>来描述，即用平均场近似替代库仑关联项：</p>
+<script type="math/tex; mode=display">v_{e}\left(\vec{r}_{i}\right) \rightarrow V_{e e}\left(\vec{r}_{i}, \vec{r}_{j}\right)=\frac{1}{2} \sum_{j \neq i} \frac{1}{4 \pi \varepsilon_{0}} \frac{e^{2}}{\left|\vec{r}_{i}-\vec{r}_{j}\right|}</script><p>由此哈密顿量可以写为</p>
+<script type="math/tex; mode=display">\hat{H}_{e}=\sum_{i=1}^{N Z}\left[-\frac{\hbar^{2}}{2 m} \nabla_{i}^{2}+v_{e}\left(\vec{r}_{i}\right)-\sum_{R_{n}} \frac{1}{4 \pi \varepsilon_{0}} \frac{e^{2}}{\left|\vec{r}_{i}-\vec{R}_{n}\right|}\right]</script><p>我们可令<script type="math/tex">\hat{H}_{e}=\sum_{i=1}^{N Z} \hat{H}_{e i}</script>，且</p>
+<script type="math/tex; mode=display">\hat{H}_{e i}=-\frac{\hbar^{2}}{2 m} \nabla_{i}^{2}+v_{e}\left(\vec{r}_{i}\right)-\sum_{R_{n}} \frac{1}{4 \pi \varepsilon_{0}} \frac{e^{2}}{\left|\vec{r}_{i}-\vec{R}_{n}\right|}</script><p>这时对于态<script type="math/tex">\psi\left(\vec{r}_{1}, \vec{r}_{2}, \ldots \vec{r}_{N Z}\right)=\psi_{1}\left(\vec{r}_{1}\right) \psi_{2}\left(\vec{r}_{2}\right) \ldots \psi_{N Z}\left(\vec{r}_{N Z}\right)</script>，对于能量<script type="math/tex">\varepsilon=\sum_{i=1}^{N Z} \varepsilon_{i}</script>。</p>
+<p>这样一来，NZ体问题则简化成单电子问题。因此平均场近似又常常称之为<strong>单电子近似</strong>。</p>
+<h2 id="周期性势场"><a href="#周期性势场" class="headerlink" title="周期性势场"></a>周期性势场</h2><p>对于上述的单粒子的哈密顿量，我们可以进一步化为</p>
+<script type="math/tex; mode=display">\hat{H} \psi=\left[-\frac{\hbar^{2}}{2 m} \nabla^{2}+V(\vec{r})\right] \psi=\varepsilon \psi</script><p>其中</p>
+<script type="math/tex; mode=display">V(\vec{r})=v_{e}(\vec{r})-\sum_{R_{n}} \frac{1}{4 \pi \varepsilon_{0}} \frac{e^{2}}{\left|\vec{r}-\vec{R}_{n}\right|}</script><p>为单电子势，源于两部分，一是电子与其它电子的平均库仑作用势，另一是所考虑的电子与离子实间的库仑作用势。</p>
+<p>由于晶体具有周期性，单电子势应具有和晶格相同的周期性</p>
+<script type="math/tex; mode=display">V\left(\vec{r}+\vec{R}_{l}\right)=V(\vec{r})</script><h1 id="布洛赫定理"><a href="#布洛赫定理" class="headerlink" title="布洛赫定理"></a>布洛赫定理</h1>
+            </article>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/physics-note/">physics note</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%9C%A3%E7%BB%8F%E5%92%8F%E5%94%B1%E7%B3%BB%E5%88%97/">圣经咏唱系列</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，大部分都是我整理前人的工作或学习笔记 ，使用与转载需说明</p>
+              
+              
+                <div class="post-prevnext row">
+                  <div class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/06/29/solid%20physics/solid5/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">固体物理圣经咏唱——金属电子论</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </div>
+                  <div class="post-next col-6">
+                    
+                    
+                      <a href="/2020/06/27/solid%20physics/solid4/">
+                        <span class="hidden-mobile">固体物理圣经咏唱——原子振动及其格波理论</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </div>
+                </div>
+              
+            </div>
+
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="text-center mt-5 py-3">
+   
+  <!-- 添加网站运行时间 -->
+  <div class="footer-content">
+    <div>
+      <span id="timeDate">载入天数...</span>
+      <span id="times">载入时分秒...</span>
+      <script>
+      var now = new Date();
+      function createtime(){
+          var grt= new Date("05/20/2020 00:00:00");//此处修改你的建站时间或者网站上线时间
+          now.setTime(now.getTime()+250);
+          days = (now - grt ) / 1000 / 60 / 60 / 24;
+          dnum = Math.floor(days);
+          hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum);
+          hnum = Math.floor(hours);
+          if(String(hnum).length ==1 ){
+              hnum = "0" + hnum;
+          }
+          minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+          mnum = Math.floor(minutes);
+          if(String(mnum).length ==1 ){
+                    mnum = "0" + mnum;
+          }
+          seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+          snum = Math.round(seconds);
+          if(String(snum).length ==1 ){
+                    snum = "0" + snum;
+          }
+          document.getElementById("timeDate").innerHTML = "🚀 &nbsp"+dnum+"&nbsp天";  //此次自定义显示内容
+          document.getElementById("times").innerHTML = hnum + "&nbsp小时&nbsp" + mnum + "&nbsp分&nbsp" + snum + "&nbsp秒";
+      }  //此次自定义显示内容
+      setInterval("createtime()",250);
+      </script>
+    </div>
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/main.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: 'article.markdown-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "固体物理圣经咏唱——固体能带论&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.staticfile.org/mathjax/3.0.5/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+</body>
+</html>

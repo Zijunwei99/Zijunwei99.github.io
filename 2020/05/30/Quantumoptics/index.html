@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="expand your horizons">
+  <meta name="author" content="Zijun Wei">
+  <meta name="keywords" content="">
+  <title>Quantum Optics -- Quantization of electromagnetic fields - My Web</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/gitalk/1.6.2/gitalk.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_yg9cfy8wd6.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Zijun Wei's space</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                about me
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="view intro-2" id="background" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              
+  <div class="mt-3 post-meta">
+    <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+    <time datetime="2020-05-30 00:00">
+      May 30, 2020 am
+    </time>
+  </div>
+
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      3.2k words
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      24
+       minutes
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <div class="post-content mx-auto" id="post">
+            
+            <article class="markdown-body">
+              <h1 id="遇事不决，量子力学！"><a href="#遇事不决，量子力学！" class="headerlink" title="遇事不决，量子力学！"></a>遇事不决，量子力学！</h1><p>通过电动力学中我们可以列出自由电磁场中的Maxwell方程</p>
+<script type="math/tex; mode=display">\begin{aligned} \nabla \cdot {B} &=0 \\ \nabla \times {E} &=-\frac{\partial {B}}{\partial t} \\\nabla \cdot {D} &=0 \\ \nabla \times {H} &=\frac{\partial{D}}{\partial t} \end{aligned}</script><p>其中E和B都可以使用矢势 $A(\boldsymbol{r}, t)$ 表示：$\begin{aligned} &amp;\boldsymbol{B}=\nabla \times \boldsymbol{A}\ &amp;\boldsymbol{E}=-\frac{\partial \boldsymbol{A}}{\partial t} \end{aligned}$<br>   我们在这里取库伦规范 $\nabla \cdot \boldsymbol{A}=0$</p>
+<p>正如我们在电动力学中做过无数遍的化简：上述Maxwell方程组可以化简为关于 $A(\boldsymbol{r}, t)$的波动方程：</p>
+<script type="math/tex; mode=display">\nabla^{2} \boldsymbol{A}(\boldsymbol{r}, t)=\frac{1}{c^{2}} \frac{\partial^{2} \boldsymbol{A}(\boldsymbol{r}, t)}{\partial t^{2}}</script><p>而这个方程具有行波解的形式 </p>
+<script type="math/tex; mode=display">\boldsymbol{A}(\boldsymbol{r}, t)=\boldsymbol{A}^{(+)}(\boldsymbol{r}, t)+\boldsymbol{A}^{(-)}(\boldsymbol{r}, t)</script><p>其中 ${A}^{(-)}=\left({A}^{(+)}\right)^* $互为复共轭</p>
+<p>接下来我们可使用一组正交基对 $A^{(+)}(r, t)$ 经行展开 </p>
+<script type="math/tex; mode=display">{A}^{(+)}({r}, t)=\sum_{k} c_{k} {u}_{k}({r}) {e}^{-i \omega_{k} t}</script><p>其中正交基为 $u_k (r)$ 满足：</p>
+<ul>
+<li>方程： <script type="math/tex; mode=display">\left(\nabla^{2}+\frac{\omega_{k}^{2}}{c^{2}}\right) {u}_{k}({r})=0</script></li>
+<li>规范：<script type="math/tex; mode=display">\nabla \cdot {u}_{k}({r})=0</script></li>
+<li>正交归一性：<script type="math/tex; mode=display">\int_{V} {u}_{k}^{*}({r}) {u}_{k^{\prime}}({r}) {d} {r}=\delta_{k k^{\prime}}</script></li>
+</ul>
+<p>由上述几个条件可以解出基的值（这同我们在解波导问题很相近）</p>
+<script type="math/tex; mode=display">{u}_{k}(\boldsymbol{r})=L^{-3 / 2} \hat{\boldsymbol{e}}^{(\lambda)} \exp (\boldsymbol{i} \boldsymbol{k} \cdot \boldsymbol{r})</script><p>其中 $\hat{e}^{(\lambda)}$表偏振方向的选择。之后讨论同波导中解法，有：</p>
+<script type="math/tex; mode=display">k_{x}=\frac{2 \pi n_{x}}{L}, \quad k_{y}=\frac{2 \pi n_{y}}{L}, \quad k_{z}=\frac{2 \pi n_{z}}{L}, \quad n_{x}, n_{y}, n_{z}=0, \pm 1, \pm 2, \ldots</script><p>可以观察到$u_k (r)$满足的方程与量子力学中谐振子满足的方程是相似的，这也亦为之我们可以使用谐振子的代数解法来解决$u_k (r)$的问题。经过计算可得：</p>
+<script type="math/tex; mode=display">\boldsymbol{A}(\boldsymbol{r}, t)=\sum_{k}\left(\frac{\hbar}{2 \omega_{k} \epsilon_{0}} \cdot\right)^{1 / 2}\left[a_{k} \boldsymbol{u}_{k}(\boldsymbol{r}) {e}^{-i \omega_{k} t}+a_{k}^{\dagger} \boldsymbol{u}_{k}^{*}(\boldsymbol{r}) {e}^{i \omega_{k} t}\right]</script><p>则，与之对应的电场为：</p>
+<script type="math/tex; mode=display">\boldsymbol{E}(\boldsymbol{r}, t)=i \sum_{k}\left(\frac{\hbar \omega_{k}}{2 \epsilon_{0}}\right)^{1 / 2}\left[a_{k} \boldsymbol{u}_{k}(\boldsymbol{r}){e}^{-i \omega_{k} t}-a_{k}^{\dagger} \boldsymbol{u}_{k}^{*}(\boldsymbol{r}) {e}^{i \omega_{k} t}\right]</script><p>这里的 $a_{k}^{\dagger}$ 与$a_k$ 即为光场中的升降阶算符，其中$k$为标记不同光场的脚标。满足对易关系：</p>
+<script type="math/tex; mode=display">\left[a_{k}, a_{k^{\prime}}\right]=\left[a_{k}^{\dagger}, a_{k^{\prime}}^{\dagger}\right]=0, \quad\left[a_{k}, a_{k^{\prime}}^{\dagger}\right]=\delta_{k k^{\prime}}</script><p>在电磁学中电磁场的Hamiltonian为 $H=\frac{1}{2} \int\left(\epsilon_0 {E}^2+\mu_0 {H}^2 \right) {d} {r}$<br>带入计算得到的E有（这里两算符相乘要注意满足的对易关系）</p>
+<script type="math/tex; mode=display">H=\sum_{k} \hbar \omega_{k}\left(a_{k}^{\dagger} a_{k}+\frac{1}{2}\right)</script><p>这里就可以得到量子化的电磁场。<br>remark：因为 $N=a_{k}^{\dagger}a_k$ 代表的是光子数所以可以发现在$n=0$（即真空态）时也会有 $\frac{1}{2} \hbar \omega_k$ 的能量。<br>这就可以有很多新奇的现象，比如<a href="https://zhuanlan.zhihu.com/p/32439577" target="_blank" rel="noopener">蔡老师的一篇文章</a>。挖坑：有时间我也试着去调研，并使用matlab复现一下论文中的一些结论。</p>
+<h1 id="Fock态或粒子数态（fock老是拼错为fork，英语渣渣）"><a href="#Fock态或粒子数态（fock老是拼错为fork，英语渣渣）" class="headerlink" title="Fock态或粒子数态（fock老是拼错为fork，英语渣渣）"></a>Fock态或粒子数态（fock老是拼错为fork，英语渣渣）</h1><p>这就是一般最常见的表示的态，由于Hamiltonian具有 $h \omega_k (n_k +\frac{1}{2})$ 的本征值，其中$n_k$自然数。则一种自然的想法就是用 $|n_k \rangle$ 来表示H的本征态。</p>
+<p>我们就称这个态为Fock态或者是粒子数态。其中$N=a_{k}^{\dagger} a_k$为粒子数算符</p>
+<script type="math/tex; mode=display">a_{k}^{\dagger} a_{k}\left|n_{k}\right\rangle= n_{k}\left|n_{k}\right\rangle</script><p>将$a_{k}^{\dagger} $与$a_k$作用到$\left|n_k\right\rangle$上有</p>
+<script type="math/tex; mode=display">a_{k}\left|n_{k}\right\rangle= n_{k}^{1 / 2}\left|n_{k}-1\right\rangle, \quad a_{k}^{\dagger}\left|n_{k}\right\rangle=\left(n_{k}+1\right)^{1 / 2}\left|n_{k}+1\right\rangle</script><p>特别的对于基态 $a_k |0\rangle= 0$ ，这也很好的反应出为什么叫升降阶算符。对任意一个态$|n_k \rangle$有</p>
+<script type="math/tex; mode=display">\left|n_{k}\right\rangle=\frac{\left(a_{k}^{\dagger}\right)^{n_{k}}}{\left(n_{k} !\right)^{1 / 2}}|0\rangle, \quad n_{k}=0,1,2\ldots</script><p>这很明显可以得到：</p>
+<ul>
+<li>正交归一性： <script type="math/tex; mode=display">\left\langle n_{k} | m_{k}\right\rangle=\delta_{m n}</script></li>
+<li>完备性：   <script type="math/tex; mode=display">\sum_{n_{k}=0}^{\infty}\left|n_{k}\right\rangle\left\langle n_{k}\right|=1</script>remark：fock态是最常见的一种表示方法，同时也是最直观的。往后的一些描述最好可以有直观的描述，这有助于理解。</li>
+</ul>
+<h1 id="相干态"><a href="#相干态" class="headerlink" title="相干态"></a>相干态</h1><p>对于相干光其光子数是不确定的，但是其满足不确定性原理的下限。为了描述这种相干光，我们需要引入相干态，而只需要简单的对 $\left|n_{k}\right\rangle$ 作幺正变化即可。</p>
+<p>$D(\alpha)=\exp \left(\alpha a^{\dagger}-\alpha^{*} a\right)$ 其中 $\alpha$为任意的一个复数。<br>引理1：<br>   当 $[A,[A, B]]=[B,[A, B]]=0$ 时有 $\mathrm{e}^{A+B}=\mathrm{e}^{A} \mathrm{e}^{B} \mathrm{e}^{-[A, B] / 2}$ </p>
+<p>化简得到 $D(\alpha)=\mathrm{e}^{-|\alpha|^{2} / 2} \mathrm{e}^{\alpha a^{\dagger}} \mathrm{e}^{-\alpha^{*} a}$ ，进而研究 $D(\alpha)$ 的性质：</p>
+<ul>
+<li><script type="math/tex; mode=display">D^{\dagger}(\alpha)=D^{-1}(\alpha)=D(-\alpha)</script></li>
+<li><script type="math/tex; mode=display">D^{\dagger}(\alpha) a D(\alpha)=a+\alpha</script></li>
+<li><script type="math/tex; mode=display">D^{\dagger}(\alpha) a^{\dagger} D(\alpha)=a^{\dagger}+\alpha^{*}</script></li>
+<li><script type="math/tex; mode=display">D(\alpha+\beta)=D(\alpha) D(\beta) \exp \left(-\mathrm{i} \operatorname{Im}\left\{\alpha \beta^{*}\right\}\right)</script></li>
+</ul>
+<p>故，相干态 $|\alpha\rangle |\alpha\rangle$ 可由$D(\alpha)$作用在基态上产生： $|\alpha\rangle= D(\alpha)|0\rangle $，z<br>同时可得$|\alpha\rangle$为算符$a$的本征态， $a|\alpha\rangle=\alpha|\alpha\rangle$。</p>
+<p>证明过程： $D^{\dagger}(\alpha) a|\alpha\rangle= D^{\dagger}(\alpha) a D(\alpha)|0\rangle=(a+\alpha)|0\rangle=\alpha|0\rangle$ ，之后俩边在同时乘 $D(\alpha)$。这里因为$a$为非厄米算符，所以$\alpha$ 为复数。<br>在 $a|\alpha\rangle=\alpha|\alpha\rangle$ 两边同时乘上 $\langle n|$ 有 $(n+1)^{1 / 2}\langle n+1 | \alpha\rangle=\alpha\langle n | \alpha\rangle $<br>即 </p>
+<script type="math/tex; mode=display">\langle n | \alpha\rangle=\frac{\alpha^{n}}{(n !)^{1 / 2}}\langle 0 | \alpha\rangle</script><p>所以$|\alpha\rangle$可以表示为 $|\alpha\rangle=\sum|n\rangle\langle n | \alpha\rangle=\langle 0 | \alpha\rangle \sum_{n} \frac{\alpha^{n}}{(n !)^{1 / 2}}|n\rangle$<br>又因为通过计算有： </p>
+<script type="math/tex; mode=display">\langle 0 | \alpha\rangle= e^{-|\alpha|^{2} / 2}</script><p>则</p>
+<script type="math/tex; mode=display">|\alpha\rangle=\mathrm{e}^{-|\alpha|^{2} / 2} \sum \frac{\alpha^{n}}{(n !)^{1 / 2}}|n\rangle</script><p>光子数分布为： </p>
+<script type="math/tex; mode=display">P(n)=|\langle n | \alpha\rangle|^{2}=\frac{|\alpha|^{2 n} \mathrm{e}^{-|\alpha|^{2}}}{n !}</script><p>其中平均光子数为 </p>
+<script type="math/tex; mode=display">\bar{n}=\left\langle\alpha\left|a^{\dagger} a\right| \alpha\right\rangle=|\alpha|^{2}</script><ul>
+<li>对于两个相干态来说有： <script type="math/tex; mode=display">\langle\beta | \alpha\rangle=\left\langle 0\left|D^{\dagger}(\beta) D(\alpha)\right| 0\right\rangle =\exp \left[-\frac{1}{2}\left(|\alpha|^{2}+|\beta|^{2}\right)+\alpha \beta^{*}\right]</script> 则 $|\langle\beta | \alpha\rangle|^{2}=\mathrm{e}^{-|\alpha-\beta|^{2}}$ 当 $|\alpha-\beta| \gg 1$ 时两个相干态 $|\alpha\rangle$ 与 $|\beta\rangle$ 相互正交</li>
+<li>同时态$|\alpha\rangle$也存在完备性： $\frac{1}{\pi} \int|\alpha\rangle\langle\alpha| \mathrm{d}^{2} \alpha=1$</li>
+</ul>
+<h1 id="Squeezed-States（压缩态？）"><a href="#Squeezed-States（压缩态？）" class="headerlink" title="Squeezed States（压缩态？）"></a>Squeezed States（压缩态？）</h1><p>Squeezed States是更满足最小不确定性原理的更广义的态，相干态为其中是一种特殊的形式。</p>
+<p>若我们令 </p>
+<script type="math/tex; mode=display">a=\frac{X_{1}+\mathrm{i} X_{2}}{2}</script><p>由$a_{k}^{\dagger}$与$a_k$的对易关系我们可以得到： </p>
+<script type="math/tex; mode=display">\left[X_{1}, X_{2}\right]=2 \mathrm{i}</script><p>且X1、X2满足不确定关系 $\Delta X_1 \Delta X_2 \geq 1$ ，特别的当 $\Delta X_1=\Delta X_2=1$ 时即为相干态。<br><img src="/img_QO/1.png" srcset="/img/loading.gif" alt="势能如图"><br>(a)相干态(b)Squeezed State<br>如图，当$\Delta X_1=\Delta X_2=1$为相干态；相干态$|\alpha\rangle$振幅的平均值为为$\alpha$对应图中的圆心，圆代表误差范围；当X1、X2任意时就是Squeezed state$|\alpha, \epsilon\rangle$ </p>
+<p>同在相干态中的操作，Squeezed state也可以由幺正变化作用在相干态上来生成。 $|\alpha, \epsilon\rangle= D(\alpha) S(\epsilon)|0\rangle$</p>
+<p>其中， $S(\epsilon)=\exp \left(1 / 2 \epsilon^{*} a^{2}-1 / 2 \epsilon a^{\dagger 2}\right)$ 。 $\epsilon$ 为Squeezed state对应的下标$\epsilon=r \mathrm{e}^{2 \mathrm{i} \phi}$</p>
+<p>$S(\varepsilon)$满足的一些性质：</p>
+<ul>
+<li><script type="math/tex; mode=display">S^{\dagger}(\varepsilon)=S^{-1}(\varepsilon)=S(-\varepsilon)</script></li>
+<li><script type="math/tex; mode=display">S^{\dagger}(\varepsilon) a S(\varepsilon)=a \cosh r-a^{\dagger} \mathrm{e}^{-2 \mathrm{i} \phi} \sinh r</script></li>
+<li><script type="math/tex; mode=display">S^{\dagger}(\varepsilon) a^{\dagger} S(\varepsilon)=a^{\dagger} \cosh r-a \mathrm{e}^{-2 \mathrm{i} \phi} \sinh r</script></li>
+<li><script type="math/tex; mode=display">S^{\dagger}(\varepsilon)\left(Y_{1}+\mathrm{i} Y_{2}\right) S(\varepsilon)=Y_{1} \mathrm{e}^{-r}+\mathrm{i} Y_{2} \mathrm{e}^{r}</script>其中 <script type="math/tex; mode=display">Y_{1}+\mathrm{i} Y_{2}=\left(X_{1}+\mathrm{i} X_{2}\right) \mathrm{e}^{-\mathrm{i} \phi}</script></li>
+</ul>
+<p>则Squeezed States对应不同的满足 $\Delta X<em>{1} \Delta X</em>{2} \ge 1$ 的 $\Delta X<em>{1}$、$\Delta X</em>{2}$ ，且某一个小于相干态。<br><img src="/img_QO/2.png" srcset="/img/loading.gif" alt="势能如图"><br>黑色点处代表相干态，阴影部分代表Squeezed state<br>一般压缩态$|\alpha, \varepsilon\rangle$中$r=|\boldsymbol{\varepsilon}|$称为压缩因子。</p>
+<p>在Squeezed state表象下：</p>
+<ul>
+<li><script type="math/tex; mode=display">\left\langle X_{1}+\mathrm{i} X_{2}\right\rangle=\left\langle Y_{1}+\mathrm{i} Y_{2}\right\rangle \mathrm{e}^{\mathrm{i} \phi}=2 \alpha</script></li>
+<li><script type="math/tex; mode=display">\Delta Y_{1}=\mathrm{e}^{-r},  \Delta Y_{2}=\mathrm{e}^{r}</script></li>
+<li><script type="math/tex; mode=display">\langle N\rangle=\left|\alpha^{2}\right|+\sinh ^{2} r</script></li>
+<li><script type="math/tex; mode=display">(\Delta N)^{2}=\left|\alpha \cosh r-\alpha^{*} \mathrm{e}^{2 i \phi} \sinh r\right|^{2}+2 \cosh ^{2} r \sinh ^{2} r</script>对应的物理图像可以理解为图1的坐标旋转。<h2 id="p-s-压缩态的光子数分布："><a href="#p-s-压缩态的光子数分布：" class="headerlink" title="p.s.压缩态的光子数分布："></a>p.s.压缩态的光子数分布：</h2>对于态 $|\alpha, r\rangle$ 其光子数分布为 <script type="math/tex; mode=display">p(n)=(n ! \cosh r)^{-1}\left[\frac{1}{2} \tanh r\right]^{n} \exp \left[-|\alpha|^{2}-\frac{1}{2} \tanh r\left(\left(\alpha^{*}\right)^{2} \mathrm{e}^{\mathrm{i} \phi}+\alpha^{2} \mathrm{e}^{-\mathrm{i} \phi}\right)\right]\left|H_{n}(z)\right|^{2}</script>其中 $z=\frac{\alpha+\alpha^{*} \mathrm{e}^{\mathrm{i} \phi} \tanh r}{\sqrt{2 \mathrm{e}^{\mathrm{i} \phi} \tanh r}}$ 可以将其视为一种广义的泊松分布。<br><img src="/img_QO/3.png" srcset="/img/loading.gif" alt="势能如图"><br>当压缩率r过大时，其光子数分布会随n震荡。</li>
+</ul>
+<h1 id="双光子的相干态"><a href="#双光子的相干态" class="headerlink" title="双光子的相干态"></a>双光子的相干态</h1><p>当然，也可以使用另一种方法来定义压缩态。<br>此时我们定义：若 $b=\mu a+v a^{\dagger}$且$|\mu|^{2}-|v|^{2}=1$，则$\left[b, b^{\dagger}\right]=1$</p>
+<p>可以通过变换由a得到b，即 $b=U a U^{\dagger} $</p>
+<p>对于b的本征值问题有 </p>
+<script type="math/tex; mode=display">b|\beta\rangle_{\mathrm{g}}=\beta|\beta\rangle_{\mathrm{g}}</script><p>其中$|\beta\rangle_g=U|\beta\rangle$。$|\beta\rangle$为$a$的本征态。</p>
+<p>可以证明$|\beta\rangle_g$的方向是与相干态的方向平行的。所以我们可以使用基态来得到$|\beta\rangle_g$，即</p>
+<script type="math/tex; mode=display">|\beta\rangle_{\mathrm{g}}=D_{\mathrm{g}}(\beta)|0\rangle_{\mathrm{g}}</script><p>其中<script type="math/tex">D_{\mathrm{g}}(\beta)=\mathrm{e}^{\beta \mathrm{b}^{\dagger}-\beta^{*} b}</script></p>
+<script type="math/tex; mode=display">|0\rangle_{\mathrm{g}}=U|0\rangle</script><p>这里$|\beta\rangle_g$就是双光子的相干态。</p>
+<p>可以发现双光子态是完备的，</p>
+<script type="math/tex; mode=display">\int|\beta\rangle_{\mathrm{g}} g\langle\beta| \frac{\mathrm{d}^{2} \beta}{\pi}=1</script><p>而其模为</p>
+<script type="math/tex; mode=display">\mathrm{g}\left\langle\beta | \beta^{\prime}\right\rangle_{\mathrm{g}}=\exp \left(\beta^{*} \beta^{\prime}-\frac{1}{2}|\beta|^{2}-\frac{1}{2}\left|\beta^{\prime}\right|^{2}\right)</script><p>这时我们发现若令 $U=S(\varepsilon)$，当$\mu=coshr$且则双光子的相干态与压缩态是一样的。即：</p>
+<script type="math/tex; mode=display">|\beta\rangle_{\mathrm{g}}=S(\varepsilon) D(\beta)|0\rangle</script><h1 id="电场中的方差"><a href="#电场中的方差" class="headerlink" title="电场中的方差"></a>电场中的方差</h1><p>当我们通过X1与X2来表述电场时：</p>
+<script type="math/tex; mode=display">E(\boldsymbol{r}, t)=\frac{1}{\sqrt{L^{3}}}\left(\frac{\hbar \omega}{2 \varepsilon_{0}}\right)^{1 / 2}\left[X_{1} \sin (\omega t-\boldsymbol{k} \cdot \boldsymbol{r})-X_{2} \cos (\omega t-\boldsymbol{k} \cdot \boldsymbol{r})\right]</script><p>可以很容易得到其方差为 </p>
+<script type="math/tex; mode=display">\begin{aligned} V(E(\boldsymbol{r}, t))=& K\left\{V\left(X_{1}\right) \sin ^{2}(\omega t-\boldsymbol{k} \cdot \boldsymbol{r})+V\left(X_{2}\right) \cos ^{2}(\omega t-\boldsymbol{k} \cdot \boldsymbol{r})\right.\\ &\left.-\sin [2(\omega t-\boldsymbol{k} \cdot \boldsymbol{r})] V\left(X_{1}, X_{2}\right)\right\} \end{aligned}</script><p>其中： </p>
+<script type="math/tex; mode=display">\begin{aligned} K &=\frac{1}{L^{3}}\left(\frac{2 \hbar \omega}{\varepsilon_{0}}\right) \\ V\left(X_{1}, X_{2}\right) &=\frac{\left\langle\left(X_{1} X_{2}\right)+\left(X_{2} X_{1}\right)\right\rangle}{2}-\left\langle X_{1}\right\rangle\left\langle X_{2}\right\rangle \end{aligned}</script><p>由于最小不确定性原理 $V\left(X_1, X_2\right)=0$，有 </p>
+<script type="math/tex; mode=display">V(E(\boldsymbol{r}, t))=K\left[V\left(X_{1}\right) \sin ^{2}(\omega t-\boldsymbol{k} \cdot \boldsymbol{r})+V\left(X_{2}\right) \cos ^{2}(\omega t-\boldsymbol{k} \cdot \boldsymbol{r})\right]</script><p><img src="/img_QO/4.png" srcset="/img/loading.gif" alt="势能如图"><br>图为电场的平均值与不确定度的关系，使用线条的粗细代表不确定度的大小。<br>由图中可以看出来：相干态（a）的方差均匀分布，这可以用上述的误差图看出，相干态的误差为圆形；而对于压缩态(b)(c），由于其误差为椭圆会呈现出不同的图案来。</p>
+<h1 id="Multimode-Squeezed-States"><a href="#Multimode-Squeezed-States" class="headerlink" title="Multimode Squeezed States"></a>Multimode Squeezed States</h1><p>正如上面我们讨论到的，对于单一模的态不会存在压缩态，即压缩态存在于多模中。</p>
+<p>双模的压缩态可以定义为 </p>
+<script type="math/tex; mode=display">\left|\alpha_{+}, \alpha_{-}\right\rangle= D_{+}\left(\alpha_{+}\right) D_{-}\left(\alpha_{-}\right) S(G)|0\rangle</script><p>其中，位移算符</p>
+<script type="math/tex; mode=display">D_{\pm}(\alpha)=\exp \left(\alpha a_{\pm}^{\dagger}-\alpha^{*} a_{\pm}\right)</script><p>幺正算符</p>
+<script type="math/tex; mode=display">S(G)=\exp \left(G^* a_+ a_--G a_{+}^{\dagger} a_{-}^{\dagger}\right)</script><p>对幺正算符有</p>
+<script type="math/tex; mode=display">S^{\dagger}(G) a_{\pm} S(G)=a_{\pm} \cosh r-a_{\mp}^{\dagger} \mathrm{e}^{\mathrm{i} \theta} \sinh r 其中 G=r \mathrm{e}^{\mathrm{i} \theta}</script><p>由上述有：</p>
+<script type="math/tex; mode=display">\begin{aligned} \left\langle a_{\pm}\right\rangle &=\alpha_{\pm} \\ \left\langle a_{\pm} a_{\pm}\right\rangle &=\alpha_{\pm}^{2} \\ \left\langle a_{+} a_{-}\right\rangle &=\alpha_{+} \alpha_{-}-\mathrm{e}^{\mathrm{i} \theta} \sinh r \cosh r \\ \left\langle a_{\pm}^{\dagger} a_{\pm}\right\rangle &=\left|\alpha_{\pm}\right|^{2}+\sinh ^{2} r \end{aligned}</script><p>我们可以定义一个正交算符</p>
+<script type="math/tex; mode=display">X=\frac{1}{\sqrt{2}}\left(a_{+}+a_{+}^{\dagger}+a_{-}+a_{-}^{\dagger}\right)</script><p>则这个算符的平均值与方差分别为：</p>
+<script type="math/tex; mode=display">\begin{aligned} \langle X\rangle &= 2\left(\operatorname{Re}\left\{\alpha_{+}\right\}+\operatorname{Re}\left\{\alpha_{-}\right\}\right) \\ V(X) &=\left(\mathrm{e}^{-2 r} \cos ^{2} \frac{\theta}{2}+\mathrm{e}^{2 r} \sin ^{2} \frac{\theta}{2}\right) \end{aligned}</script>
+            </article>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/physics-note/">physics note</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/Quantum-Optics/">Quantum Optics</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，大部分都是我整理前人的工作或学习笔记 ，使用与转载需说明</p>
+              
+              
+                <div class="post-prevnext row">
+                  <div class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/05/30/SSH/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Introduction to Su-Schrieffer-Heeger</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </div>
+                  <div class="post-next col-6">
+                    
+                    
+                      <a href="/2020/05/30/QM/1/">
+                        <span class="hidden-mobile">Berry Phase</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </div>
+                </div>
+              
+            </div>
+
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="text-center mt-5 py-3">
+   
+  <!-- 添加网站运行时间 -->
+  <div class="footer-content">
+    <div>
+      <span id="timeDate">载入天数...</span>
+      <span id="times">载入时分秒...</span>
+      <script>
+      var now = new Date();
+      function createtime(){
+          var grt= new Date("05/20/2020 00:00:00");//此处修改你的建站时间或者网站上线时间
+          now.setTime(now.getTime()+250);
+          days = (now - grt ) / 1000 / 60 / 60 / 24;
+          dnum = Math.floor(days);
+          hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum);
+          hnum = Math.floor(hours);
+          if(String(hnum).length ==1 ){
+              hnum = "0" + hnum;
+          }
+          minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+          mnum = Math.floor(minutes);
+          if(String(mnum).length ==1 ){
+                    mnum = "0" + mnum;
+          }
+          seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+          snum = Math.round(seconds);
+          if(String(snum).length ==1 ){
+                    snum = "0" + snum;
+          }
+          document.getElementById("timeDate").innerHTML = "🚀 &nbsp"+dnum+"&nbsp天";  //此次自定义显示内容
+          document.getElementById("times").innerHTML = hnum + "&nbsp小时&nbsp" + mnum + "&nbsp分&nbsp" + snum + "&nbsp秒";
+      }  //此次自定义显示内容
+      setInterval("createtime()",250);
+      </script>
+    </div>
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/main.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: 'article.markdown-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "Quantum Optics -- Quantization of electromagnetic fields&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.staticfile.org/mathjax/3.0.5/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+</body>
+</html>

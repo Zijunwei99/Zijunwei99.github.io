@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="expand your horizons">
+  <meta name="author" content="Zijun Wei">
+  <meta name="keywords" content="">
+  <title>固体物理圣经咏唱——晶体衍射及其倒格子空间 - My Web</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/gitalk/1.6.2/gitalk.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_yg9cfy8wd6.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Zijun Wei's space</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                about me
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="view intro-2" id="background" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              
+  <div class="mt-3 post-meta">
+    <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+    <time datetime="2020-06-22 00:00">
+      June 22, 2020 am
+    </time>
+  </div>
+
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.3k words
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      8
+       minutes
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <div class="post-content mx-auto" id="post">
+            
+            <article class="markdown-body">
+              <h1 id="晶体衍射"><a href="#晶体衍射" class="headerlink" title="晶体衍射"></a>晶体衍射</h1><p>当我们需要研究晶体内部的结构时，由于X射线的波长与原子间间距的匹配，X射线是确定晶体结构的重要工具。<br>当然我们也可以使用中子束来探测晶体结构，由于中子携有磁矩，利用磁矩与晶体中电 子自旋的相互作用，还可获得其中的磁性离子的磁矩的排列信息，使得中子衍射 成为探测晶体磁有序结构的独特的手段。</p>
+<h2 id="晶体衍射的四种表示"><a href="#晶体衍射的四种表示" class="headerlink" title="晶体衍射的四种表示"></a>晶体衍射的四种表示</h2><h3 id="劳厄衍射方程"><a href="#劳厄衍射方程" class="headerlink" title="劳厄衍射方程"></a>劳厄衍射方程</h3><p><img src="/img_solid/7.png" srcset="/img/loading.gif" alt=""></p>
+<script type="math/tex; mode=display">\vec{R}_{l} \bullet\left(\vec{k}-\vec{k}_{0}\right)=2 \pi n</script><p>其中n为整数，<script type="math/tex">\vec{k},\vec{k}_{0}</script>为入射波和散射波的波矢,<script type="math/tex">\vec{R}_{l}</script>为格点 A 的格矢。</p>
+<h3 id="布拉格衍射方程"><a href="#布拉格衍射方程" class="headerlink" title="布拉格衍射方程"></a>布拉格衍射方程</h3><p><img src="/img_solid/8.png" srcset="/img/loading.gif" alt=""></p>
+<script type="math/tex; mode=display">2 d_{h_{1} h_{2} h_{3}} \sin \theta=n \lambda</script><p>其中<script type="math/tex">d h_{1}h_{2}h_{3}</script>为晶面指数为<script type="math/tex">(h_{1} h_{2} h_{3})</script>的一族平行的晶面的间距，<script type="math/tex">\lambda</script>为波长。</p>
+<h3 id="倒格子空间中"><a href="#倒格子空间中" class="headerlink" title="倒格子空间中"></a>倒格子空间中</h3><p><img src="/img_solid/9.png" srcset="/img/loading.gif" alt=""></p>
+<script type="math/tex; mode=display">\vec{k}-\vec{k}_{0}=n \vec{K}_{h}</script><p>$\vec{k}$ 和<script type="math/tex">\vec{k}_{0}</script> 为入射波和散射波的波矢<script type="math/tex">\vec{R}_{l}</script>是晶面指数为<script type="math/tex">(h_{1} h_{2} h_{3})</script>的晶面族法线方向上最短的倒格矢</p>
+<h3 id="布里渊区内"><a href="#布里渊区内" class="headerlink" title="布里渊区内"></a>布里渊区内</h3><script type="math/tex; mode=display">2 \vec{k} \bullet \vec{G}+G^{2}=0</script><p>或者</p>
+<script type="math/tex; mode=display">\vec{G} \bullet\left(\vec{k}+\frac{\vec{G}}{2}\right)=0</script><p>其中<script type="math/tex">\vec{G}=n \vec{K}_{h}</script></p>
+<h1 id="倒格子"><a href="#倒格子" class="headerlink" title="倒格子"></a>倒格子</h1><p>晶格具有平移周期性，如果以<script type="math/tex">\Gamma(\vec{r})</script> 代表晶体的某一物理量，则有：</p>
+<script type="math/tex; mode=display">\Gamma(\vec{r})=\Gamma\left(\vec{r}+\vec{R}_{l}\right)</script><p>其中$\vec{R}_l$为正格子空间的格矢。这时对<script type="math/tex">\Gamma(\vec{r})</script>进行傅里叶级数展开</p>
+<script type="math/tex; mode=display">\Gamma(\vec{r})=\sum_{h} \Gamma\left(\vec{K}_{h}\right) e^{i \vec{K}_{h} \cdot \vec{r}}</script><p>我们得到一组量纲为$m^{-1}$的矢量<script type="math/tex">\vec{K}_{h}</script>,</p>
+<h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>由正格矢<script type="math/tex">\vec{R}_{l}=l_{1} \vec{a}_{1}+l_{2} \vec{a}_{2}+l_{3} \vec{a}_{3}</script> 确定的空间格子为正格子。 现在我们来构架新的空间</p>
+<script type="math/tex; mode=display">\left\{\begin{array}{l}\vec{b}_{1}=\frac{2 \pi}{\Omega}\left(\vec{a}_{2} \times \vec{a}_{3}\right) \\\vec{b}_{2}=\frac{2 \pi}{\Omega}\left(\vec{a}_{3} \times \vec{a}_{1}\right) \\\vec{b}_{3}=\frac{2 \pi}{\Omega}\left(\vec{a}_{1} \times \vec{a}_{2}\right)\end{array}\right.</script><p>其中<script type="math/tex">\Omega=\vec{a}_{1} \bullet\left(\vec{a}_{2} \times \vec{a}_{3}\right)</script>为正格子空间原胞的体积。由上式定义的矢量为基矢所构成的格子我们称之为<strong>倒格子</strong>。<script type="math/tex">\vec{b}_1</script>、<script type="math/tex">\vec{b}_2</script>、<script type="math/tex">\vec{b}_3</script>称为<strong>倒易格子空间的基矢</strong>。<br><strong>倒格矢：</strong></p>
+<script type="math/tex; mode=display">\vec{K}_{h}=h_{1} \vec{b}_{1}+h_{2} \vec{b}_{2}+h_{3} \vec{b}_{3}</script><p><strong>倒格子空间原胞的体积：</strong>（一个倒格点在倒格 子空间所占的体积）</p>
+<script type="math/tex; mode=display">\Omega^{*}=\vec{b}_{1} \cdot\left(\vec{b}_{2} \times \vec{b}_{3}\right)</script><p>每一个布喇菲点阵都有一个与之相对应的倒易点阵，或者说，每个晶体结构都有两套晶格与之相联系，一套为正晶格（即正格子），另一套为倒晶格（即倒格子）。</p>
+<h2 id="倒格子与正格子间的关系"><a href="#倒格子与正格子间的关系" class="headerlink" title="倒格子与正格子间的关系"></a>倒格子与正格子间的关系</h2><ul>
+<li><strong>正、倒格子基矢间的关系</strong><br>带入即可证得<script type="math/tex; mode=display">\vec{a}_{i} \bullet \vec{b}_{j}=2 \pi \delta_{i j} \quad(i, j=1,2,3)</script></li>
+<li><strong>原胞体积关系</strong><br>使用公式<script type="math/tex">\vec{a} \times(\vec{b} \times \vec{c})=(\vec{c} \bullet \vec{a}) \vec{b}-(\vec{b} \bullet \vec{a}) \vec{c}</script>展开计算得<script type="math/tex; mode=display">\Omega^{*}=\frac{(2 \pi)^{3}}{\Omega}</script></li>
+<li><strong>晶面族和倒格矢关系</strong><br><img src="/img_solid/10.png" srcset="/img/loading.gif" alt=""><br>倒格矢<script type="math/tex">(h1, h2, h3)</script> 和晶面指数<script type="math/tex">(h1h2h3)</script> 的晶面法线方向平行。可以用晶面指数为<script type="math/tex">(h1h2h3)</script> 的晶面的法线方向上的最短倒格矢来表示该晶面族的法线方向。</li>
+<li><strong>晶面距与倒格矢关系</strong><script type="math/tex; mode=display">d_{h_{1} h_{2} h_{3}}=\frac{2 \pi}{\left|\vec{K}_{h}\right|}</script></li>
+<li><strong>正倒格矢关系</strong><script type="math/tex; mode=display">\vec{R}_{l} \bullet \vec{K}_{h}=2 \pi \mu \quad(\mu=0,\pm 1, \pm 2 \dots)</script><em>推论：</em>如果两个矢量满足这个方程所示的关系，若其中一个为正格矢，则另一个必为倒格矢。</li>
+</ul>
+<h1 id="布里渊区"><a href="#布里渊区" class="headerlink" title="布里渊区"></a>布里渊区</h1><p><strong>定义：</strong><br>布里渊区（Brillouin zone）是按照既是最小的重复单元又能反映倒格子空间点阵对称性的方式将倒格子空间分割成无限多个体积相等的结构单元<br><strong>布里渊区的划分：</strong><br>在倒格子空间中，以某一倒格点为原点，一般称原点为<script type="math/tex">\Gamma</script>点，<script type="math/tex">\vec{G}</script>为自<script type="math/tex">\Gamma</script>点到任一倒格点的倒格矢，作所有倒格矢<script type="math/tex">\vec{G}</script>的垂直平分面，这些平面把倒格子空间分割成许多包围原点的多面体。我们按照这些多面体离<script type="math/tex">\Gamma</script>的距离的远近称其为第一、第二……布里渊区。</p>
+<h2 id="一维晶格的布里渊区"><a href="#一维晶格的布里渊区" class="headerlink" title="一维晶格的布里渊区"></a>一维晶格的布里渊区</h2><p><img src="/img_solid/11.png" srcset="/img/loading.gif" alt=""><br><strong>正格子：</strong><script type="math/tex">\vec{a}_{1}=a \vec{i}, \vec{a}_{2}=0, \vec{a}_{3}=0</script><br><strong>倒格子：</strong><script type="math/tex">\vec{b}_{1}=\frac{2 \pi}{a} \vec{i}, \vec{b}_{2}=0, \vec{b}_{3}=0</script><br><strong>第一布里渊区：</strong><script type="math/tex">-\frac{\pi}{a}<k_{x} \leq \frac{\pi}{a}</script><br><strong>第二布里渊区：</strong><script type="math/tex">-\frac{2 \pi}{a}<k_{x} \leq-\frac{\pi}{a} \text { and } \frac{\pi}{a}<k_{x} \leq \frac{2 \pi}{a}</script></p>
+<h2 id="二维正方晶格的布里渊区"><a href="#二维正方晶格的布里渊区" class="headerlink" title="二维正方晶格的布里渊区"></a>二维正方晶格的布里渊区</h2><p><img src="/img_solid/12.png" srcset="/img/loading.gif" alt=""><br><strong>正格子：</strong><script type="math/tex">\vec{a}_{1}=a \vec{i}, \vec{a}_{2}=a \vec{j}, \vec{a}_{3}=0</script><br><strong>倒格子：</strong><script type="math/tex">\vec{b}_{1}=\frac{2 \pi}{a} \vec{i}, \vec{b}_{2}=\frac{2 \pi}{a} \vec{j}, \vec{b}_{3}=0</script></p>
+<h2 id="体心立方晶格"><a href="#体心立方晶格" class="headerlink" title="体心立方晶格"></a>体心立方晶格</h2><p><img src="/img_solid/13.png" srcset="/img/loading.gif" alt=""><br><strong>正格子：</strong><script type="math/tex">\vec{a}_{1}=\frac{a}{2}(-\vec{i}+\vec{j}+\vec{k}), \vec{a}_{2}=\frac{a}{2}(\vec{i}-\vec{j}+\vec{k}), \vec{a}_{3}=\frac{a}{2}(\vec{i}-\vec{j}+\vec{k})</script><br><strong>倒格子：</strong><script type="math/tex">\vec{b}_{1}=\frac{2 \pi}{a}(\vec{j}+\vec{k}), \vec{b}_{2}=\frac{2 \pi}{a}(\vec{i}+\vec{k}), \vec{b}_{3}=\frac{2 \pi}{a}(\vec{i}+\vec{j})</script><br><strong>与体心立方格子对应的倒格子为面心立方格子</strong><br><em>说明：</em>三个特殊的方向</p>
+<ul>
+<li><script type="math/tex">\Delta</script>：<script type="math/tex">[100]</script>方向</li>
+<li><script type="math/tex">\Sigma</script>：<script type="math/tex">[110]</script>方向</li>
+<li>$\Lambda$：<script type="math/tex">[111]</script>方向</li>
+</ul>
+<h2 id="面心立方晶格"><a href="#面心立方晶格" class="headerlink" title="面心立方晶格"></a>面心立方晶格</h2><p><img src="/img_solid/14.png" srcset="/img/loading.gif" alt=""><br><strong>正格子：</strong><script type="math/tex">\vec{a}_{1}=\frac{a}{2}(\vec{j}+\vec{k}), \vec{a}_{2}=\frac{a}{2}(\vec{i}+\vec{k}), \vec{a}_{3}=\frac{a}{2}(\vec{i}+\vec{j})</script><br><strong>倒格子：</strong><script type="math/tex">\vec{b}_{1}=\frac{2 \pi}{a}(-\vec{i}+\vec{j}+\vec{k}), \vec{b}_{2}=\frac{2 \pi}{a}(\vec{i}-\vec{j}+\vec{k}), \vec{b}_{3}=\frac{2 \pi}{a}(\vec{i}+\vec{j}-\vec{k})</script><br><strong>与面心立方格子对应的倒格子为体心立方格子</strong><br><em>说明：</em>在计算面心立方格子的布里渊区的时候若只考虑最邻近的倒格点，所计算出来的不是最小单位，因此我们还需考虑次邻近的点。</p>
+<h1 id="原子散射因子"><a href="#原子散射因子" class="headerlink" title="原子散射因子"></a>原子散射因子</h1><h1 id="几何结构因子"><a href="#几何结构因子" class="headerlink" title="几何结构因子"></a>几何结构因子</h1><h1 id="典型晶体结构衍射峰消失的条件"><a href="#典型晶体结构衍射峰消失的条件" class="headerlink" title="典型晶体结构衍射峰消失的条件"></a>典型晶体结构衍射峰消失的条件</h1>
+            </article>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/physics-note/">physics note</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%9C%A3%E7%BB%8F%E5%92%8F%E5%94%B1%E7%B3%BB%E5%88%97/">圣经咏唱系列</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，大部分都是我整理前人的工作或学习笔记 ，使用与转载需说明</p>
+              
+              
+                <div class="post-prevnext row">
+                  <div class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/06/23/reviewreed/qeh/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">A review about The Quantum Hall Effect</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </div>
+                  <div class="post-next col-6">
+                    
+                    
+                      <a href="/2020/06/21/solid%20physics/solid2/">
+                        <span class="hidden-mobile">固体物理圣经咏唱——晶体结构及其描述</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </div>
+                </div>
+              
+            </div>
+
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="text-center mt-5 py-3">
+   
+  <!-- 添加网站运行时间 -->
+  <div class="footer-content">
+    <div>
+      <span id="timeDate">载入天数...</span>
+      <span id="times">载入时分秒...</span>
+      <script>
+      var now = new Date();
+      function createtime(){
+          var grt= new Date("05/20/2020 00:00:00");//此处修改你的建站时间或者网站上线时间
+          now.setTime(now.getTime()+250);
+          days = (now - grt ) / 1000 / 60 / 60 / 24;
+          dnum = Math.floor(days);
+          hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum);
+          hnum = Math.floor(hours);
+          if(String(hnum).length ==1 ){
+              hnum = "0" + hnum;
+          }
+          minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+          mnum = Math.floor(minutes);
+          if(String(mnum).length ==1 ){
+                    mnum = "0" + mnum;
+          }
+          seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+          snum = Math.round(seconds);
+          if(String(snum).length ==1 ){
+                    snum = "0" + snum;
+          }
+          document.getElementById("timeDate").innerHTML = "🚀 &nbsp"+dnum+"&nbsp天";  //此次自定义显示内容
+          document.getElementById("times").innerHTML = hnum + "&nbsp小时&nbsp" + mnum + "&nbsp分&nbsp" + snum + "&nbsp秒";
+      }  //此次自定义显示内容
+      setInterval("createtime()",250);
+      </script>
+    </div>
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/main.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: 'article.markdown-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "固体物理圣经咏唱——晶体衍射及其倒格子空间&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.staticfile.org/mathjax/3.0.5/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+</body>
+</html>

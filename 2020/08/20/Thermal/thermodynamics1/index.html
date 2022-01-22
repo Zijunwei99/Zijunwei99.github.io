@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="expand your horizons">
+  <meta name="author" content="Zijun Wei">
+  <meta name="keywords" content="">
+  <title>热力学与统计物理圣经咏唱——热力学第一定理、内能 - My Web</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/gitalk/1.6.2/gitalk.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_yg9cfy8wd6.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Zijun Wei's space</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                about me
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="view intro-2" id="background" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              
+  <div class="mt-3 post-meta">
+    <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+    <time datetime="2020-08-20 00:00">
+      August 20, 2020 am
+    </time>
+  </div>
+
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.1k words
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      7
+       minutes
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <div class="post-content mx-auto" id="post">
+            
+            <article class="markdown-body">
+              <h1 id="恰当微分"><a href="#恰当微分" class="headerlink" title="恰当微分"></a>恰当微分</h1><p>（纯数学、只给定义）<br>对于一个给定的微元</p>
+<script type="math/tex; mode=display">\delta z=u(x, y) d x+v(x, y) d y</script><p>如果存在一个可微的单值函数，使得</p>
+<script type="math/tex; mode=display">\delta z=u(x, y) d x+v(x, y) d y=d f(x, y)</script><p>则称改微元微一个恰当微分，使用<script type="math/tex">d z</script>表示，对于非恰当微分我们用<script type="math/tex">\bar{d} z</script>表示<br><strong>性质</strong></p>
+<ol>
+<li>对恰当微分有<script type="math/tex; mode=display">\int_{\left(x_{1}, y_{1}\right)}^{\left(x_{2}, y_{2}\right)} d z=\int_{\left(x_{1}, y_{1}\right)}^{\left(x_{2}, y_{2}\right)} u(x, y) d x+v(x, y) d y=f\left(x_{2}, y_{2}\right)-f\left(x_{1}, y_{1}\right)</script>积分与路径无关</li>
+<li>环路积分为0<script type="math/tex; mode=display">\oint_{\text {closed }} d z=\oint_{\text {closed }} u(x, y) d x+v(x, y) d y=0</script></li>
+<li>可以通过<script type="math/tex">d z</script>求出<script type="math/tex">z(x, y)</script></li>
+</ol>
+<p><strong>充分必要条件</strong></p>
+<script type="math/tex; mode=display">\frac{\partial u(x, y)}{\partial y}=\frac{\partial v(x, y)}{\partial x}</script><p>与<script type="math/tex">d z</script>为恰当积分互为充分必要条件</p>
+<h1 id="热力学第一定律"><a href="#热力学第一定律" class="headerlink" title="热力学第一定律"></a>热力学第一定律</h1><p><strong>能量有不同种的表现形式，它们之间可以相互转换，但总的能量是守恒的。</strong>对于封闭系统表现为</p>
+<script type="math/tex; mode=display">d U=\bar{d} Q+\bar{d} W</script><p>这里<script type="math/tex">d U</script>为恰当微分，<script type="math/tex">\bar{d} Q</script>与<script type="math/tex">\bar{d} W</script>为过程量。其中对于机械功为<script type="math/tex">\bar{d} W=-P d V</script>，其他的功另算（注意符号）</p>
+<h2 id="热容"><a href="#热容" class="headerlink" title="热容"></a>热容</h2><p>若我们只考虑机械功的情况，即<script type="math/tex">d Q=d U+P d V</script>。同时当我们内能为温度（T）与体积（V）的函数，我们有</p>
+<script type="math/tex; mode=display">d U=\left(\frac{\partial U}{\partial T}\right)_{V} d T+\left(\frac{\partial U}{\partial V}\right)_{T} d V</script><p>有上两式我们可以得到</p>
+<script type="math/tex; mode=display">d Q=\left(\frac{\partial U}{\partial T}\right)_{V} d T+\left[\left(\frac{\partial U}{\partial V}\right)_{T}+P\right] d V</script><p>对于<strong>定容热容</strong>（<script type="math/tex">d V=0</script>）</p>
+<script type="math/tex; mode=display">C_{V}=\left(\frac{\partial Q}{\partial T}\right)_{V}=\left(\frac{\partial U}{\partial T}\right)_{V}</script><p>同上，我们考虑内能为温度（T）与压强（P）的函数，我们可以得到<strong>定压热容</strong></p>
+<script type="math/tex; mode=display">C_{P}=\left(\frac{\partial U}{\partial T}\right)_{V}+\left[\left(\frac{\partial U}{\partial V}\right)_{T}+P\right]\left(\frac{\partial V}{\partial T}\right)_{P}</script><p>由此可以得到</p>
+<script type="math/tex; mode=display">C_{P}-C_{V}=\left[\left(\frac{\partial U}{\partial V}\right)_{T}+P\right]\left(\frac{\partial V}{\partial T}\right)_{P}</script><p>在焦耳的实验中，我们得到<strong>对于理想气体其内能只与温度有关</strong>，所以<script type="math/tex">\left(\frac{\partial U}{\partial V}\right)_{T}=0</script>，则对于理想气体有</p>
+<script type="math/tex; mode=display">C_{P}-C_{V}=R</script><p>同时我们也定义一个<strong>绝热指数</strong>为</p>
+<script type="math/tex; mode=display">\gamma=\frac{C_{P}}{C_{V}}</script><p>对于单原子的理想气体（<script type="math/tex">U=\frac{3}{2} N k_{B} T=\frac{3}{2} \nu R T</script>）我们有<script type="math/tex">\gamma=\frac{5}{3}</script>。</p>
+<h1 id="常见热力学过程"><a href="#常见热力学过程" class="headerlink" title="常见热力学过程"></a>常见热力学过程</h1><h2 id="准静态过程"><a href="#准静态过程" class="headerlink" title="准静态过程"></a>准静态过程</h2><p>当系统的演化十分缓慢时（相对于弛豫时间来说的缓慢），这是我们就可以认为系统在演化时任何一个时刻都处在平衡状态，由此我们就可以用状态量来表述热力学过程（即用一条曲线来表示）</p>
+<h2 id="可逆过程"><a href="#可逆过程" class="headerlink" title="可逆过程"></a>可逆过程</h2><p>满足时间反演对称性的热力学过程我们可以称其为可逆过程，无耗散的准静态过程即为可逆过程。接下来考虑两个常见的可逆过程</p>
+<h3 id="等温过程"><a href="#等温过程" class="headerlink" title="等温过程"></a>等温过程</h3><p>理想气体在保持温度不变的情况下无摩擦的准静态过程称为<strong>等温过程</strong>。由于理想气体的内能只与温度有关，所以等温过程内能不变，即</p>
+<script type="math/tex; mode=display">d U=d Q+d W=0</script><script type="math/tex; mode=display">1\, mol$$理想气体从$$V_1$$膨胀到$$V_2$$吸热为
+$$Q=\int_{1}^{2} d Q=\int_{1}^{2} P d V=R T \int_{1}^{2} \frac{1}{V} d V=R T \ln \frac{V_{2}}{V_{1}}</script><p>在等温线中<script type="math/tex">P V=\mathrm{const}</script></p>
+<h3 id="绝热过程"><a href="#绝热过程" class="headerlink" title="绝热过程"></a>绝热过程</h3><p>与外界无热能交换的可逆过程称为<strong>绝热过程</strong>，即<script type="math/tex">d Q=0</script></p>
+<script type="math/tex; mode=display">d U=d W=-P d V</script><p>对于理想气体状态方程，与<script type="math/tex">d U=C_{V} d T</script>，以及理想气体中<script type="math/tex">C_{P}-C_{V}=R</script>，我们可以得到</p>
+<script type="math/tex; mode=display">\frac{C_{V}}{T} d T=-\frac{C_{P}-C_{V}}{V} d V \quad \text { i.e. } \quad \frac{d T}{T}=-(\gamma-1) \frac{d V}{V}</script><p><strong>当温度不变时可以认为绝热指数为常数</strong>，我们可以得到</p>
+<script type="math/tex; mode=display">\begin{array}{c}T V^{\gamma-1}=\text { Const. } \\P^{1-\gamma} T^{\gamma}=\text { const. } \quad P V^{\gamma}=\text { Const. }\end{array}</script><p>由此对于绝热线我们有<script type="math/tex">P V^{\gamma}=\mathrm{const}</script>，由于<script type="math/tex">\gamma>1</script>，所以绝热线比等温线更陡。</p>
+
+            </article>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/physics-note/">physics note</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%9C%A3%E7%BB%8F%E5%92%8F%E5%94%B1%E7%B3%BB%E5%88%97/">圣经咏唱系列</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，大部分都是我整理前人的工作或学习笔记 ，使用与转载需说明</p>
+              
+              
+                <div class="post-prevnext row">
+                  <div class="post-prev col-6">
+                    
+                    
+                      <a href="/2020/08/24/Thermal/thermodynamics2/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">热力学与统计物理圣经咏唱——热力学第二定理</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </div>
+                  <div class="post-next col-6">
+                    
+                    
+                      <a href="/2020/07/11/reviewreed/AHE/">
+                        <span class="hidden-mobile">A review about The Anomalous Hall Effect(AHE)</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </div>
+                </div>
+              
+            </div>
+
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="text-center mt-5 py-3">
+   
+  <!-- 添加网站运行时间 -->
+  <div class="footer-content">
+    <div>
+      <span id="timeDate">载入天数...</span>
+      <span id="times">载入时分秒...</span>
+      <script>
+      var now = new Date();
+      function createtime(){
+          var grt= new Date("05/20/2020 00:00:00");//此处修改你的建站时间或者网站上线时间
+          now.setTime(now.getTime()+250);
+          days = (now - grt ) / 1000 / 60 / 60 / 24;
+          dnum = Math.floor(days);
+          hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum);
+          hnum = Math.floor(hours);
+          if(String(hnum).length ==1 ){
+              hnum = "0" + hnum;
+          }
+          minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+          mnum = Math.floor(minutes);
+          if(String(mnum).length ==1 ){
+                    mnum = "0" + mnum;
+          }
+          seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+          snum = Math.round(seconds);
+          if(String(snum).length ==1 ){
+                    snum = "0" + snum;
+          }
+          document.getElementById("timeDate").innerHTML = "🚀 &nbsp"+dnum+"&nbsp天";  //此次自定义显示内容
+          document.getElementById("times").innerHTML = hnum + "&nbsp小时&nbsp" + mnum + "&nbsp分&nbsp" + snum + "&nbsp秒";
+      }  //此次自定义显示内容
+      setInterval("createtime()",250);
+      </script>
+    </div>
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/main.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: 'article.markdown-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "热力学与统计物理圣经咏唱——热力学第一定理、内能&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.staticfile.org/mathjax/3.0.5/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+</body>
+</html>
