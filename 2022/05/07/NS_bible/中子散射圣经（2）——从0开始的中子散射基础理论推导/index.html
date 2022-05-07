@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="expand your horizons">
+  <meta name="author" content="Zijun Wei">
+  <meta name="keywords" content="">
+  <title>NS_bible/中子散射圣经（2）——从0开始的中子散射基础理论推导 - My Web</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/gitalk/1.6.2/gitalk.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_yg9cfy8wd6.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Zijun Wei's space</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                about me
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="view intro-2" id="background" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              
+  <div class="mt-3 post-meta">
+    <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+    <time datetime="2022-05-07 11:01">
+      May 7, 2022 am
+    </time>
+  </div>
+
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      4.3k words
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      32
+       minutes
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <div class="post-content mx-auto" id="post">
+            
+            <article class="markdown-body">
+              <p>对于中子的理论，我们最终想要取得的效果就是可以根据系统的性质（哈密顿量）计算（或近似给出）出中子的散射截面。在本章中我们首先只考虑中子的核散射，即忽略中子的自旋以及自旋有关的相互作用。此时，中子的状态只由其动能决定。<br><strong>物理图像</strong><br>我们假设，入射中子$\boldsymbol{k}$以波函数$\psi<em>{k}$射入散射系统$\boldsymbol{\chi}</em>{\lambda}$。散射系统的态表示为$\lambda$。系统中的相互作用势能为V散射了中子，使得散射中子为$\boldsymbol{k}^{\prime}$，散射系统态为$\lambda^{\prime}$。同时也建立一套坐标系，其原点为散射系统中的任意一点。记散射系统中原子核数为$N$，而$R_{j}(j=1, \ldots N)$为第j个原子核的位置矢量，而$\boldsymbol{r}$为中子的位置矢量。如下图所所示<br>![[Pasted image 20220422101218.png]]</p>
+<h1 id="Fermi黄金法则"><a href="#Fermi黄金法则" class="headerlink" title="Fermi黄金法则"></a>Fermi黄金法则</h1><p>当我们考虑微分散射截面$(\mathrm{d} \sigma / \mathrm{d} \Omega)_{\lambda \rightarrow \lambda^{\prime}}$时我们需要考虑在$\boldsymbol{\theta}, \boldsymbol{\phi}$方向上的立体角$\mathrm{d} \Omega$内所有$\boldsymbol{k}^{\prime}$的求和，如图所示<br>![[Pasted image 20220422102734.png]]<br>由此我们可以将该散射截面表示为</p>
+<script type="math/tex; mode=display">
+\left(\frac{\mathrm{d} \sigma}{\mathrm{d} \Omega}\right)_{\lambda \rightarrow \lambda^{\prime}}=\frac{1}{\Phi} \frac{1}{\mathrm{~d} \Omega} \sum_{\substack{k^{\prime} \\ \text { in } \mathrm{d} \Omega}} W_{k, \lambda \rightarrow k^{\prime}, \lambda^{\prime}}</script><p>其中$W_{k, \lambda \rightarrow k^{\prime} \lambda^{\prime}}$表示每秒内中子-散射系统态从$\boldsymbol{k}, \lambda$转移到$\boldsymbol{k}^{\prime}, \lambda^{\prime}$的数量。<br>为了计算这个式子，我们需要用到量子力学中散射相关的<strong>Fermi黄金法则</strong>，如下给出</p>
+<script type="math/tex; mode=display">\begin{equation}  
+\sum_{\substack{k^{\prime} \\ \text { ind } \Omega}} W_{k, \lambda \rightarrow k^{\prime}, \lambda^{\prime}}=\frac{2 \pi}{\hbar} \rho_{k^{\prime}}\left|\left\langle\boldsymbol{k}^{\prime} \lambda^{\prime}|V| \boldsymbol{k} \lambda\right\rangle\right|^{2} 
+\end{equation}\tag{1.1}</script><p>这里$\rho_{k^{\prime}}$表示状态$\boldsymbol{k}^{\prime}$的中子在单位能量范围内在$d \Omega$内的个数（态密度）。而矩阵元由下给出</p>
+<script type="math/tex; mode=display">
+\left\langle\boldsymbol{k}^{\prime} \lambda^{\prime}|V| \boldsymbol{k} \lambda\right\rangle=\mid \psi_{\boldsymbol{k}^{\prime}}^{*} \chi_{\lambda^{\prime}}^{*} V \psi_{\boldsymbol{k}} \chi_{\lambda} \mathrm{d} \boldsymbol{R} \mathrm{d} \boldsymbol{r}</script><p>其中$\mathrm{d} \boldsymbol{R}=\mathrm{d} \boldsymbol{R}<em>{1} \mathrm{~d} \boldsymbol{R}</em>{2} \ldots \mathrm{d} \boldsymbol{R}_{N}$，积分是对N+1个变量的积分。<br>我们可以看到虽然在$(1.1)$中左边部分表示为一定能量范围内的求和，而等式右边表示为对一个给定$\boldsymbol{k}^{\prime}$值的计算，这似乎并不匹配。然而对于给定的$\boldsymbol{k}, \lambda$，和$\lambda$，其态从$k, \lambda$到$k^{\prime}, \lambda^{\prime}$的可能性是很小的，只有在$\boldsymbol{k}^{\prime}$附近一个很小的范围内会有转移的可能性。由此等式左边的求和也只用考虑$\boldsymbol{k}^{\prime}$值即可。</p>
+<p>对于态密度$\rho<em>{k^{\prime}}$的计算我们可以使用量子力学中常见的箱归一化，即对于给定边界晶格的单位体积为<br>$v</em>{k}=\frac{(2 \pi)^{3}}{Y}$<br>其中$Y$为box的体积。此时中子被散射出来的能量为为$E^{\prime}=\frac{\hbar^{2}}{2 m} k^{\prime 2}$，由此给出</p>
+<script type="math/tex; mode=display">\mathrm{d} E^{\prime}=\frac{\hbar^{2}}{m} k^{\prime} \mathrm{d} k^{\prime}</script><p>这时$\rho_{k^{\prime}} \mathrm{d} E^{\prime}$所表示的含义为在$E^{\prime}$到$E^{\prime}+\mathrm{d} E^{\prime}$内，立体角$\mathrm{d} \Omega$中的态的个数：</p>
+<script type="math/tex; mode=display">
+\rho_{k^{\prime}} \mathrm{d} E^{\prime}=\frac{1}{v_{k}} k^{\prime 2} \mathrm{~d} k^{\prime} \mathrm{d} \Omega=\frac{Y}{(2 \pi)^{3}} k^{\prime} \frac{m}{\hbar^{2}} \mathrm{~d} \Omega</script><p>此时波函数也需要归一化$\psi_{k}=\frac{1}{\sqrt{Y}} \exp (\mathrm{i} k \cdot r)$，由此计算出来的矩阵元为</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\left\langle\boldsymbol{k}^{\prime} \lambda^{\prime}|V| \boldsymbol{k} \lambda\right\rangle &=\int \psi_{\boldsymbol{k}^{\prime}}^{*} \chi_{\lambda^{\prime}}^{*} \cdot \psi_{k} \chi_{\lambda} \mathrm{d} \boldsymbol{R} \mathrm{d} \boldsymbol{r} \\
+&=\frac{1}{Y} \int \exp \left(-\mathrm{i} \boldsymbol{k}^{\prime} . \boldsymbol{r}\right) \chi_{\lambda^{*}}^{*} \boldsymbol{V} \exp (\mathrm{i} \boldsymbol{k} \cdot \boldsymbol{r}) \chi_{\lambda} \mathrm{d} \boldsymbol{R} \mathrm{d} \boldsymbol{r}\\
+&=\left\langle\boldsymbol{k}^{\prime} \lambda^{\prime}|V| \boldsymbol{k} \lambda\right\rangle / \boldsymbol{Y}
+\end{aligned}</script><p>这时发现Y只是一个过程量，并不影响我们最后的计算结果。由此可以令$Y=1$此时波函数就是平面波$\exp (i \boldsymbol{k} \cdot \boldsymbol{r})$，入射中子的通量为$\Phi=\frac{1}{Y} \frac{\hbar}{m} k$<br>综上所述，我们可以得到微分散射截面的表达式</p>
+<script type="math/tex; mode=display">
+\left(\frac{d \sigma}{d \Omega}\right)_{\lambda \rightarrow \lambda^{\prime}}=\frac{k^{\prime}}{k}\left(\frac{m}{2 \pi \hbar^{2}}\right)^{2}\left|\left\langle\boldsymbol{k}^{\prime} \lambda^{\prime}|V| k \lambda\right\rangle\right|^{2}</script><h1 id="偏微分散射截面-d-2-sigma-d-Omega-d-E-prime-的计算"><a href="#偏微分散射截面-d-2-sigma-d-Omega-d-E-prime-的计算" class="headerlink" title="偏微分散射截面$d^{2} \sigma / d \Omega d E^{\prime}$的计算"></a>偏微分散射截面$d^{2} \sigma / d \Omega d E^{\prime}$的计算</h1><p>对于中子与散射系统所组成的系统其能量守恒，即$E+E<em>{\lambda}=E^{\prime}+E</em>{\lambda^{\prime}}$对应到偏微分散射积分中我们可以使用$\delta$函数来表示这种关系，即</p>
+<script type="math/tex; mode=display">
+\left(\frac{\mathrm{d}^{2} \sigma}{\mathrm{d} \Omega \mathrm{d} E^{\prime}}\right)_{\lambda \rightarrow \lambda^{\prime}}=\frac{k^{\prime}}{k}\left(\frac{m}{2 \pi \hbar^{2}}\right)^{2}\left|\left\langle\boldsymbol{k}^{\prime} \lambda^{\prime}|V| \boldsymbol{k} \lambda\right\rangle\right|^{2} \delta\left(E_{\lambda}-E_{\lambda^{\prime}}+E-E^{\prime}\right)</script><p>接下来我们试着计算该式。</p>
+<h2 id="势函数的傅里叶变化"><a href="#势函数的傅里叶变化" class="headerlink" title="势函数的傅里叶变化"></a>势函数的傅里叶变化</h2><p>我们首先需要来计算式子中的矩阵元，这使得我们需要先处理散射势能的问题。这里的势能V是由每一个核的势能$V<em>{j}\left(r-\boldsymbol{R}</em>{j}\right)$叠加而成的</p>
+<script type="math/tex; mode=display">
+V=\sum_{1} V_{j}\left(\boldsymbol{r}-\boldsymbol{R}_{J}\right)</script><p>将其带入矩阵元，并令波函数归一，同时$x<em>{j}=r-R</em>{j}$，我们可以得到</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+&\left\langle\boldsymbol{k}^{\prime} \lambda^{\prime}|V| \boldsymbol{k} \lambda\right\rangle \\
+&\quad=\sum_{j} \int \chi_{\lambda^{\prime}}^{*} \exp \left(-\mathrm{i} \boldsymbol{k}^{\prime} \cdot \boldsymbol{r}\right) V_{j}\left(\boldsymbol{r}-\boldsymbol{R}_{j}\right) \chi_{\lambda} \exp (\mathrm{i} \boldsymbol{k}\cdot \boldsymbol{r}) \mathrm{d} \boldsymbol{R} \mathrm{d} \boldsymbol{r} \\
+&\quad=\sum_{j} \int \chi_{\lambda^{\prime}}^{*} \exp \left\{-\mathrm{i} \boldsymbol{k}^{\prime} \cdot\left(\boldsymbol{x}_{j}+\boldsymbol{R}_{J}\right)\right\} V_{J}\left(\boldsymbol{x}_{j}\right) \chi_{\lambda} \exp \left\{\mathrm{i} \boldsymbol{k} \cdot\left(\boldsymbol{x}_{j}+\boldsymbol{R}_{j}\right)\right\} \mathrm{d} \boldsymbol{R} \mathrm{d} \boldsymbol{x}_{j}\\
+&\quad=\sum_{J} V_{j}(\boldsymbol{\kappa})\left\langle\lambda^{\prime}\left|\exp \left(\mathrm{i} \boldsymbol{\kappa} . \boldsymbol{R}_{j}\right)\right| \lambda\right\rangle
+\end{aligned}</script><p>其中</p>
+<script type="math/tex; mode=display">
+\begin{gathered}
+V_{J}(\boldsymbol{\kappa})=\int V_{i}\left(\boldsymbol{x}_{j}\right) \exp \left(\mathrm{i} \boldsymbol{\kappa} \cdot \boldsymbol{x}_{j}\right) \mathrm{d} \boldsymbol{x}_{j} \\
+\left\langle\lambda^{\prime}\left|\exp \left(\mathrm{i} \kappa . \boldsymbol{R}_{j}\right)\right| \lambda\right\rangle=\int \chi_{\lambda^{\prime}}^{*} \exp \left(\mathrm{i} \boldsymbol{\kappa} . \boldsymbol{R}_{j}\right) \chi_{\lambda} \mathrm{d} \boldsymbol{R}^{\prime}
+\end{gathered}</script><script type="math/tex; mode=display">
+\boldsymbol{\kappa}=\boldsymbol{k}-\boldsymbol{k}^{\prime}</script><p>这里的$\boldsymbol{\kappa}$就是著名的散射矢量（scattering vector）。可以看到$V_{j}(\boldsymbol{\kappa})$即为单个核势能的傅里叶变换。</p>
+<h2 id="Fermi赝势"><a href="#Fermi赝势" class="headerlink" title="Fermi赝势"></a>Fermi赝势</h2><p>接下来我们就需要来研究势能函数$V<em>{j}\left(\boldsymbol{x}</em>{j}\right)$的具体形式。为此我们先考虑一个单一固定核的散射。此时散射截面为</p>
+<script type="math/tex; mode=display">
+\frac{\mathrm{d} \sigma}{\mathrm{d} \Omega}=\left(\frac{m}{2 \pi \hbar^{2}}\right)^{2}\left|\int V(\boldsymbol{r}) \exp (\mathrm{i} \boldsymbol{\kappa} \cdot \boldsymbol{r}) \mathrm{d} \boldsymbol{r}\right|^{2}</script><p>直觉上的，也是实验测得的，原子核对中子的散射是短程相互作用的。我们不妨假设这个短程相互作用具有$\delta(r)$的形式，即</p>
+<script type="math/tex; mode=display">
+V(r)=a \delta(r)</script><p>由此计算</p>
+<script type="math/tex; mode=display">
+\int V(r) \exp (\mathrm{i} \boldsymbol{\kappa}, \boldsymbol{r}) \mathrm{d} \boldsymbol{r}=a \int \delta(\boldsymbol{r}) \exp (\mathrm{i} \boldsymbol{\kappa}, \boldsymbol{r}) \mathrm{d} \boldsymbol{r}=a</script><p>可以最终得到散射截面为</p>
+<script type="math/tex; mode=display">
+\frac{\mathrm{d} \sigma}{\mathrm{d} \Omega}=\left(\frac{m}{2 \pi \hbar^{2}}\right)^{2} a^{2}</script><p>与我们在[[中子散射圣经（1）——Introduction#Total cross-section#### 单原子核的微分散射截面]]所得到的$\frac{\mathrm{d} \sigma}{\mathrm{d} \Omega}=b^{2}$对比可以最终得到势能的表达式</p>
+<script type="math/tex; mode=display">
+V(\boldsymbol{r})=\frac{2 \pi \hbar^{2}}{m} b \delta(\boldsymbol{r})</script><p>这个势能即被称为Fermi赝势（<strong>Fermi pseudopotential</strong>）</p>
+<p><strong>说明：</strong>这里需要强调的一点是我们对散射截面的整个推导是基于Fermi黄金法则的，对于散射过程，Fermi黄金法则等价于玻恩近似（两者都是基于一阶微扰理论）然而这个理论适用的条件（绝热？）对热中子的核散射不成立。在这种情况下我们使用黄金法则的理由是，当与赝势结合时，它给出了单个固定核的各向同性散射所需要的结果。<br>可以理解为”错+错=对“，而且根据实用主义，能和实验结果对上的理论计算都是好工作！<br>同时我们也可以延申关于散射长度的定义，之前的讨论都是基于固定的原子核的散射的，然而实际情况原子核并不能固定住。但我们只需要简单的加上一个碰撞模型就可以解决这个问题。即我们只需要把中子的质量m换为等效质量$\mu$</p>
+<script type="math/tex; mode=display">
+\mu=\frac{m M}{m+M}</script><p>此时对于自由原子核的散射强度可通过我们之前定义的散射长度计算，为</p>
+<script type="math/tex; mode=display">
+b_{\mathrm{f}}=\frac{M}{m+M} b .</script><p>我们回归计算散射截面的主题，经过上述讨论，我们可以将势能的傅里叶变换计算得到</p>
+<script type="math/tex; mode=display">
+V_{j}(\kappa)=\frac{2 \pi \hbar^{2}}{m} b_{j}</script><p>此时偏微分散射截面为</p>
+<script type="math/tex; mode=display">
+\left(\frac{\mathrm{d}^{2} \sigma}{\mathrm{d} \Omega \mathrm{d} E^{\prime}}\right)_{\lambda^{\prime} \rightarrow \lambda}=\frac{k^{\prime}}{k}\left|\sum_{i} b_{j}\left\langle\lambda^{\prime}\left|\exp \left(\mathrm{i} \boldsymbol{\kappa} . \boldsymbol{R}_{j}\right)\right| \lambda\right\rangle\right|^{2} \delta\left(E_{\lambda}-E_{\lambda^{\prime}}+E-E^{\prime}\right) .\tag{2.1}</script><h2 id="能量的-delta-函数积分表示"><a href="#能量的-delta-函数积分表示" class="headerlink" title="能量的$\delta$函数积分表示"></a>能量的$\delta$函数积分表示</h2><p>在数学物理方法中对傅里叶分析的学习，我们可以将式$(2.1)$中的关于能量的$\delta$函数写为如下形式</p>
+<script type="math/tex; mode=display">
+\delta\left(E_{\lambda}-E_{\lambda^{\prime}}+E-E^{\prime}\right)=\frac{1}{2 \pi \hbar} \int_{-\infty}^{\infty} \exp \left\{\mathrm{i}\left(E_{\lambda^{\prime}}-E_{\lambda}\right) t / \hbar\right\} \exp (-\mathrm{i} \omega t) \mathrm{d} t</script><p>其中$\hbar \omega=E-E^{\prime}$，这时散射系统的哈密顿量为$H$，那么$\lambda$与$\lambda^{\prime}$是其本征态是不言而喻的。即</p>
+<script type="math/tex; mode=display">
+H|\lambda\rangle=E_{\lambda}|\lambda\rangle, \quad \quad H\left|\lambda^{\prime}\right\rangle=E_{\lambda^{\prime}}\left|\lambda^{\prime}\right\rangle .</script><p>接下来这个结论正如我们在量子力学中反复见到（也反复被考到），也是trivial的</p>
+<script type="math/tex; mode=display">
+\exp (-\mathrm{i} H t / \hbar)|\lambda\rangle=\exp \left(-\mathrm{i} E_{\lambda} t / \hbar\right)|\lambda\rangle</script><p>由此我们可以将式$(2.1)$中平方项改写为</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\left(\frac{\mathrm{d}^{2} \boldsymbol{\sigma}}{\mathrm{d} \Omega \mathrm{d} E^{\prime}}\right)_{\lambda \rightarrow \lambda^{\prime}} \\
+=\frac{k^{\prime}}{k} \sum_{i i^{\prime}} & b_{j^{\prime}} b_{j}\left\langle\lambda\left|\exp \left(-\mathrm{i} \boldsymbol{\kappa} . \boldsymbol{R}_{j^{\prime}}\right)\right| \lambda^{\prime}\right\rangle\left\langle\lambda^{\prime}\left|\exp \left(\mathrm{i} \boldsymbol{\kappa} . \boldsymbol{R}_{j}\right)\right| \lambda\right\rangle \\
+& \times \frac{1}{2 \pi \hbar} \int_{-\infty}^{\infty} \exp \left\{\mathrm{i}\left(E_{\lambda^{\prime}}-E_{\lambda}\right) t / \hbar\right\} \exp (-\mathrm{i} \omega t) \mathrm{d} t \\
+=& \frac{k^{\prime}}{k} \frac{1}{2 \pi \hbar} \sum_{i i^{\prime}} b_{j^{\prime}} b_{j} \int_{-\infty}^{\infty}\left\langle\lambda\left|\exp \left(-\mathrm{i} \boldsymbol{\kappa} \cdot \boldsymbol{R}_{j^{\prime}}\right)\right| \lambda^{\prime}\right\rangle \\
+& \times\left\langle\lambda^{\prime}\left|\exp (\mathrm{i} H t / \hbar) \exp \left(\mathrm{i} \boldsymbol{\kappa} . \boldsymbol{R}_{j}\right) \exp (-\mathrm{i} H t / \hbar)\right| \lambda\right\rangle \exp (-\mathrm{i} \omega t) \mathrm{d} t 
+\end{aligned}</script><h2 id="对于-boldsymbol-lambda-prime-的求和以及-boldsymbol-lambda-的求平均"><a href="#对于-boldsymbol-lambda-prime-的求和以及-boldsymbol-lambda-的求平均" class="headerlink" title="对于$\boldsymbol{\lambda}^{\prime}$的求和以及$\boldsymbol{\lambda}$的求平均"></a>对于$\boldsymbol{\lambda}^{\prime}$的求和以及$\boldsymbol{\lambda}$的求平均</h2><p>在实际实验测量中，我们没有测量散射系统从一个特定态$\boldsymbol{\lambda}$到另一个态$\boldsymbol{\lambda}^{\prime}$过程的截面。相反，我们测量的是整个$\mathrm{d}^{2} \sigma / \mathrm{d} \Omega \mathrm{d} E^{\prime}$。为了得到这个值，我们必须首先在保持初始状态固定时对所有的最终状态$\lambda^{\prime}$求和，之后再对$\boldsymbol{\lambda}$求（热力学）平均</p>
+<script type="math/tex; mode=display">\left(\frac{\mathrm{d}^{2} \boldsymbol{\sigma}}{\mathrm{d} \Omega \mathrm{d} E^{\prime}}\right)_{\lambda \rightarrow \lambda^{\prime}}</script><p>这里态$\boldsymbol{\lambda}$出现的概率由Boltzmann分布给出：</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+p_{\lambda} &=\frac{1}{Z} \exp \left(-E_{\lambda} \beta\right) \\
+Z &=\sum_{\lambda} \exp \left(-E_{\lambda} \beta\right) \\
+\beta &=\frac{1}{k_{\mathrm{B}} T}
+\end{aligned}</script><p>由此对于$\boldsymbol{\lambda}^{\prime}$的求和只需考虑每个态出现的概率即可</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\frac{\mathrm{d}^{2} \sigma}{\mathrm{d} \Omega \mathrm{d} E^{\prime}}=& \sum_{\lambda \lambda^{\prime}} p_{\lambda}\left(\frac{\mathrm{d}^{2} \boldsymbol{\sigma}}{\mathrm{d} \Omega \mathrm{d} E^{\prime}}\right)_{\lambda \rightarrow \lambda^{\prime}} \\
+=& \frac{k^{\prime}}{k} \frac{1}{2 \pi \hbar} \sum_{\eta^{\prime}} b_{j} b_{j^{\prime}} \int_{-\infty}^{\infty} \exp (-\mathrm{i} \omega t) \mathrm{d} t \sum_{\lambda} p_{\lambda} \\
+& \times\left\langle\lambda\left|\exp \left(-\mathrm{i} \boldsymbol{\kappa} \cdot \boldsymbol{R}_{\prime^{\prime}}\right) \exp (\mathrm{i} H t / \hbar) \exp \left(\mathrm{i} \boldsymbol{\kappa} . \boldsymbol{R}_{j}\right) \exp (-\mathrm{i} H t / \hbar)\right| \lambda\right\rangle 
+\end{aligned}</script><p>我们可以定义一个时间相关的算符</p>
+<script type="math/tex; mode=display">
+\boldsymbol{R}_{j}(t)=\exp (\mathrm{i} H t / \hbar) \boldsymbol{R}_{1} \exp (-\mathrm{i} H t / \hbar)</script><p>其指数形式为</p>
+<script type="math/tex; mode=display">
+\exp \left\{\mathrm{i} \boldsymbol{\kappa} \cdot \boldsymbol{R}_{j}(t)\right\}=\exp (\mathrm{i} H t / \hbar) \exp \left(\mathrm{i} \boldsymbol{\kappa} . \boldsymbol{R}_{j}\right) \exp (-\mathrm{i} H t / \hbar)</script><p>同时定义某算符A的（量子力学）$\langle A\rangle=\sum<em>{\lambda} p</em>{\lambda}\langle\lambda|A| \lambda\rangle$ ，偏微分此时平均可以写为$\langle A\rangle=\sum<em>{\lambda} p</em>{\lambda}\langle\lambda|A| \lambda\rangle$ ，此时偏微分散射截面如下给出</p>
+<script type="math/tex; mode=display">
+\frac{\mathrm{d}^{2} \boldsymbol{\sigma}}{\mathrm{d} \Omega \mathrm{d} E^{\prime}}=\frac{k^{\prime}}{k} \frac{1}{2 \pi \hbar} \sum_{j^{\prime}} b_{j} b_{j^{\prime}} \int_{-\infty}^{\infty}\left\langle\exp \left\{-\mathrm{i} \boldsymbol{\kappa} \cdot \boldsymbol{R}_{j^{\prime}}(0)\right\} \exp \left\{\mathrm{i} \boldsymbol{\kappa} \cdot \boldsymbol{R}_{j}(t)\right\}\right\rangle \times \exp (-i \omega t) d t</script><p>这是我们对于<strong>核散射的偏微分截面的基本表达式</strong>。这是一个紧凑的表达式，可能看起来很简单，但它的计算并不是一个简单的问题。散射系统的性质包含在其哈密顿量H中，因此该计算也包含海森堡算符的本征态问题。在接下来的我们将讨论评估特定物理系统的截面。</p>
+<h1 id="相干（Coherent）散射与非相干（Incoherent）散射"><a href="#相干（Coherent）散射与非相干（Incoherent）散射" class="headerlink" title="相干（Coherent）散射与非相干（Incoherent）散射"></a>相干（Coherent）散射与非相干（Incoherent）散射</h1><p>（更introduction的介绍可以参考[[浅谈中子散射及其应用（1）——中子的性质与基础知识#相干和非相干核散射]]）<br>我们考虑一个散射系统，其由单一元素组成。但是由于自然界中的同位素的存在，同种元素的不同原子核会以一定频率$f_{i}$出现，对此我们可以求一种元素的散射长度的平均值以及其平方的平均值</p>
+<script type="math/tex; mode=display">
+\bar{b}=\sum_{i} f_{i} b_{i}</script><script type="math/tex; mode=display">
+\overline{b^{2}}=\sum_{i} f_{i} b_{i}^{2}</script><p>我们假设每个原子核的散射长度$b_{i}$是独立的，当散射系统包含大量的原子核时我们可以通过平均散射长度来替代各种构型的原子核排布，即</p>
+<script type="math/tex; mode=display">
+\frac{\mathrm{d}^{2} \sigma}{\mathrm{d} \Omega \mathrm{d} E^{\prime}}=\frac{k^{\prime}}{k} \frac{1}{2 \pi \hbar} \sum_{j j^{\prime}} \overline{b_{j^{\prime}} b_{j}} \int\left\langle j^{\prime}, j\right\rangle \exp (-i \omega t) \mathrm{d} t</script><p>这里</p>
+<script type="math/tex; mode=display">
+\left\langle j^{\prime}, j\right\rangle=\left\langle\exp \left\{-\mathrm{i} \boldsymbol{\kappa} \cdot \boldsymbol{R}_{j^{\prime}}(0)\right\} \exp \left\{\mathbf{i} \boldsymbol{\kappa}, \boldsymbol{R}_{j}(t)\right\}\right\rangle</script><p>对于式子中的$\overline{b<em>{j^{\prime}} b</em>{j}}$项，我们有</p>
+<script type="math/tex; mode=display">
+\begin{array}{ll}
+\overline{b_{j^{\prime}} b_{j}}=(\bar{b})^{2}, & j^{\prime} \neq j, \\
+\overline{b_{j^{\prime}} \bar{b}_{j}}=\overline{b^{2}}, & j^{\prime}=j
+\end{array}</script><p>由此我们从新写散射截面的表达式，为</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\frac{\mathrm{d}^{2} \sigma}{\mathrm{d} \Omega \mathrm{d} E^{\prime}}=& \frac{k^{\prime}}{k} \frac{1}{2 \pi \hbar}(\bar{b})^{2} \sum_{\substack{j j^{\prime}}} \int\left\langle j^{\prime}, j\right\rangle \exp (-\mathrm{i} \omega t) \mathrm{d} t \\
+&+\frac{k^{\prime}}{k} \frac{1}{2 \pi \hbar} \overline{j^{2}} \sum_{j} \int\langle j, j\rangle \exp (-\mathrm{i} \omega t) \mathrm{d} t \\
+=& \frac{k^{\prime}}{k} \frac{1}{2 \pi \hbar}(\bar{b})^{2} \sum_{j j^{\prime}} \int\left\langle j^{\prime}, j\right\rangle \exp (-\mathrm{i} \omega t) \mathrm{d} t \\
+&+\frac{k^{\prime}}{k} \frac{1}{2 \pi \hbar}\left\{\overline{b^{2}}-(\bar{b})^{2}\right\} \sum_{j} \int\langle j, j\rangle \exp (-\mathrm{i} \omega t) \mathrm{d} t
+\end{aligned}</script><p>上式的演算是通过再第一项中加上，同时再第二项中减去$\left(k^{\prime} / k\right)(1 / 2 \pi \hbar)(\bar{b})^{2} \int \sum_{j}\langle j, j\rangle \exp (-\mathrm{i} \omega t) \mathrm{d} t$所得到的。由此可以看到散射截面可以被分为两个部分：</p>
+<ul>
+<li><script type="math/tex; mode=display">
+\begin{aligned}
+\left(\frac{\mathrm{d}^{2} \sigma}{\mathrm{d} \Omega \mathrm{d} E^{\prime}}\right)_{\mathrm{coh}}=\frac{\sigma_{\mathrm{coh}}}{4 \pi} \frac{k^{\prime}}{k} & \frac{1}{2 \pi \hbar} \sum_{i j^{\prime}} \int_{-\infty}^{\infty}\left\langle\exp \left\{-\mathrm{i} \boldsymbol{\kappa} \cdot \boldsymbol{R}_{j^{\prime}}(0)\right\} \exp \left\{\mathrm{i} \boldsymbol{\kappa} . \boldsymbol{R}_{j}(t)\right\}\right\rangle \\
+& \times \exp (-\mathrm{i} \omega t) \mathrm{d} t
+\end{aligned}</script></li>
+<li><script type="math/tex; mode=display">
+\begin{aligned}
+\left(\frac{\mathrm{d}^{2} \sigma}{\mathrm{d} \Omega \mathrm{d} E^{\prime}}\right)_{\mathrm{inc}}=\frac{\sigma_{\mathrm{inc}}}{4 \pi} \frac{k^{\prime}}{k} & \frac{1}{2 \pi \hbar} \sum_{j} \int_{-\infty}^{\infty}\left\langle\exp \left\{-\mathrm{i} \boldsymbol{\kappa} \cdot \boldsymbol{R}_{I}(0)\right\} \exp \left\{\mathrm{i} \boldsymbol{\kappa} \cdot \boldsymbol{R}_{j}(t)\right\}\right\rangle \\
+& \times \exp (-\mathrm{i} \omega t) \mathrm{d} t
+\end{aligned}</script></li>
+</ul>
+<p>其中</p>
+<script type="math/tex; mode=display">
+\sigma_{\mathrm{coh}}=4 \pi(\bar{b})^{2}, \quad \sigma_{\mathrm{inc}}=4 \pi\left\{\overline{b^{2}}-(\bar{b})^{2}\right\}</script><p>由方程可知，相干散射取决于同一原子核在不同时间的位置之间的相关性，以及不同时间不同核位置之间的相关性。因此它会产生干扰效应。非相干散射只取决于同一核在不同时间的位置之间的相关性。它不会产生干扰效应。</p>
+
+            </article>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，大部分都是我整理前人的工作或学习笔记 ，使用与转载需说明</p>
+              
+              
+                <div class="post-prevnext row">
+                  <div class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/05/07/NS_bible/%E4%B8%AD%E5%AD%90%E6%95%A3%E5%B0%84%E5%9C%A3%E7%BB%8F%EF%BC%883%EF%BC%89%E2%80%94%E2%80%94%E6%99%B6%E6%A0%BC%E4%B8%AD%E7%9A%84%E4%B8%AD%E5%AD%90%E6%95%A3%E5%B0%84/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">NS_bible/中子散射圣经（3）——晶格中的中子散射</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </div>
+                  <div class="post-next col-6">
+                    
+                    
+                      <a href="/2022/05/07/NS_bible/%E4%B8%AD%E5%AD%90%E6%95%A3%E5%B0%84%E5%9C%A3%E7%BB%8F%EF%BC%881%EF%BC%89%E2%80%94%E2%80%94Introduction/">
+                        <span class="hidden-mobile">中子散射圣经（1）——Introduction</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </div>
+                </div>
+              
+            </div>
+
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="text-center mt-5 py-3">
+   
+  <!-- 添加网站运行时间 -->
+  <div class="footer-content">
+    <div>
+      <span id="timeDate">载入天数...</span>
+      <span id="times">载入时分秒...</span>
+      <script>
+      var now = new Date();
+      function createtime(){
+          var grt= new Date("05/20/2020 00:00:00");//此处修改你的建站时间或者网站上线时间
+          now.setTime(now.getTime()+250);
+          days = (now - grt ) / 1000 / 60 / 60 / 24;
+          dnum = Math.floor(days);
+          hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum);
+          hnum = Math.floor(hours);
+          if(String(hnum).length ==1 ){
+              hnum = "0" + hnum;
+          }
+          minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+          mnum = Math.floor(minutes);
+          if(String(mnum).length ==1 ){
+                    mnum = "0" + mnum;
+          }
+          seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+          snum = Math.round(seconds);
+          if(String(snum).length ==1 ){
+                    snum = "0" + snum;
+          }
+          document.getElementById("timeDate").innerHTML = "🚀 &nbsp"+dnum+"&nbsp天";  //此次自定义显示内容
+          document.getElementById("times").innerHTML = hnum + "&nbsp小时&nbsp" + mnum + "&nbsp分&nbsp" + snum + "&nbsp秒";
+      }  //此次自定义显示内容
+      setInterval("createtime()",250);
+      </script>
+    </div>
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/main.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: 'article.markdown-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "NS_bible/中子散射圣经（2）——从0开始的中子散射基础理论推导&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+</body>
+</html>

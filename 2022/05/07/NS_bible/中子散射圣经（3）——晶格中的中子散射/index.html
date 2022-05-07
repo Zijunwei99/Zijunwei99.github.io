@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="expand your horizons">
+  <meta name="author" content="Zijun Wei">
+  <meta name="keywords" content="">
+  <title>NS_bible/中子散射圣经（3）——晶格中的中子散射 - My Web</title>
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/highlight.js/10.0.0/styles/github-gist.min.css" />
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.staticfile.org/gitalk/1.6.2/gitalk.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_yg9cfy8wd6.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_pjno9b9zyxs.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Zijun Wei's space</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                about me
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="view intro-2" id="background" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="container text-center white-text fadeInUp">
+            <span class="h2" id="subtitle">
+              
+            </span>
+
+            
+              
+  <div class="mt-3 post-meta">
+    <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+    <time datetime="2022-05-07 11:01">
+      May 7, 2022 am
+    </time>
+  </div>
+
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      8.6k words
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      65
+       minutes
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-md">
+      <div class="container nopadding-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <div class="post-content mx-auto" id="post">
+            
+            <article class="markdown-body">
+              <h1 id="晶格与倒格子简介"><a href="#晶格与倒格子简介" class="headerlink" title="晶格与倒格子简介"></a>晶格与倒格子简介</h1><p>具体参考[[磁性的由来（2）——原子中的电子的磁性]]，这里只做一些符号的规定。</p>
+<ul>
+<li>晶格矢量：<script type="math/tex; mode=display">
+\boldsymbol{l}=l_{1} a_{1}+l_{2} a_{2}+l_{3} a_{3},</script>体积<script type="math/tex; mode=display">
+v_{0}=a_{1} \cdot\left[a_{2} \times a_{3}\right]</script></li>
+<li>倒格矢<script type="math/tex; mode=display">
+\begin{array}{ll}
+\tau_{1} & =\frac{2 \pi}{v_{0}}\left[a_{2} \times a_{3}\right], \quad \tau_{2}=\frac{2 \pi}{v_{0}}\left[a_{3} \times a_{1}\right] \\
+\tau_{3} & =\frac{2 \pi}{v_{0}}\left[a_{1} \times a_{2}\right] .
+\end{array}</script></li>
+<li>倒格矢与格矢的关系<script type="math/tex; mode=display">
+a_{i} \cdot \tau_{j}=2 \pi \delta_{i j}</script></li>
+</ul>
+<p>由于中子还可以研究固体物理中的声子谱，原子在热扰动下会振动</p>
+<script type="math/tex; mode=display">
+\boldsymbol{R}_{l}=\boldsymbol{l}+\boldsymbol{u}_{l}</script><p>其中$\boldsymbol{l}$为平衡位置，$u_{l}$为振动位移。<br>对于Bravais晶体，$\boldsymbol{l}$和$\boldsymbol{l}^{\prime}$的核位置之间的相关性只取决于$\boldsymbol{l}-\boldsymbol{l}^{\prime}$。即对于每个$\boldsymbol{l}^{\prime}$的值，$\boldsymbol{l}$的和是相同的。因此，我们可以使$\boldsymbol{l}^{\prime}=0$。因此散射截面中求和项可以写为</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+&\sum_{l l^{\prime}}\left\langle\exp \left\{-\mathrm{i} \boldsymbol{\kappa} \cdot \boldsymbol{R}_{l^{\prime}}(0)\right\} \exp \left\{\mathrm{i} \boldsymbol{\kappa} \cdot \boldsymbol{R}_{l}(t)\right\}\right\rangle \\
+&\quad=\boldsymbol{N} \sum_{l} \exp (\mathrm{i} \boldsymbol{\kappa} \cdot \boldsymbol{l})\left\langle\exp \left\{-\mathrm{i} \boldsymbol{\kappa} \cdot \boldsymbol{u}_{0}(0)\right\} \exp \left\{\mathbf{i} \boldsymbol{\kappa} \cdot \boldsymbol{u}_{l}(t)\right\}\right\rangle, \\
+&\sum_{l}\left\langle\exp \left\{-\mathrm{i} \boldsymbol{\kappa} \cdot \boldsymbol{R}_{l}(0)\right\} \exp \left\{\mathbf{i} \boldsymbol{\kappa} \cdot \boldsymbol{R}_{l}(t)\right\}\right\rangle \\
+&\quad=\boldsymbol{N}\left\langle\exp \left\{-\mathrm{i} \boldsymbol{\kappa} \cdot \boldsymbol{u}_{0}(0)\right\} \exp \left\{\mathbf{i} \boldsymbol{\kappa} \cdot \boldsymbol{u}_{0}(t)\right\}\right\rangle,
+\end{aligned}</script><p>其中$N$为原子核的个数，$u<em>{l}(t)$为$u</em>{l}$的Heisenberg算符。（即我们认为$\boldsymbol{l}$为常数且无关，于是使用偏移振动位置$u<em>{l}(t)$来替代散射截面式子中的原子位置$\mathbf{R}</em>{l}(t)$）</p>
+<h1 id="简正模式（Normal-modes）"><a href="#简正模式（Normal-modes）" class="headerlink" title="简正模式（Normal modes）"></a>简正模式（Normal modes）</h1><p>我们假设晶体中原子之间的相互作用是harmonic的，这时我们可以将位移$\boldsymbol{u}_{l}$写为简正模式</p>
+<script type="math/tex; mode=display">
+u_{l}=\left(\frac{\hbar}{2 M N}\right)^{1 / 2} \sum_{s} \frac{e_{s}}{\sqrt{\omega_{s}}}\left\{a_{s} \exp (\mathrm{i} q \cdot l)+a_{s}^{+} \exp (-\mathrm{i} q \cdot l)\right\}</script><p>其中$q$为简正模的波矢量，$j$为简正模的偏振指数($j = 1,2,3$)，$s$为双指数$q, j$。$\omega<em>{s}$为简正模$s$的角频率，$e</em>{s}$为模态的偏振矢量。对$s$的求和是指$q$在第一布里渊区的N个值求和以及$j$的三个值求和。$M$是一个原子的质量（假设对所有原子都是相同的）$a<em>{s}$与$a</em>{s}^{+}$是模$s$的升降阶算符。</p>
+<p>对于$u<em>{l}(t)$的计算，我们可以使用$a</em>{s}(t)$和$a<em>{s}^{+}(t)$来替代上式中的$a</em>{s}$与$a_{s}^{+}$：</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+a_{s}(t) &=\exp (\mathrm{i} H t / \hbar) a_{s} \exp (-\mathrm{i} H t / \hbar)=a_{s} \exp \left(-\mathrm{i} \omega_{s} t\right) \\
+a_{s}^{+}(t) &=\exp (\mathrm{i} H t / \hbar) a_{s}^{+} \exp (-\mathrm{i} H t / \hbar)=a_{s}^{+} \exp \left(\mathrm{i} \omega_{s} t\right)
+\end{aligned}</script><p>由此我们得到</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\kappa \cdot u_{l}(t)=\left(\frac{\hbar}{2 M N}\right)^{1 / 2} \sum_{s} \frac{\kappa \cdot e_{s}}{\sqrt{\omega_{s}}}\left[a_{s} \exp \left\{\mathrm{i}\left(q \cdot l-\omega_{s} t\right)\right\}\right.& \\
+\left.+a_{s}^{+} \exp \left\{-\mathrm{i}\left(q \cdot l-\omega_{s} t\right)\right\}\right]
+\end{aligned}</script><h1 id="谐振子的概率函数"><a href="#谐振子的概率函数" class="headerlink" title="谐振子的概率函数"></a>谐振子的概率函数</h1><p>我们首先定义了一维运动单束缚粒子的<strong>概率函数</strong>。用$Q$表示位置变量，用$H$表示哈密顿量</p>
+<script type="math/tex; mode=display">
+H \psi_{n}=E_{n} \psi_{n}</script><p>粒子处于n个态的混杂态，我们使用系综的思想来看这种混态</p>
+<script type="math/tex; mode=display">
+p_{n}=\frac{1}{Z} \exp \left(-E_{n} \beta\right), \quad Z=\sum_{n} \exp \left(-E_{n} \beta\right), \quad \beta=\frac{1}{k_{\mathrm{B}} T} .</script><p>由此热力学概率+量子力学中的波函数即可以得到概率函数$f(Q)$</p>
+<script type="math/tex; mode=display">
+f(Q)=\sum_{n} p_{n}\left|\psi_{n}(Q)\right|^{2}</script><p>$f(Q) \mathrm{d} Q$表示为在$Q$到$Q+\mathrm{d} Q$内的概率。在得到概率函数后我们就可以求得力学量算符的平均值：</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\langle A(Q)\rangle &=\sum_{n} p_{n} \int_{-\infty}^{\infty} A(Q)\left|\psi_{n}(Q)\right|^{2} \mathrm{~d} Q \\
+&=\int_{-\infty}^{\infty} A(Q) \sum_{n} p_{n}\left|\psi_{n}(Q)\right|^{2} \mathrm{~d} Q \\
+&=\int_{-\infty}^{\infty} A(Q) f(Q) \mathrm{d} Q .
+\end{aligned}</script><p>该工作最早是Bloch做出来的，对于一维简谐振动<strong>概率函数</strong>可以表示为</p>
+<script type="math/tex; mode=display">
+f(Q)=C \exp \left(-Q^{2} / 2 \sigma^{2}\right)</script><p>其中$\sigma^{2}=\frac{\hbar}{2 M \omega} \operatorname{coth}\left(\frac{1}{2} \hbar \omega \beta\right)$，在这个概率函数下对于指数算符的计算有如下结论：</p>
+<script type="math/tex; mode=display">
+\langle\exp Q\rangle=\exp \left\{\frac{1}{2}\left\langle Q^{2}\right\rangle\right\}</script><h1 id="计算-langle-exp-boldsymbol-U-exp-V-rangle"><a href="#计算-langle-exp-boldsymbol-U-exp-V-rangle" class="headerlink" title="计算$\langle\exp \boldsymbol{U} \exp V\rangle$"></a>计算$\langle\exp \boldsymbol{U} \exp V\rangle$</h1><p>将上节的简正模式的位移带入散射截面中，我们可以得到</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\left(\frac{\mathrm{d}^{2} \sigma}{\mathrm{d} \Omega \mathrm{d} E^{\prime}}\right)_{c o h}=\frac{\sigma_{\mathrm{coh}}}{4 \pi} & \frac{k^{\prime}}{k} \frac{N}{2 \pi \hbar} \sum_{l} \exp (\mathrm{i} \boldsymbol{\kappa} \cdot l) \int_{-\infty}^{\infty}\langle\exp U \exp V\rangle \\
+& \times \exp (-\mathrm{i} \omega t) \mathrm{d} t
+\end{aligned}</script><p>其中</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+&U=-i \kappa \cdot u_{0}(0)=-\mathrm{i} \sum_{s} g_{s} a_{s}+g_{s} a_{s}^{+} \\
+&V=i \kappa \cdot u_{l}(t)=\mathrm{i} \sum_{s} h_{s} a_{s}+h_{s}^{*} a_{s}^{+} \\
+&g_{s}=\left(\frac{\hbar}{2 M}\right)^{1 / 2} \frac{\kappa \cdot e_{s}}{\sqrt{\omega_{s}}} \\
+&h_{s}=\left(\frac{\hbar}{2 M}\right)^{1 / 2} \frac{\kappa \cdot e_{s}}{\sqrt{\omega_{s}}} \exp \left\{\mathrm{i}\left(q \cdot l-\omega_{s} t\right)\right\}
+\end{aligned}</script><p>接下来我们着重计算$\langle\exp \boldsymbol{U} \exp V\rangle$平均值。为了计算这个平均值，我们需要两个结论</p>
+<ul>
+<li>对于升降阶算符其对易关系为<script type="math/tex; mode=display">
+\left[a_{s}, a_{s^{\prime}}^{+}\right]=\delta_{s s^{\prime}}</script></li>
+<li>若两个算符$[A,B]=c$，其中c为常数<script type="math/tex; mode=display">
+\exp A \exp B=\exp (A+B) \exp \left\{\frac{1}{2}(A B-B A)\right\}</script></li>
+</ul>
+<p>由此可以证明U与V的对易关系是常数</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+U V-V U=& \sum_{s}\left(g_{s} a_{s}+g_{s} a_{s}^{+}\right) \sum_{s^{\prime}}\left(h_{s^{\prime}} a_{s^{\prime}}+h_{s^{\prime}}^{*} a_{s^{\prime}}^{+}\right) \\
+&-\sum_{s^{\prime}}\left(h_{s^{\prime}} a_{s^{\prime}}+h_{s^{\prime}}^{*} a_{s^{\prime}}^{+}\right) \sum_{s}\left(g_{s} a_{s}+g_{s} a_{s}^{+}\right)\\ &=\sum_{s}\left(g_{s} h_{s}^{*}-g_{s} h_{s}\right)\left(a_{s} a_{s}^{+}-a_{s}^{+} a_{s}\right) \\
+&=\sum_{s}\left(g_{s} h_{s}^{*}-g_{s} h_{s}\right)
+\end{aligned}</script><p>接着我们可以将$\langle\exp \boldsymbol{U} \exp V\rangle$拆分为</p>
+<script type="math/tex; mode=display">
+\langle\exp U \exp V\rangle=\langle\exp (U+V)\rangle \exp \left\{\frac{1}{2}(U V-V U)\right\}</script><p>其中第一项可以计算为$\langle\exp (U+V)\rangle=\exp \left{\frac{1}{2}\left\langle(U+V)^{2}\right\rangle\right}$，而第二项则是上面讨论的。由此可以得到</p>
+<script type="math/tex; mode=display">\begin{aligned}\langle\exp U \exp V\rangle &=\exp \left\{\frac{1}{2}\left\langle(U+V)^{2}\right\rangle\right\} \exp \left\{\frac{1}{2}(U V-V U)\right\} \\ &=\exp \left\{\frac{1}{2}\left\langle U^{2}+V^{2}+U V+V U+U V-V U\right\rangle\right\} \\ &=\exp \left\{\frac{1}{2}\left\langle U^{2}+V^{2}\right\rangle\right\} \exp \langle U V\rangle \end{aligned}</script><p>在数学上可以计算得到</p>
+<script type="math/tex; mode=display">
+\left\langle U^{2}\right\rangle=\left\langle V^{2}\right\rangle</script><p>由上述计算可以得到$\langle\exp \boldsymbol{U} \exp V\rangle$为</p>
+<script type="math/tex; mode=display">
+\langle\exp U \exp V\rangle=\exp \left\langle U^{2}\right\rangle \exp \langle U V\rangle</script><p>则此时偏微分散射截面为</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\left(\frac{\mathrm{d}^{2} \sigma}{\mathrm{d} \Omega \mathrm{d} E^{\prime}}\right)_{\mathrm{coh}}=\frac{\sigma_{\mathrm{coh}}}{4 \pi} \frac{k^{\prime}}{k} & \frac{N}{2 \pi \hbar} \exp \left\langle U^{2}\right\rangle \sum_{l} \exp (\mathrm{i} \boldsymbol{\kappa} . l) \\
+& \times \int_{-\infty}^{\infty} \exp \langle U V\rangle \exp (-\mathrm{i} \omega t) \mathrm{d} t 
+\end{aligned}</script><h1 id="Phonon-expansion"><a href="#Phonon-expansion" class="headerlink" title="Phonon expansion"></a>Phonon expansion</h1><p>一个由N个原子组成的晶体具有3N种正常模式。晶体的初始态$\lambda$可以由一组量子数$n<em>{1}, n</em>{2} \ldots n<em>{3 N}$来定义。在一般散射过程中，晶体的态变为$\lambda^{\prime}$，由另一组量子数$n</em>{1}^{\prime}, n<em>{2}^{\prime} \ldots n</em>{3 N}^{\prime}$来定义。散射过程可以根据量子数的变化进行分类。</p>
+<ul>
+<li><strong>弹性过程</strong>（Elastic process）：所有的量子数都不改变<script type="math/tex; mode=display">
+n_{i}^{\prime}=n_{i}</script></li>
+<li><strong>单声子过程</strong>：只有一个量子数改变$\boldsymbol{\alpha}$，且数量增减1<script type="math/tex; mode=display">
+\begin{aligned}
+&n_{i}^{\prime}=n_{i}, \quad \text { all } i \text { except } \alpha \\
+&n_{\alpha}^{\prime}=n_{\alpha} \pm 1
+\end{aligned}</script></li>
+<li><strong>双声子过程</strong>：只有两个量子数改变<script type="math/tex; mode=display">
+\begin{aligned}
+&n_{i}^{\prime}=n_{i} \quad \text { all } i \text { except } \alpha \text { and } \beta \\
+&n_{\alpha}^{\prime}=n_{\alpha} \pm 1, \quad n_{\beta}^{\prime}=n_{\beta} \pm 1
+\end{aligned}</script></li>
+</ul>
+<p>接下来我们可以通过另一个视角来看激发、湮灭过程。<br>我们将散射截面中的指数项$\exp \langle U V\rangle$展开有：</p>
+<script type="math/tex; mode=display">
+\exp \langle U V\rangle=1+\langle U V\rangle+\frac{1}{2 !}\langle U V\rangle^{2}+\ldots+\frac{1}{p !}\langle U V\rangle^{p}+\ldots</script><p>这里面不同的项就对应不同的声子过程，称其为p-声子过程</p>
+<h1 id="相干弹性散射"><a href="#相干弹性散射" class="headerlink" title="相干弹性散射"></a>相干弹性散射</h1><h2 id="Bragg’s-law"><a href="#Bragg’s-law" class="headerlink" title="Bragg’s law"></a>Bragg’s law</h2><p>当我们将e指数$\exp \langle U V\rangle$用1替代，即只考虑弹性散射时，相干弹性散射的偏微分散射截面如下给出</p>
+<script type="math/tex; mode=display">
+\left(\frac{\mathrm{d}^{2} \sigma}{\mathrm{d} \Omega \mathrm{d} E^{\prime}}\right)_{\mathrm{coh} \mathrm{el}}=\frac{\sigma_{\mathrm{coh}}}{4 \pi} \frac{k^{\prime}}{k} \frac{N}{2 \pi \hbar} \exp \left\langle U^{2}\right\rangle \sum_{l} \exp (\mathrm{i} \boldsymbol{\kappa} . l) \int_{-\infty}^{\infty} \exp (-\mathrm{i} \omega t) \mathrm{d} t</script><p>可以很明显的看到，式子中的积分就是$\delta$函数，同时由于是弹性散射，中子散射前后波矢不变$\left|\boldsymbol{k}^{\prime}\right|=|\boldsymbol{k}|$，由此散射截面可以写为</p>
+<script type="math/tex; mode=display">
+\left(\frac{\mathrm{d}^{2} \sigma}{\mathrm{d} \Omega \mathrm{d} E^{\prime}}\right)_{\mathrm{coh} \text { el }}=\frac{\sigma_{\mathrm{coh}}}{4 \pi} N \exp \left\langle U^{2}\right\rangle \sum_{l} \exp (\mathrm{i} \boldsymbol{\kappa}, l) \delta(\hbar \omega)</script><p>接下来可以很快就发现，当入射中子能量固定时能量的改变量就是$\delta(\hbar \omega)$。即</p>
+<script type="math/tex; mode=display">
+\mathrm{d} E^{\prime}=-\mathrm{d}(\hbar \omega)</script><p>由此微分散射截面可以通过对能量的积分得到</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\left(\frac{\mathrm{d} \sigma}{\mathrm{d} \Omega}\right)_{\text {coh el }} &=\int_{0}^{\infty}\left(\frac{\mathrm{d}^{2} \sigma}{\mathrm{d} \Omega \mathrm{d} E^{\prime}}\right)_{\text {coh el }} \mathrm{d} E^{\prime} \\
+&=\frac{\sigma_{\text {coh }}}{4 \pi} N \exp \left\langle U^{2}\right\rangle \sum_{l} \exp (\mathrm{i} \kappa . l) .
+\end{aligned}</script><p>对于晶格上的求和，我们也可以给出其傅里叶转变形式：</p>
+<script type="math/tex; mode=display">
+\sum_{l} \exp (\mathrm{i} \boldsymbol{\kappa} . l)=\frac{(2 \pi)^{3}}{v_{0}} \sum_{\tau} \delta(\boldsymbol{\kappa}-\boldsymbol{\tau})</script><p>其中$v_{0}$为单位原胞的体积，$\boldsymbol{\tau}$为倒格子上的矢量。<br>最终，我们得到微分散射截面</p>
+<script type="math/tex; mode=display">
+\left(\frac{\mathrm{d} \sigma}{\mathrm{d} \Omega}\right)_{\text {coh el }}=\frac{\sigma_{\mathrm{coh}}}{4 \pi} N \frac{(2 \pi)^{3}}{v_{0}} \exp (-2 W) \sum_{\tau} \delta(\kappa-\tau)</script><p>其中</p>
+<script type="math/tex; mode=display">
+2 W=-\left\langle U^{2}\right\rangle=\left\langle\left\{\boldsymbol{\kappa} \cdot \boldsymbol{u}_{0}(0)\right\}^{2}\right\rangle</script><p>由上式中的$\delta$函数可以看出，散射发生的条件为</p>
+<script type="math/tex; mode=display">
+\boldsymbol{\kappa}=\boldsymbol{k}-\boldsymbol{k}^{\prime}=\boldsymbol{\tau}</script><p>如图所示，只有满足该图几何关系的入射/出射波矢的中子束可以发生散射。<br>![[Pasted image 20220425092658.png]]<br>进一步通过几何关系可以计算有</p>
+<script type="math/tex; mode=display">
+\tau=2 k \sin \frac{1}{2} \theta</script><p>对于倒格子矢量有$\boldsymbol{\tau}=n \frac{2 \pi}{d}$，其中n表示一系列的矢量为正整数，而d表示空间晶格中面间距；对于波矢又有$\boldsymbol{k}=\frac{2 \pi}{\lambda}$。由此就可以得到著名的Bragg散射定理</p>
+<script type="math/tex; mode=display">
+n \lambda=2 d \sin \frac{1}{2} \theta</script><p>其在原子空间中常通过如下图示意：<br>![[Pasted image 20220425093217.png]]</p>
+<h2 id="Debye-Waller因子"><a href="#Debye-Waller因子" class="headerlink" title="Debye-Waller因子"></a>Debye-Waller因子</h2><p>接下来来计算散射截面表达式中的$W$项——其也被称为<strong>Debye-Waller因子</strong></p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+2 W=-\left\langle U^{2}\right\rangle &=\sum_{\lambda} p_{\lambda} \sum_{s s^{\prime}} g_{s} g_{s^{\prime}}\left\langle\lambda\left|\left(a_{s}+a_{s}^{+}\right)\left(a_{s^{\prime}}+a_{s^{\prime}}^{+}\right)\right| \lambda\right\rangle \\
+&=\sum_{\lambda} p_{\lambda} \sum_{s} g_{s}^{2}\left\langle\lambda\left|a_{s} a_{s}^{+}+a_{s}^{+} a_{s}\right| \lambda\right\rangle .
+\end{aligned}</script><p>在[[中子散射圣经——附录]]中我们求得</p>
+<script type="math/tex; mode=display">
+\left\langle\lambda\left|a_{s} a_{s}^{+}+a_{s}^{+} a_{s}\right| \lambda\right\rangle=2 n_{s}+1</script><p>带入$g<em>{s}=\left(\frac{\hbar}{2 M N}\right)^{1 / 2} \frac{\kappa \cdot e</em>{s}}{\sqrt{\omega_{s}}}$于是有</p>
+<script type="math/tex; mode=display">
+2 W=\frac{\hbar}{2 M N} \sum_{s} \frac{\left(\kappa \cdot e_{s}\right)^{2}}{\omega_{s}}\left\langle 2 n_{s}+1\right\rangle</script><p>[[中子散射圣经——附录]]中同时也计算了</p>
+<script type="math/tex; mode=display">
+\left\langle 2 n_{s}+1\right\rangle=\operatorname{coth}\left(\frac{1}{2} \hbar \omega_{s} \beta\right)</script><p>由此我们得到<strong>Debye-Waller因子</strong>为</p>
+<script type="math/tex; mode=display">
+2 W=\frac{\hbar}{2 M N} \sum_{s} \frac{\left(\kappa \cdot e_{s}\right)^{2}}{\omega_{s}} \operatorname{coth}\left(\frac{1}{2} \hbar \omega_{s} \beta\right)</script><h3 id="一个简单的例子——Cubic晶格"><a href="#一个简单的例子——Cubic晶格" class="headerlink" title="一个简单的例子——Cubic晶格"></a>一个简单的例子——Cubic晶格</h3><p>当考虑立方晶格时，可以更进一步的计算,我们对所有对称性相关的$q$点求和，$\omega<em>{s}$保持不变，$\left(k \cdot e</em>{s}\right)^{2}$的平均值就为$\frac{1}{3} \kappa^{2}$，由此Debye-Waller因子为</p>
+<script type="math/tex; mode=display">
+2 W=\frac{\hbar}{2 M N} \frac{\kappa^{2}}{3} \sum_{s} \frac{1}{\omega_{s}} \operatorname{coth}\left(\frac{1}{2} \hbar \omega_{s} \beta\right)</script><p>对于求和项，我们可以使用态密度函数$Z(\omega)$来使其成为积分项，这里处理方法同固体物理中Debye那样使频率有一个上限</p>
+<script type="math/tex; mode=display">
+\int_{0}^{\omega_{m}} Z(\omega) \mathrm{d} \omega=1</script><p>由此</p>
+<script type="math/tex; mode=display">
+2 W=\frac{\hbar \kappa^{2}}{2 M} \int_{0}^{\omega_{\mathrm{m}}} \frac{1}{\omega} \operatorname{coth}\left(\frac{1}{2} \hbar \omega \beta\right) Z(\omega) \mathrm{d} \omega .</script><p>这个结果同时可以用另一种方式来表达。对于Bravais晶体，原子的均方位移与晶格位置无关。因此我们可以写为</p>
+<script type="math/tex; mode=display">
+2 W=\left\langle(\kappa, u)^{2}\right\rangle=\kappa^{2}\left\langle u_{\boldsymbol{\kappa}}^{2}\right\rangle</script><p>其中$u_{\boldsymbol{\kappa}}$表示为u在$\boldsymbol{\kappa}$方向上的分量。对于立体晶格</p>
+<script type="math/tex; mode=display">
+\left\langle u_{x}^{2}\right\rangle=\left\langle u_{y}^{2}\right\rangle=\left\langle u_{z}^{2}\right\rangle=\frac{1}{3}\left\langle u^{2}\right\rangle</script><p>由此有</p>
+<script type="math/tex; mode=display">
+2 W=\frac{1}{3} \kappa^{2}\left\langle u^{2}\right\rangle</script><h2 id="Non-Bravais-晶格"><a href="#Non-Bravais-晶格" class="headerlink" title="Non-Bravais 晶格"></a>Non-Bravais 晶格</h2><p>当晶格内不再是由单一原子构成时，即对应Non-Bravais 晶格。我们只需对上述的结论经行一些改写。对于第d个原子在晶格中的位置可以写为</p>
+<script type="math/tex; mode=display">
+\boldsymbol{R}_{l d}=\boldsymbol{l}+\boldsymbol{d}+\boldsymbol{u}\left(\begin{array}{l}
+l \\
+d
+\end{array}\right)</script><p>其中$\boldsymbol{d}$为晶格中第d个原子的距离。<br>![[Pasted image 20220425100420.png]]<br>一般来说，在每个$d$位置都有不同类型的核。因此散射长度的平均值对于每个d位置是不同的。用$\bar{b}_{d}$表示。由此相干散射的偏微分散射截面如下给吹</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+&\left(\frac{\mathrm{d}^{2} \boldsymbol{\sigma}}{\mathrm{d} \Omega \mathrm{d} E^{\prime}}\right)_{\mathrm{coh}}\\
+&=\frac{k^{\prime}}{k} \frac{1}{2 \pi \hbar} \sum_{l d} \sum_{l^{\prime} d^{\prime}} \bar{b}_{d} \bar{b}_{d^{\prime}} \exp \left\{\mathbf{i} \boldsymbol{\kappa} \cdot\left(\boldsymbol{l}+\boldsymbol{d}-\boldsymbol{l}^{\prime}-\boldsymbol{d}^{\prime}\right)\right\}\\
+&\times \int_{-\infty}^{\infty}\left\langle\exp \left\{-\mathrm{i} \boldsymbol{\kappa} \cdot u\left(\begin{array}{ll}
+l^{\prime} & 0 \\
+d^{\prime} & 0
+\end{array}\right)\right\} \exp \left\{\mathrm{i} \boldsymbol{\kappa} \cdot u\left(\begin{array}{l}
+l \\
+d
+\end{array}\right)\right\}\right\rangle \exp (-\mathrm{i} \omega t) \mathrm{d} t .
+\end{aligned}</script><p>对于弹性散射的微分散射截面结果，则有</p>
+<script type="math/tex; mode=display">
+\left(\frac{\mathrm{d} \sigma}{\mathrm{d} \Omega}\right)_{\text {coh el }}=N \sum_{l} \exp (\mathrm{i} \boldsymbol{\kappa} . l)\left|\sum_{d} \bar{b}_{d} \exp (\mathrm{i} \boldsymbol{\kappa}, \boldsymbol{d}) \exp \left(-W_{d}\right)\right|^{2}</script><p>其中</p>
+<script type="math/tex; mode=display">
+W_{d}=\frac{1}{2}\left\langle\left\{\kappa \cdot u\left(\begin{array}{l}
+l \\
+d
+\end{array}\right)\right\}^{2}\right\rangle</script><p>对$W_{d}$的计算与Bravais 晶格类似，由此有</p>
+<script type="math/tex; mode=display">
+W_{d}=\frac{\hbar}{4 M_{d} N} \sum_{s} \frac{\left|\boldsymbol{\kappa} \cdot e_{d s}\right|^{2}}{\omega_{s}}\left\langle 2 n_{s}+1\right\rangle</script><p>由此我们将弹性散射的结果写为</p>
+<script type="math/tex; mode=display">
+\left(\frac{\mathrm{d} \sigma}{\mathrm{d} \Omega}\right)_{\text {coh el }}=N \frac{(2 \pi)^{3}}{v_{0}} \sum_{\tau} \delta(\kappa-\tau)\left|F_{N}(\kappa)\right|^{2}</script><p>其中</p>
+<script type="math/tex; mode=display">
+F_{\mathrm{N}}(\boldsymbol{\kappa})=\sum_{d} \bar{b}_{d} \exp (\mathrm{i} \boldsymbol{\kappa} \cdot \boldsymbol{d}) \exp \left(-W_{d}\right)</script><p>被称为<strong>结构因子</strong>（nuclear unit-cell structure factor）</p>
+<h2 id="测量Bragg散射的方法"><a href="#测量Bragg散射的方法" class="headerlink" title="测量Bragg散射的方法"></a>测量Bragg散射的方法</h2><p>对于真实实验的测量，是在测量其总散射截面，即对微分散射积分在体积角上对积分：</p>
+<script type="math/tex; mode=display">
+\sigma_{\text {tot }}=\int_{\text {all }}^{\text {directions }}\left(\frac{\mathrm{d} \sigma}{\mathrm{d} \Omega}\right)_{\mathrm{coh} \mathrm{el}} \mathrm{d} \Omega</script><p>我们fix入射中子束与某一特定倒格矢的角度，这时定义$\boldsymbol{\rho}$也是不变的</p>
+<script type="math/tex; mode=display">
+\boldsymbol{\rho}=\boldsymbol{k}-\boldsymbol{\tau}</script><p>当散射的波矢大小与$\boldsymbol{k}$相同时，$\boldsymbol{k}^{\prime}$只能在如下图所示的圆上选择<br>![[Pasted 2022-05-02 14.13.41.png]]<br>此时$\delta$函数可以表示为</p>
+<script type="math/tex; mode=display">
+\int \delta(\kappa-\tau) \mathrm{d} \Omega=\int \delta\left(\rho-\boldsymbol{k}^{\prime}\right) \mathrm{d} \Omega=c \delta\left(\rho^{2}-k^{2}\right)</script><p>其中c为归一化因子。由此计算出总散射截面为</p>
+<script type="math/tex; mode=display">
+\sigma_{\text {tot } \tau}=N \frac{(2 \pi)^{3}}{v_{0}} \frac{2}{\rho}\left|F_{N}(\tau)\right|^{2} \delta\left(\tau^{2}-2 k \tau \cos \psi\right)</script><p>这其中$\delta$函数的可能取值就代表着Bragg峰。我们接下来介绍不同的方法来测量散射截面找到其中的Bragg peak。</p>
+<h3 id="Laue方法"><a href="#Laue方法" class="headerlink" title="Laue方法"></a>Laue方法</h3><p>当我们固定散射中子的入射方向时，通过改变$\boldsymbol{k}$的大小，测量散射强度随波长变换的函数，就可以测量到Bragg peak。如图所示，由于$\boldsymbol{k}=\boldsymbol{k}^{\prime}$图中为等腰三角形<br>![[Pasted image 20220502143607.png]]<br>只有当特定大小的$\boldsymbol{k}$入射时才会发生散射，而散射的条件为</p>
+<script type="math/tex; mode=display">
+k=\frac{\tau}{2 \cos \psi}</script><p>当我们已知入射中子束的波长分布$\phi(\lambda)\mathrm{d} \lambda$时，我们可以计算出散射中子束的每秒中的中子束P为：</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+P &=\int \phi(\lambda) \sigma_{\mathrm{tot} \tau} \mathrm{d} \lambda \\
+&=N \frac{(2 \pi)^{3}}{v_{0}}\left|F_{\mathrm{N}}(\tau)\right|^{2} \int \frac{2}{\rho} \delta\left(\tau^{2}-2 k \tau \cos \psi\right) \phi(\lambda) \mathrm{d} \lambda
+\end{aligned}</script><p>只有当如下式子成立时，才可以发生散射</p>
+<script type="math/tex; mode=display">
+\rho=k, \quad \tau=2 k \cos \psi</script><p>由此我们可以计算得到</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+P &=N \frac{(2 \pi)^{3}}{v_{0}} \frac{\pi \phi(\lambda)\left|F_{\mathrm{N}}(\tau)\right|^{2}}{k^{4} \cos ^{2} \psi} \\
+&=\frac{V}{v_{0}^{2}} \phi(\lambda) \frac{\lambda^{4}}{2 \sin ^{2} \frac{1}{2} \theta}\left|F_{\mathrm{N}}(\tau)\right|^{2}
+\end{aligned}</script><p>其中V为晶体体积，$v_0$为单个原子所占的体积。</p>
+<h3 id="旋转晶体方法"><a href="#旋转晶体方法" class="headerlink" title="旋转晶体方法"></a>旋转晶体方法</h3><p>我们也可以使一束单色光打入晶体，通过旋转晶体，测量散射强度随角度变换的函数，也可以得到Bragg peak。具体示意图如图所示<br>![[Pasted image 20220502145414.png]]<br>当角度$\psi$变化时，T在圆上移动，只有当其与散射角$\theta$匹配时（图中B点），才会发生散射。此时发生散射的条件为</p>
+<script type="math/tex; mode=display">
+\tau=2 k \sin \frac{1}{2} \theta</script><p>此时，经过计算，其每秒的散射中子个数为</p>
+<script type="math/tex; mode=display">
+P=\frac{V}{v_{0}^{2}} \Phi \frac{\lambda^{3}}{\sin \theta}\left|F_{N}(\tau)\right|^{2}</script><h3 id="多晶衍射方法"><a href="#多晶衍射方法" class="headerlink" title="多晶衍射方法"></a>多晶衍射方法</h3><p>带有波矢$\boldsymbol{k}$的单色中子束入射于粉末样品，即许多取向随机的小单晶组成的样品。对于指定的$|\boldsymbol{\tau}|(&lt;2 k)$，散射中子的波矢$\boldsymbol{K}^{\prime}$位于一个锥上，称为Debye-Scherrer锥(如下图所示)。圆锥的轴线沿着$\boldsymbol{k}$。只有那些$\boldsymbol{\tau}$向量位于以$\boldsymbol{k}$为轴半角的锥上的微晶体会对散射起作用。<br>![[Pasted image 20220505162502.png]]<br>当入射波矢$\boldsymbol{k}$的方向固定，对于每个微小晶体其倒格子矢量$\boldsymbol{\tau}$在空间的取向是随机且平均的。由此$\boldsymbol{\tau}$与$\boldsymbol{k}$夹角在$\psi$到$\psi+\mathrm{d} \psi$之间的可能性为$2 \pi \sin \psi d \psi / 4 \pi$。由此我们可以计算出每个锥的散射截面</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\sigma_{\mathrm{tot} \tau}(\text { cone }) &=N \frac{(2 \pi)^{3}}{v_{0}} \frac{2}{k} \sum_{\tau}\left|F_{\mathrm{N}}(\tau)\right|^{2} \int_{0}^{\pi / 2} \delta\left(\tau^{2}-2 k \tau \cos \psi\right)^{\frac{1}{2}} \sin \psi \mathrm{d} \psi \\
+&=\frac{V}{v_{0}^{2}} \frac{\lambda^{3}}{4 \sin \frac{1}{2} \theta} \sum_{\tau}\left|F_{\mathrm{N}}(\tau)\right|^{2}
+\end{aligned}</script><p>其中这里对$\boldsymbol{\tau}$的求和是指对倒格子空间中所有值为$|\boldsymbol{\tau}|$的求和。<br>如果中子探测器与目标的距离为$r$，有效直径为$d$，则它拦截了锥内中子数的$d / (2 \pi r \sin \theta)$。因此计数率为</p>
+<script type="math/tex; mode=display">
+P=\Phi \frac{d}{2 \pi r \sin \theta} \sigma_{\text {tot } \tau}(\text { cone })</script><p>其中$\Phi$为入射通量。</p>
+<h1 id="单声子过程的相干散射"><a href="#单声子过程的相干散射" class="headerlink" title="单声子过程的相干散射"></a>单声子过程的相干散射</h1><h2 id="散射截面计算"><a href="#散射截面计算" class="headerlink" title="散射截面计算"></a>散射截面计算</h2><p>对于单声子散射过程，我们使用$\langle U V\rangle$来替换$\exp {\langle U V\rangle}$。对于$\langle U V\rangle$， 我们有</p>
+<script type="math/tex; mode=display">
+\langle\lambda|U V| \lambda\rangle=\sum_{s s^{\prime}}\left\langle\lambda\left|\left(g_{s} a_{s}+g_{s} a_{s}^{+}\right)\left(h_{s^{\prime}} a_{s^{\prime}}+h_{s^{\prime}}^{*} a_{s^{\prime}}^{+}\right)\right| \lambda\right\rangle</script><p>这其中非0的项只有</p>
+<script type="math/tex; mode=display">
+\left\langle\lambda\left|a_{s} a_{s}^{+}\right| \lambda\right\rangle=n_{s}+1, \quad\left\langle\lambda\left|a_{s}^{+} a_{s}\right| \lambda\right\rangle=n_{s} .</script><p>由此</p>
+<script type="math/tex; mode=display">
+\langle\lambda|U V| \lambda\rangle=\sum_{s} g_{s} h_{s}^{*}\left(n_{s}+1\right)+g_{s} h_{s} n_{s}</script><p>带入$g<em>{s} , h</em>{s}$的值有</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\langle U V\rangle=& \sum_{s} g_{s} h_{s}^{*}\left\langle n_{s}+1\right\rangle+g_{s} h_{s}\left\langle n_{s}\right\rangle \\
+=& \frac{\hbar}{2 M N} \sum_{s} \frac{\left(\boldsymbol{\kappa} \cdot \boldsymbol{e}_{s}\right)^{2}}{\omega_{s}}\left[\exp \left\{-\mathrm{i}\left(\boldsymbol{q} \cdot \boldsymbol{l}-\omega_{s} t\right)\right\}\left\langle n_{s}+1\right\rangle\right.\\
+&\left.+\exp \left\{\mathrm{i}\left(\boldsymbol{q} \cdot \boldsymbol{l}-\omega_{s} t\right)\right\}\left\langle\boldsymbol{n}_{s}\right\rangle\right] .
+\end{aligned}</script><p>由此</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+&\left(\frac{\mathrm{d}^{2} \sigma}{\mathrm{d} \Omega \mathrm{d} E^{\prime}}\right)_{\mathrm{coh} \ 1 \  \mathrm{ph}} \\
+&=\frac{\sigma_{\mathrm{coh}}}{4 \pi} \frac{k^{\prime}}{k} \frac{N}{2 \pi \hbar} \exp (-2 W) \sum_{l} \exp (\mathrm{i} \boldsymbol{\kappa} \cdot l) \int_{-\infty}^{\infty}\langle U V\rangle \exp (-\mathrm{i} \omega t) \mathrm{d} t \\
+&=\frac{\sigma_{\mathrm{coh}}}{4 \pi} \frac{k^{\prime}}{k} \frac{1}{4 \pi M} \exp (-2 W) \sum_{l} \exp (\mathrm{i} \boldsymbol{\kappa} \cdot l) \sum_{s} \frac{\left(\boldsymbol{\kappa} \cdot e_{s}\right)^{2}}{\omega_{s}} \\
+&\quad \times \int_{-\infty}^{\infty}\left[\exp \left\{-\mathrm{i}\left(\boldsymbol{q} \cdot l-\omega_{s} t\right)\right\}\left\langle n_{s}+1\right\rangle\right. \\
+&\left.\quad+\exp \left\{\mathrm{i}\left(q \cdot l-\omega_{s} t\right)\right\}\left\langle n_{s}\right\rangle\right] \exp (-\mathrm{i} \omega t) \mathrm{d} t .
+\end{aligned}</script><p>对于其中的$\delta$函数，我们可以整理如下</p>
+<script type="math/tex; mode=display">
+\int_{-\infty}^{\infty} \exp \left\{\mathrm{i}\left(\omega_{s}-\omega\right) t\right\} \mathrm{d} t=2 \pi \delta\left(\omega-\omega_{s}\right)</script><script type="math/tex; mode=display">
+\sum_{l} \exp \{\mathrm{i}(\kappa-q) . l\}=\frac{(2 \pi)^{3}}{v_{0}} \sum_{\tau} \delta(k-q-\tau)</script><p>我们可以将这个散射截面分为两个部分，一个是包含$\left\langle n_{s}+1\right\rangle$的部分</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+&\left(\frac{\mathrm{d}^{2} \sigma}{\mathrm{d} \Omega \mathrm{d} E^{\prime}}\right)_{\operatorname{coh}+1}\\
+&=\frac{\sigma_{\mathrm{coh}}}{4 \pi} \frac{k^{\prime}}{k} \frac{(2 \pi)^{3}}{v_{0}} \frac{1}{2 M} \exp (-2 W) \sum_{s} \sum_{\tau} \frac{\left(\kappa \cdot e_{s}\right)^{2}}{\omega_{s}}\left\langle n_{s}+1\right\rangle\\
+&\times \delta\left(\omega-\omega_{s}\right) \delta(\kappa-q-\tau) .
+\end{aligned}</script><p>一个是包含$\left\langle n_{s}\right\rangle$的部分</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+&\left(\frac{d^{2} \sigma}{d \Omega d E^{\prime}}\right)_{c o h-1}\\
+&=\frac{\sigma_{\mathrm{coh}}}{4 \pi} \frac{k^{\prime}}{k} \frac{(2 \pi)^{3}}{v_{0}} \frac{1}{2 M} \exp (-2 W) \sum_{s} \sum_{\tau} \frac{\left(\kappa \cdot e_{s}\right)^{2}}{\omega_{s}}\left\langle n_{s}\right\rangle\\
+&\times \delta\left(\omega+\omega_{s}\right) \delta(\kappa+q-\tau) .
+\end{aligned}</script><p>对于第一项，当满足条件</p>
+<script type="math/tex; mode=display">
+\omega=\omega_{s}, \quad k=\tau+q</script><p>发生散射，在这个过程中，中子动量会产生一个声子。一部分中子动能转化为一个声子的能量。这个过程被称为<strong>声子激发</strong>。<br>对于$\omega$的定义，第一个条件可以写为</p>
+<script type="math/tex; mode=display">
+E-E^{\prime}=\frac{\hbar^{2}}{2 m}\left(k^{2}-k^{\prime 2}\right) =\hbar \omega=\hbar \omega_{s}</script><p>而第二个条件可以写为</p>
+<script type="math/tex; mode=display">
+k-k^{\prime}=\tau+q</script><p>同时对于第二项其条件可以写为</p>
+<script type="math/tex; mode=display">
+\begin{gathered}
+\frac{\hbar^{2}}{2 m}\left(k^{\prime 2}-k^{2}\right)=\hbar \omega_{s} \\
+\boldsymbol{k}-\boldsymbol{k}^{\prime}=\boldsymbol{\tau}-\boldsymbol{q}
+\end{gathered}</script><p>在这个过程中，中子动量湮灭一个声子。声子的能量转化为中子动能的增加。这个过程被称为<strong>声子吸收</strong>。</p>
+<p>对于非Bravais晶体，其计算同理。这里我们就给出声子激发时的散射截面</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\left(\frac{\mathrm{d}^{2} \boldsymbol{d}}{\mathrm{d} \Omega \mathrm{d} E^{\prime}}\right)_{\mathrm{coh}+1}=& \frac{k^{\prime}}{k} \frac{(2 \pi)^{3}}{2 v_{0}} \sum_{s} \sum_{\tau} \frac{1}{\omega_{s}}\left|\sum_{d} \frac{\overline{b_{d}}}{\sqrt{M_{d}}} \exp \left(-W_{d}\right) \exp (\mathrm{i} \boldsymbol{\kappa} . \boldsymbol{d})\left(\boldsymbol{\kappa}, \boldsymbol{e}_{d s}\right)\right|^{2} \\
+& \times\left\langle n_{s}+1\right\rangle \delta\left(\omega-\omega_{s}\right) \delta(\boldsymbol{\kappa}-\boldsymbol{q}-\boldsymbol{\tau})
+\end{aligned}</script><h2 id="声子色散关系的测量"><a href="#声子色散关系的测量" class="headerlink" title="声子色散关系的测量"></a>声子色散关系的测量</h2><p>为了测量晶体中的声子散射谱，我们假设如下实验。我们允许一束单色中子照射在一个单晶上，并测量中子在一个固定方向上的速度分布。这个实验很简单，可以在<em>飞行时间仪器</em>上完成。考虑倒数空间中的测量（如下图）矢量$\boldsymbol{k}$(图中的AO)相对于晶体的倒晶格是<strong>固定</strong>的。由于散射角$\theta$是固定的，矢量$\boldsymbol{k}^{\prime}$位于直线AD上。散射中子的速度与$\boldsymbol{k}^{\prime}$成正比。所以根据散射中子的速度来分析，相当于测量截面作为$\boldsymbol{k}^{\prime}$的函数。<br>![[Pasted image 20220425191705.png]]<br>考虑声子吸收的过程。要获得相干单声子散射，必须满足</p>
+<script type="math/tex; mode=display">
+\begin{gathered}
+\frac{\hbar^{2}}{2 m}\left(k^{\prime 2}-k^{2}\right)=\hbar \omega_{s} \\
+\boldsymbol{k}-\boldsymbol{k}^{\prime}=\boldsymbol{\tau}-\boldsymbol{q}
+\end{gathered}</script><p>假设我们选取$\boldsymbol{k}^{\prime}$的任意值，例如图中的AB。如果满足第二个条件，则将$\boldsymbol{q}$固定为向量TB。但在一般情况下，该波矢量的正模态的$\omega<em>{s}$值均不满足第一个条件。只有当$\boldsymbol{k}^{\prime}$(如图中AC)的某个离散值时，两个条件都满足，才会发生相干单声子散射。<br>![[Pasted image 20220425193159.png]]<br>上图显示了从色散关系得到这些$\boldsymbol{k}^{\prime}$值的图形结构。由于$\boldsymbol{k}$是固定的，满足第一个条件所需的$\omega</em>{s}$的值是$\boldsymbol{k}^{\prime}$(图中曲线1)的二次函数。如果第二条件也要满足，则$\boldsymbol{k}^{\prime}$的每个值将会固定$\boldsymbol{q}$的值，因此我们可以将离散关系绘制为$\boldsymbol{k}^{\prime}$的函数。如图所示，当曲线1与其中一条色散曲线相交时，两个条件均满足都满足。曲线2表示声子激发过程的$\omega<em>{s}$随$\boldsymbol{k}^{\prime}$的变化曲线，与上面同理只有一些离散的点上才同时满足散射条件。<br>当$\boldsymbol{k}$和晶体方向保持不变时，满足单声子散射一组条件的$\boldsymbol{k}^{\prime}$值定义了就所谓的散射面。如图所示，就是铝的一组理论色散关系计算得到的声子谱<br>![[Pasted image 20220426111851.png]]<br>但在实验上，我们是逆向进行的。当$\boldsymbol{k}$、晶体取向和散射角度固定时，我们测量$\boldsymbol{k}^{\prime}$的值，在$\boldsymbol{k}^{\prime}$处出现相干单声子峰。然后得到具体声子的$\omega</em>{s}$与$q$，通过改变$\boldsymbol{k}$的取值，我们可以得到一系列$\omega_{s}$与$q$的值，进而得到声子谱。</p>
+<h1 id="多声子过程的相干散射"><a href="#多声子过程的相干散射" class="headerlink" title="多声子过程的相干散射"></a>多声子过程的相干散射</h1><p>通过对单声子过程的类推，我们可以得到多声子过程的散射条件，如下就给出了双声子过程的散射条件</p>
+<script type="math/tex; mode=display">
+\begin{gathered}
+\frac{\hbar^{2}}{2 m}\left(k^{2}-k^{\prime 2}\right)=\hbar\left(\pm \omega_{s_{1}} \pm \omega_{s_{2}}\right) \\
+\boldsymbol{k}-\boldsymbol{k}^{\prime}=\boldsymbol{\tau} \pm \boldsymbol{q}_{1} \pm \boldsymbol{q}_{2}
+\end{gathered}</script><p>在单声子过程中，我们看到当$\boldsymbol{k}$、散射角和晶体方向固定时，散射只在$\boldsymbol{k}^{\prime}$的离散值上发生。然而，在双声子过程中，如果我们在一定范围内选取任意的$\boldsymbol{k}^{\prime}$，总能找到两种简并模的组合，使其$q$与$\omega_{s}$值满足散射条件。所以双声子散射不会在像单声子过程那样在散射中子的速度谱上出现峰值。它给出了一个连续谱；换句话说，它增加了背景。这是很好的，因为它使我们能够分离一声子散射和二声子散射的影响。对于较高声子过程，其分析过程同双声子，都只是给出了背景。</p>
+<h1 id="非相干散射"><a href="#非相干散射" class="headerlink" title="非相干散射"></a>非相干散射</h1><p>我们在非相干散射的散射截面中带入$R<em>{l}(t)=l+u</em>{l}(t)$</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+&\sum_{l} \int_{\langle}\left\langle\exp \left\{-\mathrm{i} \boldsymbol{\kappa} \cdot \boldsymbol{R}_{l}(0)\right\} \exp \left\{\mathrm{i} \boldsymbol{\kappa} \cdot \boldsymbol{R}_{l}(t)\right\}\right\rangle \exp (-\mathrm{i} \omega t) \mathrm{d} t \\
+&\quad=N \int\left\langle\exp \left\{-\mathrm{i} \boldsymbol{\kappa} \cdot \boldsymbol{u}_{0}(0)\right\} \exp \left\{\mathrm{i} \boldsymbol{\kappa} \cdot \boldsymbol{u}_{0}(t)\right\}\right\rangle \exp (-\mathrm{i} \omega t) \mathrm{d} t \\
+&\quad=N \int\left\langle\exp U \exp V_{0}\right\rangle \exp (-\mathrm{i} \omega t) \mathrm{d} t
+\end{aligned}</script><p>其中</p>
+<script type="math/tex; mode=display">
+U=-\mathrm{i} \boldsymbol{\kappa} \cdot \boldsymbol{u}_{0}(0) \quad  \quad V_{0}=\mathrm{i} \boldsymbol{\kappa} \cdot \boldsymbol{u}_{0}(t)</script><p>正如我们在[[A-专业知识/中子散射圣经/中子散射圣经（3）——晶格中的中子散射#计算 $\langle exp boldsymbol U exp V \rangle$]]计算的那样</p>
+<script type="math/tex; mode=display">
+\left\langle\exp U \exp V_{0}\right\rangle=\exp \left\langle U^{2}\right\rangle \exp \left\langle U V_{0}\right\rangle</script><p>由此非相干散射的散射截面为</p>
+<script type="math/tex; mode=display">
+\left(\frac{\mathrm{d}^{2} \sigma}{\mathrm{d} \Omega \mathrm{d} E^{\prime}}\right)_{\mathrm{inc}}=\frac{\sigma_{\mathrm{inc}}}{4 \pi} \frac{k^{\prime}}{k} \frac{N}{2 \pi \hbar} \exp \left\langle U^{2}\right\rangle \int \exp \left\langle U V_{0}\right\rangle \exp (-\mathrm{i} \omega t) \mathrm{d} t</script><p>对于指数项$\exp \left\langle U V_{0}\right\rangle$的处理也同之前才相干散射中处理的那样，将其展开，会得到p-声子过程。</p>
+<ul>
+<li>与之前相干散射计算相同，弹性非相干散射截面为<script type="math/tex; mode=display">
+\left(\frac{\mathrm{d} \sigma}{\mathrm{d} \Omega}\right)_{\text {inc el }}=\frac{\sigma_{\text {inc }}}{4 \pi} N \exp (-2 W)</script>这里需要注意的是，在低温下Debye-Waller因子近似于1个单位。由此弹性非相干散射几乎是<strong>各向同性的</strong>。</li>
+<li>对于单声子过程</li>
+</ul>
+<script type="math/tex; mode=display">
+\left\langle U V_{0}\right\rangle=\frac{\hbar}{2 M N} \sum_{s}\left(\boldsymbol{\kappa} \cdot e_{s}\right)^{2} \frac{1}{\omega_{s}}\left\{\left\langle n_{s}+1\right\rangle \exp \left(\mathrm{i} \omega_{s} t\right)+\left\langle n_{s}\right\rangle \exp \left(-\mathrm{i} \omega_{s} t\right)\right\}</script><script type="math/tex; mode=display">
+\begin{aligned}
+\left(\frac{\mathrm{d}^{2} \sigma}{\mathrm{d} \Omega \mathrm{d} E^{\prime}}\right)_{\text {inc } 1 \mathrm{ph}}=\frac{\sigma_{\mathrm{inc}}}{4 \pi} \frac{k^{\prime}}{k} \frac{1}{2 M} \exp (-2 W) \sum_{s} \frac{\left(\kappa \cdot e_{s}\right)^{2}}{\omega_{s}} \\
+ \times\left\{\left\langle n_{s}+1\right\rangle \delta\left(\omega-\omega_{s}\right)+\left\langle n_{s}\right\rangle \delta\left(\omega+\omega_{s}\right)\right\}
+\end{aligned}</script><p>花括号中的第一项对应声子发射，第二项对应声子吸收。对于单声子过程，其散射截面表达式中只有关于能量的$\delta$函数项——e.g.$\delta\left(\omega-\omega_{s}\right)$。由此其发生散射的条件为：</p>
+<script type="math/tex; mode=display">
+\omega=\omega_{s} \quad \text { or } \quad \frac{\hbar^{2}}{2 m}\left(k^{2}-k^{\prime 2}\right)=\hbar \omega_{s}</script><p>这也意味着非相干单声子散射的散射谱为一个连续谱，而不会出现相干散射中的Bragg峰。其散射截面只与声子密度$Z(\omega)$有关，即</p>
+<script type="math/tex; mode=display">
+\left(\frac{\mathrm{d}^{2} \sigma}{\mathrm{d} \Omega \mathrm{d} E^{\prime}}\right)_{\mathrm{inc}+1}=\frac{\sigma_{\mathrm{inc}}}{4 \pi} \frac{k^{\prime}}{k} \frac{3 N}{2 M} \exp (-2 W) \frac{\left\langle\left(\kappa \cdot e_{s}\right)^{2}\right\rangle_{\mathrm{av}}}{\omega} Z(\omega)\langle n+1\rangle</script><p>对于立方晶体其平均值$\left\langle\left(\kappa \cdot e<em>{s}\right)^{2}\right\rangle</em>{\mathrm{av}}=\frac{1}{3} \kappa^{2}$，同时$\langle n+1\rangle=\frac{1}{2}\left{\operatorname{coth}\left(\frac{1}{2} \hbar \omega \beta\right)+1\right}$，由此</p>
+<script type="math/tex; mode=display">
+\left(\frac{\mathrm{d}^{2} \sigma}{\mathrm{d} \Omega \mathrm{d} E^{\prime}}\right)_{\mathrm{inc} \pm 1}=\frac{\sigma_{\mathrm{inc}}}{4 \pi} \frac{k^{\prime}}{k} \frac{N}{4 M} k^{2} \exp (-2 W) \frac{Z(\omega)}{\omega}\left\{\operatorname{coth}\left(\frac{1}{2} \hbar \omega \beta\right) \pm 1\right\}</script><p>由此我们可以通过测量非相干关于能量$\boldsymbol{E}^{\prime}$的函数，进而得到声子密度的函数。</p>
+<ul>
+<li>对于多声子过程，其和单声子过程一样都是连续谱。对于其的分辨是较为困难的。</li>
+</ul>
+<p>对于non-Bravais的晶体，这里直接给出结论：</p>
+<ul>
+<li>对于弹性非相干散射<script type="math/tex; mode=display">
+\left(\frac{\mathrm{d} \sigma}{\mathrm{d} \Omega}\right)_{\text {inc el }}=N \sum_{d}\left\{\overline{b_{d}^{2}}-\left(\bar{b}_{d}\right)^{2}\right\} \exp \left(-2 W_{d}\right)</script></li>
+<li>对于单声子过程非相干散射<script type="math/tex; mode=display">
+\begin{aligned}
+\left(\frac{\mathrm{d}^{2} \sigma}{\mathrm{d} \Omega \mathrm{d} E^{\prime}}\right)_{\text {inc }+1}=\frac{k^{\prime}}{k} \sum_{d} & \frac{1}{2 M_{d}}\left\{\overline{b_{d}^{2}}-\left(\bar{b}_{d}\right)^{2}\right\} \exp \left(-2 W_{d}\right) \\
+& \times \sum_{s} \frac{\left|\kappa \cdot e_{d s}\right|^{2}}{\omega_{s}}\left\langle n_{s}+1\right\rangle \delta\left(\omega-\omega_{s}\right) .
+\end{aligned}</script></li>
+</ul>
+<h1 id="多声子过程计算散射截面的近似方法"><a href="#多声子过程计算散射截面的近似方法" class="headerlink" title="多声子过程计算散射截面的近似方法"></a>多声子过程计算散射截面的近似方法</h1><p>我们已经看到，<strong>单声子散射截面</strong>的测量提供了一些有用的信息。如，从相干单声子散射可以得到色散关系；从非相干单声子散射我们可以确定态的声子密度。<strong>多声子过程</strong>一般不提供有用的信息。它们只是增加了背景散射。<br>但是我们有时需要估计它们的横截面，即使只是为了减去它们对总散射的贡献。然而这种估算并不是简单的。首先，随着入射中子能量$E$的增加和晶体温度$T$的增加，声子膨胀的收敛性逐渐变差。第二，随着散射过程中声子数量的增加，截面，特别是相干截面的计算变得越来越困难。为了克服这些困难，人们设计了几种近似方法。我们这里将介绍其中两个。</p>
+<h2 id="非相干近似"><a href="#非相干近似" class="headerlink" title="非相干近似"></a>非相干近似</h2><p>我们先在这里写下多声子过程的散射截面，分为相干散射与非相干散射：</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+&\left(\frac{\mathrm{d}^{2} \sigma}{\mathrm{d} \Omega \mathrm{d} E^{\prime}}\right)_{\mathrm{coh} p}=\sigma_{\mathrm{coh}} F_{\mathrm{coh} p} \\
+&\left(\frac{\mathrm{d}^{2} \sigma}{\mathrm{d} \Omega \mathrm{d} E^{\prime}}\right)_{\mathrm{inc} p}=\sigma_{\mathrm{inc}} F_{\mathrm{inc} p}
+\end{aligned}</script><p>而非相干近似的主要观点就是，对于$p \geqslant 2$的多声子过程，其</p>
+<script type="math/tex; mode=display">
+F_{\operatorname{coh} p}=F_{\text {inc } p}</script><p>非相干近似的理由是，对于包含两个或两个以上声子的过程，相干散射和非相干散射的截面都是散射能量、入射能量和散射角的平滑函数。因此，相干截面上的干涉项$l \neq l^{\prime}$在很大程度上会相互抵消。由此对于多声子的相干与非相干散射，其主要组成就是非相干的项。<br>这个近似的好处就是，对于非相干项$F_{\text {inc } p}$的计算会比相干项简单很多。</p>
+<h2 id="质量扩张"><a href="#质量扩张" class="headerlink" title="质量扩张"></a>质量扩张</h2><p>Placzek（1954）</p>
+
+            </article>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+              </div>
+              
+                <p class="note note-warning">本博客所有文章除特别声明外，大部分都是我整理前人的工作或学习笔记 ，使用与转载需说明</p>
+              
+              
+                <div class="post-prevnext row">
+                  <div class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/05/07/NS_bible/%E4%B8%AD%E5%AD%90%E6%95%A3%E5%B0%84%E5%9C%A3%E7%BB%8F%E2%80%94%E2%80%94%E9%99%84%E5%BD%95/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">NS_bible/中子散射圣经——附录</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </div>
+                  <div class="post-next col-6">
+                    
+                    
+                      <a href="/2022/05/07/NS_bible/%E4%B8%AD%E5%AD%90%E6%95%A3%E5%B0%84%E5%9C%A3%E7%BB%8F%EF%BC%882%EF%BC%89%E2%80%94%E2%80%94%E4%BB%8E0%E5%BC%80%E5%A7%8B%E7%9A%84%E4%B8%AD%E5%AD%90%E6%95%A3%E5%B0%84%E5%9F%BA%E7%A1%80%E7%90%86%E8%AE%BA%E6%8E%A8%E5%AF%BC/">
+                        <span class="hidden-mobile">NS_bible/中子散射圣经（2）——从0开始的中子散射基础理论推导</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </div>
+                </div>
+              
+            </div>
+
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div id="tocbot"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+  </main>
+
+  
+    <a id="scroll-top-button" href="#" role="button">
+      <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+    </a>
+  
+
+  
+    <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+
+  
+
+  
+
+  <footer class="text-center mt-5 py-3">
+   
+  <!-- 添加网站运行时间 -->
+  <div class="footer-content">
+    <div>
+      <span id="timeDate">载入天数...</span>
+      <span id="times">载入时分秒...</span>
+      <script>
+      var now = new Date();
+      function createtime(){
+          var grt= new Date("05/20/2020 00:00:00");//此处修改你的建站时间或者网站上线时间
+          now.setTime(now.getTime()+250);
+          days = (now - grt ) / 1000 / 60 / 60 / 24;
+          dnum = Math.floor(days);
+          hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum);
+          hnum = Math.floor(hours);
+          if(String(hnum).length ==1 ){
+              hnum = "0" + hnum;
+          }
+          minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+          mnum = Math.floor(minutes);
+          if(String(mnum).length ==1 ){
+                    mnum = "0" + mnum;
+          }
+          seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+          snum = Math.round(seconds);
+          if(String(snum).length ==1 ){
+                    snum = "0" + snum;
+          }
+          document.getElementById("timeDate").innerHTML = "🚀 &nbsp"+dnum+"&nbsp天";  //此次自定义显示内容
+          document.getElementById("times").innerHTML = hnum + "&nbsp小时&nbsp" + mnum + "&nbsp分&nbsp" + snum + "&nbsp秒";
+      }  //此次自定义显示内容
+      setInterval("createtime()",250);
+      </script>
+    </div>
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script  src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js" ></script>
+<script  src="https://cdn.staticfile.org/twitter-bootstrap/4.4.1/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/main.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
+
+
+
+  <script defer src="https://cdn.staticfile.org/clipboard.js/2.0.6/clipboard.min.js" ></script>
+  <script  src="/js/clipboard-use.js" ></script>
+
+
+
+
+
+
+
+  <script  src="https://cdn.staticfile.org/tocbot/4.11.1/tocbot.min.js" ></script>
+  <script>
+    $(document).ready(function () {
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+
+      tocbot.init({
+        tocSelector: '#tocbot',
+        contentSelector: 'article.markdown-body',
+        headingSelector: 'h1,h2,h3,h4,h5,h6',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        collapseDepth: 0,
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/typed.js/2.0.11/typed.min.js" ></script>
+  <script>
+    var typed = new Typed('#subtitle', {
+      strings: [
+        '  ',
+        "NS_bible/中子散射圣经（3）——晶格中的中子散射&nbsp;",
+      ],
+      cursorChar: "_",
+      typeSpeed: 70,
+      loop: false,
+    });
+    typed.stop();
+    $(document).ready(function () {
+      $(".typed-cursor").addClass("h2");
+      typed.start();
+    });
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/anchor-js/4.2.2/anchor.min.js" ></script>
+  <script>
+    anchors.options = {
+      placement: "right",
+      visible: "hover",
+      
+    };
+    var el = "h1,h2,h3,h4,h5,h6".split(",");
+    var res = [];
+    for (item of el) {
+      res.push(".markdown-body > " + item)
+    }
+    anchors.add(res.join(", "))
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    var path = "/local-search.xml";
+    var inputArea = document.querySelector("#local-search-input");
+    inputArea.onclick = function () {
+      searchFunc(path, 'local-search-input', 'local-search-result');
+      this.onclick = null
+    }
+  </script>
+
+
+
+  <script  src="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.staticfile.org/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+  <script>
+    $('#post img:not(.no-zoom img, img[no-zoom]), img[zoom]').each(
+      function () {
+        var element = document.createElement('a');
+        $(element).attr('data-fancybox', 'images');
+        $(element).attr('href', $(this).attr('src'));
+        $(this).wrap(element);
+      }
+    );
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+</body>
+</html>
