@@ -153,7 +153,7 @@
               
   <div class="mt-3 post-meta">
     <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-    <time datetime="2020-05-30 01:00">
+    <time datetime="2020-05-30 00:00">
       May 30, 2020 am
     </time>
   </div>
@@ -228,7 +228,7 @@
 <p>本质上还是解schrodinger方程$H(t)|n(t)\rangle= E_{n}(t)|n(t)\rangle$</p>
 <p>尝试运用近似————将方程中的t看成参数。</p>
 <p>对一个例子：对长度随时间变化的无限深势阱</p>
-<script type="math/tex; mode=display">H(t)=\left\{\begin{array}{cc}{+\infty} & {x>L(t)} \\ {0} & {x \in[0, L(t)]} \\ {+\infty} & {x<0}\end{array}\right.</script><p><img src="/img_QM2/1.png" srcset="/img/loading.gif" lazyload alt="势能如图"><br>则此时</p>
+<script type="math/tex; mode=display">H(t)=\left\{\begin{array}{cc}{+\infty} & {x>L(t)} \\ {0} & {x \in[0, L(t)]} \\ {+\infty} & {x<0}\end{array}\right.</script><p><img src="/img_QM2/1.png" srcset="/child/img/loading.gif" alt="势能如图"><br>则此时</p>
 <script type="math/tex; mode=display">E_{n}(t)=\frac{n^{2} h^{2}}{8 m L^{2} C t}</script><p>但是这肯定是无意义的，是可以自己计算的</p>
 <p>所以这个近似是错误的</p>
 <p>从数学上解释可以有。当随时间变化时，本征函数要满足正交归一化条件</p>
@@ -258,8 +258,8 @@
 <script type="math/tex; mode=display">i \hbar \sum_{n}\left\{\dot{a}_{n}(t) \exp \left[-\frac{i}{\hbar} \int_{0}^{t} E_{n}\left(t^{\prime}\right) d t\right]|n(t)\rangle\right.\left.+a_{n}(t) \exp \left[-\frac{i}{\hbar} \int_{0}^{t} E_{n}\left(t^{\prime}\right) d t^{\prime}\right] \frac{\partial}{\partial t}|n(t)\rangle\right\}=0</script><p>操作：同时左乘$\langle l(t) |$，其中l为n中的一个本征态（即$\langle l(t) | n \rangle = \delta_{l n}$）。有</p>
 <script type="math/tex; mode=display">i \hbar \left\{\dot{a}_{l} (t) \exp \left(-\frac{i}{\hbar} \int_{0}^{t} E_{l} (t^{\prime}) d t^{\prime}\right)\right\}+\sum_{n} a_{n}(t) \exp \left[-\frac{i}{\hbar} \int_{0}^{t} E_{n}\left(t^{\prime}\right) d t^{\prime}\right]\left\langle l(t)\left|\frac{\partial}{\partial t}\right| n(t)\right\rangle=0</script><p>则有</p>
 <script type="math/tex; mode=display">\dot{a}_{n}(t)=-\sum_{i \neq n} a_{l}(t) \exp \left(\frac{i}{\hbar} \int_{0}^{t}\left[E_{n}\left(t^{\prime}\right)-E_{l}\left(t^{\prime}\right)\right] d t^{\prime}\right)\langle n | \dot{l} \rangle -a_{n}(t)\langle n / \dot{l}\rangle</script><p>此时若令出态为$|\psi_0\rangle=|m_0\rangle$。则可以单独提出 $l=m$ 的一项，为</p>
-<script type="math/tex; mode=display">\dot{a}_{n}(t)= -a_{n}(t)\langle n / \dot{l}\rangle</script><script type="math/tex; mode=display">-a_{m}(t) \exp \left(\frac{i}{\hbar} \int_{0}^{t}\left[E_{n}\left(t^{\prime}\right)-E_{m}\left(t^{\prime}\right)\right] d t^{\prime}\right)\langle n | \dot{m} \rangle</script><script type="math/tex; mode=display">-\sum_{i \neq n or m} a_{l}(t) \exp \left(\frac{i}{\hbar} \int_{0}^{t}\left[E_{n}\left(t^{\prime}\right)-E_{l}\left(t^{\prime}\right)\right] d t^{\prime}\right)\langle n | \dot{l} \rangle</script><p>接下来做近似：对于这个近似我们希望可以使$\dot{a}_{n}(t)$很小，同时由$\sum_n \left|a_n (t)\right|^2 =1$<br>可知a（t）的图像为<br><img src="/img_QM2/2.png" srcset="/img/loading.gif" lazyload alt="势能如图"><br>我们可知，只需使$\langle n | \dot{m} \rangle$较小，既可以使a（t）小。具体逻辑链如图</p>
-<p><img src="/img_QM2/3.png" srcset="/img/loading.gif" lazyload alt="势能如图"><br>其中箭头代表可以推出，而1、2、3则为$\dot{a}_{n}(t)$中的分项。<br>对$\langle n | \dot{m} \rangle$做无量纲化，则可以得到大名鼎鼎的绝热近似。</p>
+<script type="math/tex; mode=display">\dot{a}_{n}(t)= -a_{n}(t)\langle n / \dot{l}\rangle</script><script type="math/tex; mode=display">-a_{m}(t) \exp \left(\frac{i}{\hbar} \int_{0}^{t}\left[E_{n}\left(t^{\prime}\right)-E_{m}\left(t^{\prime}\right)\right] d t^{\prime}\right)\langle n | \dot{m} \rangle</script><script type="math/tex; mode=display">-\sum_{i \neq n or m} a_{l}(t) \exp \left(\frac{i}{\hbar} \int_{0}^{t}\left[E_{n}\left(t^{\prime}\right)-E_{l}\left(t^{\prime}\right)\right] d t^{\prime}\right)\langle n | \dot{l} \rangle</script><p>接下来做近似：对于这个近似我们希望可以使$\dot{a}_{n}(t)$很小，同时由$\sum_n \left|a_n (t)\right|^2 =1$<br>可知a（t）的图像为<br><img src="/img_QM2/2.png" srcset="/child/img/loading.gif" alt="势能如图"><br>我们可知，只需使$\langle n | \dot{m} \rangle$较小，既可以使a（t）小。具体逻辑链如图</p>
+<p><img src="/img_QM2/3.png" srcset="/child/img/loading.gif" alt="势能如图"><br>其中箭头代表可以推出，而1、2、3则为$\dot{a}_{n}(t)$中的分项。<br>对$\langle n | \dot{m} \rangle$做无量纲化，则可以得到大名鼎鼎的绝热近似。</p>
 <script type="math/tex; mode=display">\left |\frac{\langle n | \dot{m}\rangle}{\left(E_{m}-E_{n}\right)\hbar}\right | <<1</script><p>对于任意$n \neq m$都成立<br>接下来会给出绝热近似的另一种表述以及更深一步的讨论：</p>
 <p>绝热近似也可以理解为$\dot{H}(t)$为小量，即：</p>
 <script type="math/tex; mode=display">\left|\frac{\hbar \langle m|\dot{n}\rangle}{E_{n}-E_{m}}\right|=\frac{\hbar\langle m|\dot{H}| n\rangle}{\left(E_{n}-E_{m}\right)^{2}}<<1</script><p>证明如下：</p>
@@ -286,7 +286,7 @@
 <script type="math/tex; mode=display">\gamma_{n}(t)= i \int_{0}^{t}\left\langle\psi\left(t^{\prime}\right) | \dot{\psi} \left(t^{\prime}\right)\right\rangle d t^{\prime}</script><script type="math/tex; mode=display">= i \int_{0}^{t}\left[\cos \frac{\theta}{2}, \sin \frac{\theta}{2} e^{-2 i w_{0} t^{\prime}}\right]\left[\begin{array}{c}{0} \\ {-2 i w_{0} \sin \frac{\theta}{2} e^{-2 i w_{0} t^{\prime}}}\end{array}\right] \quad d t^{\prime}</script><script type="math/tex; mode=display">=-2 i \int_{0}^{t} i w_{0} \sin \frac{\theta}{2} d t^{\prime}</script><script type="math/tex; mode=display">=2 w_{0} t \sin ^{2}\left(\frac{\theta}{2}\right)</script><p>则态函数可表示为</p>
 <script type="math/tex; mode=display">|\psi(t)\rangle= \exp [i \gamma(t)] \exp \left[-\frac{i}{\hbar} \int_{0}^{t} d t^{\prime} E_{-}\left(t^{\prime}\right)\right] |\psi_{-} (t)\rangle</script><script type="math/tex; mode=display">= \exp \left[i 2 w_{0} t \sin ^{2} \frac{\theta}{2}\right]\exp \left[-\frac{i}{\pi} \mu_{B} \sqrt{B_{0}^{2}+B_{1}^{2}} T\right] |\psi_{-} (t)\rangle</script><p>其中$T=\frac{\pi}{w_{0}}$为周期。</p>
 <h1 id="Effective-fields-near-degenenacy（简并）-point"><a href="#Effective-fields-near-degenenacy（简并）-point" class="headerlink" title="Effective fields near degenenacy（简并） point"></a>Effective fields near degenenacy（简并） point</h1><p>我们可以考虑另一种Barry phase的表示形式：</p>
-<script type="math/tex; mode=display">\gamma_{n}(c)=\oint_{c}  i\left\langle n\left(\vec{R}\right) | \nabla_{\vec{R}} n_{(\vec{R})}\right\rangle \cdot d \vec{R}</script><p><img src="/img_QM2/4.png" srcset="/img/loading.gif" lazyload alt="势能如图"><br>接下来先证明$\gamma_n (c)$为实数。<br>即，</p>
+<script type="math/tex; mode=display">\gamma_{n}(c)=\oint_{c}  i\left\langle n\left(\vec{R}\right) | \nabla_{\vec{R}} n_{(\vec{R})}\right\rangle \cdot d \vec{R}</script><p><img src="/img_QM2/4.png" srcset="/child/img/loading.gif" alt="势能如图"><br>接下来先证明$\gamma_n (c)$为实数。<br>即，</p>
 <script type="math/tex; mode=display">\langle n(\vec{R}) | \nabla_{\vec{R}} n_{(\vec{R})}\rangle</script><p>为虚数<br>$\Longrightarrow$  由$\nabla_R \cdot\langle n(\vec{R}) | n(\vec{R})\rangle= 0$，其中$\langle n(\vec{R}) | n(\vec{R})\rangle=1$<br>展开有$0=\langle\nabla_R n(\vec{R}) | n(\vec{R})\rangle + \langle n(\vec{R}) | \nabla_R n(\vec{R})\rangle=(\langle n(\vec{R}) | \nabla_R n(\vec{R})\rangle)^*+\langle n(\vec{R}) | \nabla_R n(\vec{R})\rangle$</p>
 <p>由此可知$\langle n(\vec{R}) | \nabla_R n(\vec{R})\rangle$为虚数，则$\gamma_n (c)$为实数。</p>
 <p>接下来我们将$\gamma_n (c)$改写$\Longrightarrow$ $\gamma_n (c)=-{Im}\left[\oint_c \left\langle n(\vec{R}) | \nabla_R  n(\vec{k})\right\rangle \cdot d \vec{R}\right]$<br>我们令$-{A_n}(\vec{R})   = i \langle n(\vec{R}) | \nabla_R n(\vec{R})\rangle$则有</p>
@@ -304,7 +304,7 @@
 <script type="math/tex; mode=display">\left\langle m\left|\nabla_R H\right| n\right\rangle+\left\langle m\left|H \nabla_{R}^{}\right| n\right\rangle=\left\langle m\left|\nabla_R E_n \right| n\right\rangle+\left\langle m\left|E_n \nabla_R \right| n\right\rangle</script><p>其中</p>
 <script type="math/tex; mode=display">\left\langle m\left|H \nabla_{R}\right| n\right\rangle=E_{n}\left\langle m\left|\nabla_{\vec{R}}\right| n\right\rangle</script><p>而</p>
 <script type="math/tex; mode=display">\langle m|\nabla_R E_n| n\rangle=\nabla_{\vec{R}} E_n \langle m | n\rangle=0</script><p>由此可以证明</p>
-<p>接着我们来讨论一下这个问题下的能级问题，即当$E_n$与$E_m$相邻很近时，如图所示<br><img src="/img_QM2/5.png" srcset="/img/loading.gif" lazyload alt="势能如图"><br>其中$*$点代表我们讨论的点，$\cdot$代表$E_n=E_m$时的简并点</p>
+<p>接着我们来讨论一下这个问题下的能级问题，即当$E_n$与$E_m$相邻很近时，如图所示<br><img src="/img_QM2/5.png" srcset="/child/img/loading.gif" alt="势能如图"><br>其中$*$点代表我们讨论的点，$\cdot$代表$E_n=E_m$时的简并点</p>
 <p>此时我们有：$E_n=E_m$</p>
 <script type="math/tex; mode=display">\begin{aligned}&H(\vec{R}^*)|m(\vec{R}^{*})\rangle=E_{m}(\vec{R}^{*})|m(\vec{R}^{*})\rangle\\&H(\vec{R}^{*})|n(\vec{R}^{*})\rangle=E_{n}(\vec{R}^{*})|n(\vec{R}^{*})\rangle\end{aligned}</script><p>我们简化符号：$|n\rangle-&gt; |+\rangle\quad| m\rangle -&gt; |-\rangle$。则磁场B为</p>
 <script type="math/tex; mode=display">\vec{B}_{n}(\vec{R})=I m  \frac{\langle +(\vec{R})|\nabla_{R} H| -(\vec{R})\rangle \times \langle -(\vec{R})|\nabla_{\vec{R}} H| +(R)\rangle.}{[E_{+}(\vec{R})-E_{-}(\vec{R})]^{2}}</script><p>哈密顿量的本征值也简并为</p>
@@ -319,7 +319,7 @@
 <script type="math/tex; mode=display">\left\{\begin{array}{l}B_{+ x}=Im\left[  \frac{\langle+|\sigma_{y}|-\rangle \times \langle-|\sigma_{z}|+\rangle}{2 R^{2}} \right]=0 \\B_{+ y}=Im\left[  \frac{\langle+|\sigma_{z}|-\rangle \times \langle-|\sigma_{x}|+\rangle}{2 R^{2}} \right]=0 \\B_{+ z}=Im\left[  \frac{\langle+|\sigma_{x}|-\rangle \times \langle-|\sigma_{y}|+\rangle}{2 R^{2}} \right]=\frac{1}{2 R^{2}}\end{array}\right.</script><p>即，磁极单子</p>
 <script type="math/tex; mode=display">\vec{B}_+ (\vec{R})=\frac{\vec{R}}{2 R^3 }</script><p>由此</p>
 <script type="math/tex; mode=display">\gamma_+ (c)=-\gamma_{-}(c)=-\iint_{S}[\vec{B}_{+}(\vec{R})] \cdot d \vec{S}=-\iint_{S}[\frac{\vec{R}}{2 R^{3}}] \cdot d \vec{S}=-\frac{1}{2} \Omega(c)</script><p>可以用立体角来表示磁通，如图所示</p>
-<p><img src="/img_QM2/6.png" srcset="/img/loading.gif" lazyload alt="势能如图"></p>
+<p><img src="/img_QM2/6.png" srcset="/child/img/loading.gif" alt="势能如图"></p>
 <p>即磁通对应闭合曲线C在R空间中的立体角</p>
 <h1 id="Aharanov-Anandan-Phases"><a href="#Aharanov-Anandan-Phases" class="headerlink" title="Aharanov-Anandan Phases"></a>Aharanov-Anandan Phases</h1><p>当态随着时间周期性演化时：</p>
 <script type="math/tex; mode=display">|\psi(T)\rangle=\exp \left[i \gamma_{n}(T)\right] \exp \left[i \alpha_{n}(T)\right] | \psi(0)\rangle</script><p>其中T为周期，</p>
@@ -350,10 +350,10 @@
 <ul>
 <li>$H_{0}(t)\stackrel{+\vec{A}}{\longrightarrow}H(t)$：当我们给哈密顿量加上随时间变换是矢势时有<script type="math/tex; mode=display">\psi(\vec{r}, t)=\psi_{0}(\vec{r}, t) e^{-i \frac{q}{c}\int_{\vec{r}_{0}}^{\vec{r}} \vec{A}(\vec{r}^{\prime}) d \vec{r}^{\prime}}</script> 接下来我们来证明一下这个式子<br> $\Longrightarrow$ <script type="math/tex; mode=display">\begin{aligned}\vec{p} e^{-i \frac{s}{\hbar}} &=e^{-i \frac{s}{\hbar}}(-i \hbar) \nabla\left(-i \frac{s}{\hbar}\right) \\&=\exp \left(-i \frac{s}{\hbar}\right)(-)\left(-\frac{\hbar}{c}\right) \nabla \int^{\vec{r}}_{\vec{r}_{0}} \vec{A}(\vec{r}^{\prime}) d \vec{r} ^{\prime}\\ &=\exp \left(-i \frac{s}{\hbar}\right) \frac{q}{c} \vec{A}(\vec{r})\end{aligned}</script> 由此<script type="math/tex; mode=display">\left[\vec{p}-\frac{q}{c} \vec{A}(r)\right] f(\vec{r}, t) e^{-i  S / \hbar}=</script><script type="math/tex; mode=display">[\vec{p} f(\vec{r}, t)] e^{-i {S}/{\hbar}}+f(\vec{r}, t)\left(\vec{p} e^{-i S / \hbar}\right)-\frac{q}{c} \vec{A} (\vec{r})  f(\vec{r}, t) e^{-i S / \hbar}=(\vec{p} f(\vec{r}, t)) e^{-i S / \hbar}</script> 因此有<script type="math/tex; mode=display">\frac{1}{2 m}\left[\vec{p}-\frac{q}{c} \vec{A}(\vec{r})\right]^{2} \psi_{0}(\vec{r}, t) e^{-i S/ \hbar}=\frac{1}{2 m}\left[p^{2} \psi_{0}(\vec{r}, t)\right] e^{-i S / \hbar}</script> 带入到方程中可以验证得到<br>综上所述，在H随时间变化的一般情况下我们有<script type="math/tex; mode=display">H(t) \sim \psi(\vec{r}, t)=\psi_{0}(\vec{v}, t) e^{-i S / \hbar}</script>其中<script type="math/tex; mode=display">S(\vec{r}, t)={- \frac{q}{c}\int_{\vec{r}_{0}}^{\vec{r}} \vec{A}(\vec{r}^{\prime}) d \vec{r}^{\prime}}+\int_{t_{0}}^{t} V\left(t^{\prime}\right) d t^{\prime}</script></li>
 </ul>
-<h1 id="AB-effect-1959"><a href="#AB-effect-1959" class="headerlink" title="AB effect(1959)"></a>AB effect(1959)</h1><p>如图<br><img src="/img_QM2/7.png" srcset="/img/loading.gif" lazyload alt="势能如图"></p>
+<h1 id="AB-effect-1959"><a href="#AB-effect-1959" class="headerlink" title="AB effect(1959)"></a>AB effect(1959)</h1><p>如图<br><img src="/img_QM2/7.png" srcset="/child/img/loading.gif" alt="势能如图"></p>
 <script type="math/tex; mode=display">\int_{\vec{r}_{0}}^{\vec{r}} d \vec{r}^{\prime} \vec{A}\left(\vec{r}^{\prime}\right)+\int_{\vec{r}}^{\vec{r}_0} d \vec{r}^{\prime} \vec{A}\left(\vec{r}^{\prime}\right)=\oint d r^{\prime} \vec{A}\left(\vec{r}^{\prime}\right)=\iint_S d s^{\prime} \vec{B}\left(\vec{r}^{\prime}\right)={\Phi}</script><p>其中$\Phi$为磁通，当$\Phi\ne 0$时</p>
 <script type="math/tex; mode=display">\int_{\vec{r}_{0}}^{\vec{r}} d \vec{r}^{\prime} \vec{A}(\vec{r}^{\prime}) \ne  \int_{\vec{r}}^{\vec{r}_0} d \vec{r}^{\prime} \vec{A}(\vec{r}^{\prime}</script><p>这一条式子是可以实验测量得到的。其意义在于$\vec{A}(\vec{r})$在量子力学中是可以观测的！</p>
-<p>实验——<br><img src="/img_QM2/8.png" srcset="/img/loading.gif" lazyload alt="实验示意图"><br>实验使用中子束，这样中间的磁场不会对其波函数产生作用。</p>
+<p>实验——<br><img src="/img_QM2/8.png" srcset="/child/img/loading.gif" alt="实验示意图"><br>实验使用中子束，这样中间的磁场不会对其波函数产生作用。</p>
 <ul>
 <li><p>$B=0$<br> 初始波函数分为$\psi_0 (\vec{r}, t) \sim \psi_1 (\vec{r}, t)+\psi_2 (\vec{r}, t)$为相干的，此时他们只会分别沿着$p_1$与$p_2$走</p>
 <ul>
@@ -367,15 +367,15 @@
 <script type="math/tex; mode=display">|\psi(\vec{r}, t)|^{2}=\left|\psi_{1}\right|^{2}+\left|\psi_{2}\right|^{2}+2\left|\psi_{1}\psi_{2}\right| \cos \left[\varphi_{1}(\vec{r}, t)-\varphi_{2}(\vec{r},t)+\frac{q \Psi}{\hbar c}\right]</script><p> 其中$\varphi_1$与$\varphi_2$为初始相位<br> 此时我们测量粒子到达D点概率，可以发现一个相移，且这个相移的大小与中间的磁通量有关。</p>
 </li>
 </ul>
-<h1 id="Electric-potential-AB-effect"><a href="#Electric-potential-AB-effect" class="headerlink" title="Electric potential AB effect"></a>Electric potential AB effect</h1><p>上一节的实验验证了磁势A对态的影响，接下来验证V对态的影响就显得十分顺其自然了<br><img src="/img_QM2/9.png" srcset="/img/loading.gif" lazyload alt="实验示意图"><br>在改实验设想中</p>
+<h1 id="Electric-potential-AB-effect"><a href="#Electric-potential-AB-effect" class="headerlink" title="Electric potential AB effect"></a>Electric potential AB effect</h1><p>上一节的实验验证了磁势A对态的影响，接下来验证V对态的影响就显得十分顺其自然了<br><img src="/img_QM2/9.png" srcset="/child/img/loading.gif" alt="实验示意图"><br>在改实验设想中</p>
 <script type="math/tex; mode=display">\begin{aligned}\psi(\vec{r}, t) &=\psi_{1}(\vec{r}, t)+   \psi_{2}(\vec{r}, t)exp\left[i[(\int_{p_1}-\int_{p_2}) d t^{\prime} V(t^{\prime})]/\hbar\right]\\&=\psi_{1}(\vec{r}, t)+   \psi_{2}(\vec{r}, t)e^{-i \Delta V \tau /\hbar}\end{aligned}</script><p>其中</p>
 <script type="math/tex; mode=display">\int_{p_1}V\left(t^{\prime}\right) d t^{\prime}=V_2 \tau \qquad \int_{p_2}V\left(t^{\prime}\right) d t^{\prime}=V_2 \tau</script><p>$V_1$为$p_1$路径上的电压，$V_2$为$p_2$路径上的电压而$\tau$为粒子通过电压区域的时间。<br>同上节的讨论，我们测量粒子到达终点的概率时可以发现一个大小与$\Delta V$有关的相移。</p>
-<h1 id="Scalar-AB-experiment-1992"><a href="#Scalar-AB-experiment-1992" class="headerlink" title="Scalar AB experiment(1992)"></a>Scalar AB experiment(1992)</h1><p>上一节的实验在1992年实现了<br><img src="/img_QM2/10.png" srcset="/img/loading.gif" lazyload alt="实验示意图"><br>这个实验利用$V=-\vec{\mu} \vec{B}=-\mu_B \vec{\sigma}\vec{B}$来给粒子加上标势</p>
+<h1 id="Scalar-AB-experiment-1992"><a href="#Scalar-AB-experiment-1992" class="headerlink" title="Scalar AB experiment(1992)"></a>Scalar AB experiment(1992)</h1><p>上一节的实验在1992年实现了<br><img src="/img_QM2/10.png" srcset="/child/img/loading.gif" alt="实验示意图"><br>这个实验利用$V=-\vec{\mu} \vec{B}=-\mu_B \vec{\sigma}\vec{B}$来给粒子加上标势</p>
 <p>最终粒子概率的相位变化为</p>
 <script type="math/tex; mode=display">\Delta \phi=\Delta V \tau / \hbar=\frac{\sigma}{\hbar} \mu_B B \tau</script><p>其中$\sigma$为常数可以取$\pm 1$</p>
-<h1 id="Gravitationally-induced-phase-1975"><a href="#Gravitationally-induced-phase-1975" class="headerlink" title="Gravitationally induced phase(1975)"></a>Gravitationally induced phase(1975)</h1><p>不光是电势，引力势能也是标势，也有人用引力势来做了相关实验<br><img src="/img_QM2/11.png" srcset="/img/loading.gif" lazyload alt="实验示意图"><br>这个实验中势能的变化为</p>
-<script type="math/tex; mode=display">\Delta V=m g l_{2} \sin \alpha</script><p>其中$\alpha$为实验平面ABCD的仰角<br><img src="/img_QM2/12.png" srcset="/img/loading.gif" lazyload alt="实验示意图"><br>由此可知</p>
-<script type="math/tex; mode=display">\Delta \phi=\frac{\Delta V \cdot T}{\hbar}=\frac{m g l_{2} \sin \alpha T}{\hbar}</script><p><img src="/img_QM2/13.png" srcset="/img/loading.gif" lazyload alt="实验示意图"><br>最后可以发现随着$\alpha$的变化相移会震荡</p>
+<h1 id="Gravitationally-induced-phase-1975"><a href="#Gravitationally-induced-phase-1975" class="headerlink" title="Gravitationally induced phase(1975)"></a>Gravitationally induced phase(1975)</h1><p>不光是电势，引力势能也是标势，也有人用引力势来做了相关实验<br><img src="/img_QM2/11.png" srcset="/child/img/loading.gif" alt="实验示意图"><br>这个实验中势能的变化为</p>
+<script type="math/tex; mode=display">\Delta V=m g l_{2} \sin \alpha</script><p>其中$\alpha$为实验平面ABCD的仰角<br><img src="/img_QM2/12.png" srcset="/child/img/loading.gif" alt="实验示意图"><br>由此可知</p>
+<script type="math/tex; mode=display">\Delta \phi=\frac{\Delta V \cdot T}{\hbar}=\frac{m g l_{2} \sin \alpha T}{\hbar}</script><p><img src="/img_QM2/13.png" srcset="/child/img/loading.gif" alt="实验示意图"><br>最后可以发现随着$\alpha$的变化相移会震荡</p>
 
             </article>
             <hr>

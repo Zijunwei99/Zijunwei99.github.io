@@ -153,7 +153,7 @@
               
   <div class="mt-3 post-meta">
     <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-    <time datetime="2020-11-11 01:00">
+    <time datetime="2020-11-11 00:00">
       November 11, 2020 am
     </time>
   </div>
@@ -174,7 +174,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      34
+      35
        minutes
     </span>
   
@@ -237,8 +237,56 @@ H_{JC} = \omega_{r}(a^{\dagger}a+\frac{1}{2})+\frac{\omega_q}{2}\sigma_z + g(a^{
     \cdots & \cdots & \cdots & \cdots & \cdots & \cdots & \cdots & \cdots \\
     |g\rangle|N\rangle & H & H & H & H & \cdots & H & H \\
     |e\rangle|N\rangle & H & H & H & H & \cdots & H & H
-    \end{array}\right)</script><p>可以使用matlab中kron函数，或qutip中qt.tensor函数构造出$a<em>{+}$、$a$与$\sigma</em>{z}$的扩展形式。进而直接表示出H。<br>通过matlab可以写出单光场下的哈密顿量。<br><figure class="highlight plain"><figcaption><span>[ H0,H1 ] </span></figcaption><table><tr><td class="gutter"><div class="code-wrapper"><div class="hljs"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></div></div></td><td class="code"><div class="hljs"><pre><code class="hljs function">%set hamitonian,and out put H,H0,H1<br>%w0:原子;w:光场<br>%assume h&#x3D;1<br>%set up for adag a sz sp(+)and sm(-)<br>adag&#x3D;upor(N);<br>a&#x3D;lowor(N);<br>In&#x3D;eye(N);<br>I2&#x3D;eye(2);<br>sm &#x3D; [0 1;0 0 ];%sigma-<br>sp &#x3D; [0 0;1 0 ];%sigma+<br>sz &#x3D; [-1 0;0 1];<br>%expand<br>sm1 &#x3D; kron(In,sm);<br>sp1 &#x3D;kron(In,sp);<br>sz1&#x3D;kron(In,sz);<br>adag1&#x3D;kron(adag,I2);<br>a1&#x3D;kron(a,I2);<br>H0&#x3D;w0*sz1+w*(adag1*a1);<br>H1&#x3D;l*(adag1*sm1+a1*sp1);<br>end<br></code></pre></div></td></tr></table></figure><br>在给定参数（cavity frequency1：$w1 = 1.0  \times 2  \times \pi$，atom frequency：$w0 = 1.0   \times 2  \times \pi$，耦合参数为$g=1$的情况下可以计算出单光场的哈密顿量。<br><img src="/img_qe/1.png" srcset="/img/loading.gif" lazyload alt=""><br>由图可以看出H是分块对角的，这就引出下面一种定义哈密顿量的方法。</p>
-<h4 id="使用qutip包来定义哈密顿量"><a href="#使用qutip包来定义哈密顿量" class="headerlink" title="使用qutip包来定义哈密顿量"></a>使用qutip包来定义哈密顿量</h4><figure class="highlight plain"><figcaption><span>inline</span></figcaption><table><tr><td class="gutter"><div class="hljs"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></div></td><td class="code"><div class="hljs"><pre><code class="hljs %matplotlib">import qutip as qt<br>import numpy as np<br>import matplotlib.pyplot as plt<br>from mpl_toolkits.mplot3d import Axes3D<br>g_state &#x3D; qt.basis(2,0)<br>e_state &#x3D; qt.basis(2,1)<br>sz &#x3D; qt.sigmaz()<br>sm &#x3D; qt.destroy(2)<br>sp &#x3D; sm.dag()<br>I_atom &#x3D; qt.qeye(2)<br>#define the operator of the atom(single Hilbert space)<br>Dimension_of_cavity &#x3D; 15<br>a1 &#x3D; qt.destroy(Dimension_of_cavity)<br>adag1 &#x3D; a1.dag()<br>vac &#x3D; qt.basis(Dimension_of_cavity,0)<br>I_cav &#x3D; qt.qeye(Dimension_of_cavity)<br>#define the operator of the cavity<br>g_vac &#x3D; qt.tensor(vac,g_state)<br>sz &#x3D; qt.tensor(I_cav,sz1)<br>sm &#x3D; qt.tensor(I_cav,sm1)<br>sp &#x3D; sm.dag()<br>a &#x3D; qt.tensor(a1,I_atom)<br>adag &#x3D; qt.tensor(adag1,I_atom)<br>#define the full operator by tensor product<br>wc &#x3D; 1.0  * 2 * np.pi  # cavity frequency<br>wa &#x3D; 1.0  * 2 * np.pi  # atom frequency<br>H0 &#x3D; wc * adag * a + wa*sz<br>H1 &#x3D; adag * sm + a * sp<br>H&#x3D;H1+0.01*H0<br>H<br></code></pre></div></td></tr></table></figure>
+    \end{array}\right)</script><p>可以使用matlab中kron函数，或qutip中qt.tensor函数构造出$a<em>{+}$、$a$与$\sigma</em>{z}$的扩展形式。进而直接表示出H。<br>通过matlab可以写出单光场下的哈密顿量。<br><div class="hljs"><pre><code class="hljs function">%set hamitonian,and out put H,H0,H1
+%w0:原子;w:光场
+%assume h&#x3D;1
+%set up for adag a sz sp(+)and sm(-)
+adag&#x3D;upor(N);
+a&#x3D;lowor(N);
+In&#x3D;eye(N);
+I2&#x3D;eye(2);
+sm &#x3D; [0 1;0 0 ];%sigma-
+sp &#x3D; [0 0;1 0 ];%sigma+
+sz &#x3D; [-1 0;0 1];
+%expand
+sm1 &#x3D; kron(In,sm);
+sp1 &#x3D;kron(In,sp);
+sz1&#x3D;kron(In,sz);
+adag1&#x3D;kron(adag,I2);
+a1&#x3D;kron(a,I2);
+H0&#x3D;w0*sz1+w*(adag1*a1);
+H1&#x3D;l*(adag1*sm1+a1*sp1);
+end</code></pre></div><br>在给定参数（cavity frequency1：$w1 = 1.0  \times 2  \times \pi$，atom frequency：$w0 = 1.0   \times 2  \times \pi$，耦合参数为$g=1$的情况下可以计算出单光场的哈密顿量。<br><img src="/img_qe/1.png" srcset="/child/img/loading.gif" alt=""><br>由图可以看出H是分块对角的，这就引出下面一种定义哈密顿量的方法。</p>
+<h4 id="使用qutip包来定义哈密顿量"><a href="#使用qutip包来定义哈密顿量" class="headerlink" title="使用qutip包来定义哈密顿量"></a>使用qutip包来定义哈密顿量</h4><div class="hljs"><pre><code class="hljs %matplotlib">import qutip as qt
+import numpy as np
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
+g_state &#x3D; qt.basis(2,0)
+e_state &#x3D; qt.basis(2,1)
+sz &#x3D; qt.sigmaz()
+sm &#x3D; qt.destroy(2)
+sp &#x3D; sm.dag()
+I_atom &#x3D; qt.qeye(2)
+#define the operator of the atom(single Hilbert space)
+Dimension_of_cavity &#x3D; 15
+a1 &#x3D; qt.destroy(Dimension_of_cavity)
+adag1 &#x3D; a1.dag()
+vac &#x3D; qt.basis(Dimension_of_cavity,0)
+I_cav &#x3D; qt.qeye(Dimension_of_cavity)
+#define the operator of the cavity
+g_vac &#x3D; qt.tensor(vac,g_state)
+sz &#x3D; qt.tensor(I_cav,sz1)
+sm &#x3D; qt.tensor(I_cav,sm1)
+sp &#x3D; sm.dag()
+a &#x3D; qt.tensor(a1,I_atom)
+adag &#x3D; qt.tensor(adag1,I_atom)
+#define the full operator by tensor product
+wc &#x3D; 1.0  * 2 * np.pi  # cavity frequency
+wa &#x3D; 1.0  * 2 * np.pi  # atom frequency
+H0 &#x3D; wc * adag * a + wa*sz
+H1 &#x3D; adag * sm + a * sp
+H&#x3D;H1+0.01*H0
+H</code></pre></div>
 <h3 id="另一种构造哈密顿量"><a href="#另一种构造哈密顿量" class="headerlink" title="另一种构造哈密顿量"></a>另一种构造哈密顿量</h3><p>当我们规定$|g\rangle$对应的粒子数为0，$|e\rangle$定义的粒子数为1，$|N\rangle$定义的粒子数为N时可以发现在H的分块对角矩阵中的粒子数是相等的，也就意味粒子数为一个守恒量。我们可以通过计算某一粒子数下的哈密顿量，即每一个小分块中的矩阵来构造哈密顿量。即：在总粒子数为N时</p>
 <script type="math/tex; mode=display">
     \left.\begin{array}{l{ccccccc}}
@@ -252,7 +300,22 @@ H_{JC} = \omega_{r}(a^{\dagger}a+\frac{1}{2})+\frac{\omega_q}{2}\sigma_z + g(a^{
     & |e\rangle|N-1\rangle & |g\rangle|N\rangle \\
     |e\rangle|N-1\rangle & \omega_{r} N-{\omega_q} & g\sqrt{N} \\
     |g\rangle|N\rangle & g\sqrt{N} & \omega_{r} N+{\omega_q}
-    \end{array}\right)</script><p>当参数与上面相同时，使用matlab计算这种构造的哈密顿量<br><figure class="highlight plain"><figcaption><span>[ H ] </span></figcaption><table><tr><td class="gutter"><div class="hljs"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></div></td><td class="code"><div class="hljs"><pre><code class="hljs function">%其中：N ——总粒子数；w0 ——原子的振动频率；w1 ——第一个光场的振动频率<br>%H 的排列顺序为：|g&gt;|n&gt;,|e&gt;|n-1&gt;<br>if class(g) &#x3D;&#x3D; &#39;double&#39; <br>    g&#x3D;g*eye(2);<br>end<br>%g 为耦合系数，可以是double 类型，也可以是行向量类型<br>H0 &#x3D;zeros(2);<br>H1 &#x3D; zeros(2);<br>H0(2,2)&#x3D;w1*N-w0;<br>H0(1,1)&#x3D;w1*(N-1)+w0;<br>H1(1,2)&#x3D;g(1)*sqrt(N);<br>H1(2,1)&#x3D;g(2)*sqrt(N);<br>H&#x3D;H0+H1;<br>if N&#x3D;&#x3D;0<br>    H&#x3D;H(1,1);<br>end<br></code></pre></div></td></tr></table></figure></p>
+    \end{array}\right)</script><p>当参数与上面相同时，使用matlab计算这种构造的哈密顿量<br><div class="hljs"><pre><code class="hljs function">%其中：N ——总粒子数；w0 ——原子的振动频率；w1 ——第一个光场的振动频率
+%H 的排列顺序为：|g&gt;|n&gt;,|e&gt;|n-1&gt;
+if class(g) &#x3D;&#x3D; &#39;double&#39; 
+    g&#x3D;g*eye(2);
+end
+%g 为耦合系数，可以是double 类型，也可以是行向量类型
+H0 &#x3D;zeros(2);
+H1 &#x3D; zeros(2);
+H0(2,2)&#x3D;w1*N-w0;
+H0(1,1)&#x3D;w1*(N-1)+w0;
+H1(1,2)&#x3D;g(1)*sqrt(N);
+H1(2,1)&#x3D;g(2)*sqrt(N);
+H&#x3D;H0+H1;
+if N&#x3D;&#x3D;0
+    H&#x3D;H(1,1);
+end</code></pre></div></p>
 <h4 id="计算结果"><a href="#计算结果" class="headerlink" title="计算结果"></a>计算结果</h4><p>当N=3时：</p>
 <script type="math/tex; mode=display">
     \begin{array}{|l|l|}
@@ -284,13 +347,43 @@ H_{JC} = \omega_{r}(a^{\dagger}a+\frac{1}{2})+\frac{\omega_q}{2}\sigma_z + g(a^{
     &=\left[1-i E_i t+\frac{1}{2 !}(-i E_{i} t)^{2}+\cdots+\frac{1}{n !}\left(-i E_i t \right)^{n}+\cdots\right] |\phi_{i} \rangle\\
     &=e^{-i E_i t}| \phi_{i} \rangle
     \end{aligned}</script><p>因此可得</p>
-<script type="math/tex; mode=display">U=\left\langle\phi_{i} | e^{- i E_{i} t} | \phi_{i}\right\rangle</script><p>由此我们得到了与H对应的时间演化算符。之后若要计算某一时间系统态的演化只需要将U作用在初始态上即可。按照这个思路我们可以写出对应的matlab代码<br><figure class="highlight plain"><figcaption><span>all %set h</span></figcaption><table><tr><td class="gutter"><div class="hljs"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></div></td><td class="code"><div class="hljs"><pre><code class="hljs clear">%设定参数<br>N&#x3D;1;<br>w1 &#x3D; 1.0  * 2 * pi;  % cavity frequency1<br>w0 &#x3D; 1.0  * 2 * pi ; % atom frequency<br>g&#x3D;[1 1]* pi;<br>%构造H,并特征值分解H<br>H &#x3D; oneh(N, w0, w1, g);<br>[U,V]&#x3D; eig(H); %U represent eigvector; V represent eigvalue<br>%set initial state<br>t&#x3D;0;<br>phy_t0&#x3D;zeros(2,1);<br>phy_t0(1)&#x3D;1;<br>%save the wight of the initial state<br>wight_2&#x3D;zeros(1000,1);<br>for n&#x3D;1:1000<br>    t&#x3D;t+0.0025;<br>    E_evolution&#x3D;zeros(size(H));<br>    for j&#x3D;1:2<br>        E_evolution(j,j)&#x3D;exp(-1i*V(j,j)*t);<br>    end<br>    U_evolution&#x3D;U*E_evolution&#x2F;U;<br>    %U_evolution&#x3D;U*E_evolution&#x2F;U;%也可以，原因：U为幺正算符<br>    phy_t&#x3D;U_evolution*phy_t0;<br>%     phy_wight&#x3D; phy_t.* conj(phy_t);<br>    wight_2(n)&#x3D;phy_t&#39;*[-1 0;0 1]*phy_t;<br>%     plot(t,phy_wight(2),&#39;*&#39;);<br>%     hold on<br>end<br>% hold off<br>t&#x3D;0.0025*(1:1000);<br>plot(t,wight_2,&#39;*-&#39;)<br></code></pre></div></td></tr></table></figure></p>
+<script type="math/tex; mode=display">U=\left\langle\phi_{i} | e^{- i E_{i} t} | \phi_{i}\right\rangle</script><p>由此我们得到了与H对应的时间演化算符。之后若要计算某一时间系统态的演化只需要将U作用在初始态上即可。按照这个思路我们可以写出对应的matlab代码<br><div class="hljs"><pre><code class="hljs clear">%设定参数
+N&#x3D;1;
+w1 &#x3D; 1.0  * 2 * pi;  % cavity frequency1
+w0 &#x3D; 1.0  * 2 * pi ; % atom frequency
+g&#x3D;[1 1]* pi;
+%构造H,并特征值分解H
+H &#x3D; oneh(N, w0, w1, g);
+[U,V]&#x3D; eig(H); %U represent eigvector; V represent eigvalue
+%set initial state
+t&#x3D;0;
+phy_t0&#x3D;zeros(2,1);
+phy_t0(1)&#x3D;1;
+%save the wight of the initial state
+wight_2&#x3D;zeros(1000,1);
+for n&#x3D;1:1000
+    t&#x3D;t+0.0025;
+    E_evolution&#x3D;zeros(size(H));
+    for j&#x3D;1:2
+        E_evolution(j,j)&#x3D;exp(-1i*V(j,j)*t);
+    end
+    U_evolution&#x3D;U*E_evolution&#x2F;U;
+    %U_evolution&#x3D;U*E_evolution&#x2F;U;%也可以，原因：U为幺正算符
+    phy_t&#x3D;U_evolution*phy_t0;
+%     phy_wight&#x3D; phy_t.* conj(phy_t);
+    wight_2(n)&#x3D;phy_t&#39;*[-1 0;0 1]*phy_t;
+%     plot(t,phy_wight(2),&#39;*&#39;);
+%     hold on
+end
+% hold off
+t&#x3D;0.0025*(1:1000);
+plot(t,wight_2,&#39;*-&#39;)</code></pre></div></p>
 <h4 id="结果展示"><a href="#结果展示" class="headerlink" title="结果展示"></a>结果展示</h4><p>参数：cavity frequency1：$w1 = 1.0  \times 2 \times \pi$，atom frequency：$w0 = 1.0  \times 2 \times \pi$，耦合参数为$g=1$</p>
 <ol>
 <li>总粒子数N=5时，初始态为$|e\rangle|4\rangle$<center>
  <img style="border-radius: 0.3125em;
  box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
- src="/img_qe/2.png" srcset="/img/loading.gif" lazyload>
+ src="/img_qe/2.png" srcset="/child/img/loading.gif">
  <br>
  <div style="color:orange; border-bottom: 1px solid #d9d9d9;
  display: inline-block;
@@ -300,7 +393,7 @@ H_{JC} = \omega_{r}(a^{\dagger}a+\frac{1}{2})+\frac{\omega_q}{2}\sigma_z + g(a^{
 <li>总粒子数N=3时，初始态为$|g\rangle|2\rangle$<center>
  <img style="border-radius: 0.3125em;
  box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
- src="/img_qe/3.png" srcset="/img/loading.gif" lazyload>
+ src="/img_qe/3.png" srcset="/child/img/loading.gif">
  <br>
  <div style="color:orange; border-bottom: 1px solid #d9d9d9;
  display: inline-block;
@@ -310,11 +403,28 @@ H_{JC} = \omega_{r}(a^{\dagger}a+\frac{1}{2})+\frac{\omega_q}{2}\sigma_z + g(a^{
 
 </li>
 </ol>
-<h4 id="使用qutip做的一些尝试"><a href="#使用qutip做的一些尝试" class="headerlink" title="使用qutip做的一些尝试"></a>使用qutip做的一些尝试</h4><p>使用qutip中的mcsolve可以解时间演化问题，不妨将其作为验证。<br><figure class="highlight angelscript"><table><tr><td class="gutter"><div class="hljs"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></div></td><td class="code"><div class="hljs"><pre><code class="hljs angelscript"><span class="hljs-keyword">import</span> matplotlib.pyplot as plt<br><span class="hljs-keyword">import</span> numpy as np<br><span class="hljs-keyword">from</span> qutip <span class="hljs-keyword">import</span> *<br>step = <span class="hljs-number">1001</span><br>x = np.<span class="hljs-built_in">array</span>([[<span class="hljs-number">18.8495559215388</span>,<span class="hljs-number">1.73205080756888</span>],<br>[<span class="hljs-number">1.73205080756888</span>,<span class="hljs-number">12.5663706143592</span>]])<br>H=Qobj(x)<br>psi0 = Qobj(np.<span class="hljs-built_in">array</span>([[<span class="hljs-number">1</span>],[<span class="hljs-number">0</span>]]))<br>t_list = np.linspace(<span class="hljs-number">0</span>,<span class="hljs-number">10.0</span>,step)<br>sm=Qobj(np.<span class="hljs-built_in">array</span>([[<span class="hljs-number">-1</span>,<span class="hljs-number">0</span>],[<span class="hljs-number">0</span>,<span class="hljs-number">1</span>]]))<br>result0 = mcsolve(H,psi0,t_list,[],[sm])<br>n_a_0 = result0.expect[<span class="hljs-number">0</span>]<br>fig,axes = plt.subplots(<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,figsize = (<span class="hljs-number">10</span>,<span class="hljs-number">6</span>))<br>axes.plot(t_list,n_a_0,label = <span class="hljs-string">'Atom'</span>)<br>axes.legend(loc = <span class="hljs-string">'best'</span>)<br>axes.set_xlabel(<span class="hljs-string">'Time'</span>)<br>axes.set_ylabel(<span class="hljs-string">'Occupation probability'</span>)<br>axes.set_title(<span class="hljs-string">'Vacuum Rabi oscillations'</span>)<br></code></pre></div></td></tr></table></figure><br>计算结果为</p>
+<h4 id="使用qutip做的一些尝试"><a href="#使用qutip做的一些尝试" class="headerlink" title="使用qutip做的一些尝试"></a>使用qutip做的一些尝试</h4><p>使用qutip中的mcsolve可以解时间演化问题，不妨将其作为验证。<br><div class="hljs"><pre><code class="hljs angelscript"><span class="hljs-keyword">import</span> matplotlib.pyplot as plt
+<span class="hljs-keyword">import</span> numpy as np
+<span class="hljs-keyword">from</span> qutip <span class="hljs-keyword">import</span> *
+step = <span class="hljs-number">1001</span>
+x = np.<span class="hljs-built_in">array</span>([[<span class="hljs-number">18.8495559215388</span>,<span class="hljs-number">1.73205080756888</span>],
+[<span class="hljs-number">1.73205080756888</span>,<span class="hljs-number">12.5663706143592</span>]])
+H=Qobj(x)
+psi0 = Qobj(np.<span class="hljs-built_in">array</span>([[<span class="hljs-number">1</span>],[<span class="hljs-number">0</span>]]))
+t_list = np.linspace(<span class="hljs-number">0</span>,<span class="hljs-number">10.0</span>,step)
+sm=Qobj(np.<span class="hljs-built_in">array</span>([[<span class="hljs-number">-1</span>,<span class="hljs-number">0</span>],[<span class="hljs-number">0</span>,<span class="hljs-number">1</span>]]))
+result0 = mcsolve(H,psi0,t_list,[],[sm])
+n_a_0 = result0.expect[<span class="hljs-number">0</span>]
+fig,axes = plt.subplots(<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,figsize = (<span class="hljs-number">10</span>,<span class="hljs-number">6</span>))
+axes.plot(t_list,n_a_0,label = <span class="hljs-string">'Atom'</span>)
+axes.legend(loc = <span class="hljs-string">'best'</span>)
+axes.set_xlabel(<span class="hljs-string">'Time'</span>)
+axes.set_ylabel(<span class="hljs-string">'Occupation probability'</span>)
+axes.set_title(<span class="hljs-string">'Vacuum Rabi oscillations'</span>)</code></pre></div><br>计算结果为</p>
 <p><center>
     <img style="border-radius: 0.3125em;
     box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
-    src="/img_qe/11.png" srcset="/img/loading.gif" lazyload>
+    src="/img_qe/11.png" srcset="/child/img/loading.gif">
     <br>
     <div style="color:orange; border-bottom: 1px solid #d9d9d9;
     display: inline-block;
@@ -347,7 +457,36 @@ H_{JC} = \omega_{r}(a^{\dagger}a+\frac{1}{2})+\frac{\omega_q}{2}\sigma_z + g(a^{
     a_{2}^{\dagger}\sigma_-|e\rangle| N_{1}\rangle |N_{2}\rangle= \sqrt{N_{2}+1}|g\rangle| N_{1}\rangle |N_{2}+1\rangle \\
     a{1} \sigma_+|g\rangle| N_{1}\rangle |N_{2}\rangle= \sqrt{N_{1}}|e\rangle| N_{1}-1\rangle |N_{2}\rangle \\
     a{2} \sigma_+|g\rangle |N_{1}\rangle | N_{2}\rangle=\sqrt{N_{2}}|g\rangle| N_{1}\rangle |N_{2}-1\rangle
-\end{array}</script><p>这是一些非对角元上的元素。<br>我们通过matlab来实现这一点<br><figure class="highlight matlab"><table><tr><td class="gutter"><div class="hljs"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></div></td><td class="code"><div class="hljs"><pre><code class="hljs matlab"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">[ H ]</span> = <span class="hljs-title">doubleh</span><span class="hljs-params">( N, w0, w1, w2, g)</span></span><br>    <span class="hljs-comment">%其中：N ——总粒子数；w0 ——原子的振动频率；</span><br>    <span class="hljs-comment">%w1 ——第一个光场的振动频率；w2 ——第二个光场的振动频率</span><br>    <span class="hljs-keyword">if</span> class(g) == <span class="hljs-string">'double'</span> <br>        g=g*<span class="hljs-built_in">eye</span>(<span class="hljs-number">4</span>);<br>    <span class="hljs-keyword">end</span><br>    <span class="hljs-comment">%g 为耦合系数，可以是double 类型，也可以是行向量类型</span><br>    H0 =<span class="hljs-built_in">eye</span>(<span class="hljs-number">2</span>*N+<span class="hljs-number">1</span>);<br>    H1 = <span class="hljs-built_in">eye</span>(<span class="hljs-number">2</span>*N+<span class="hljs-number">1</span>);<br>    <span class="hljs-keyword">for</span> <span class="hljs-built_in">i</span>=<span class="hljs-number">1</span>:N+<span class="hljs-number">1</span><br>        H0(<span class="hljs-built_in">i</span>,<span class="hljs-built_in">i</span>) = w1*(<span class="hljs-built_in">i</span><span class="hljs-number">-1</span>)+w2*(N-<span class="hljs-built_in">i</span>+<span class="hljs-number">1</span>)-w0;<br>    <span class="hljs-keyword">end</span> <br>    <span class="hljs-keyword">for</span> <span class="hljs-built_in">i</span>=N+<span class="hljs-number">2</span>:<span class="hljs-number">2</span>*N+<span class="hljs-number">1</span><br>        H0(<span class="hljs-built_in">i</span>,<span class="hljs-built_in">i</span>) = w2*(<span class="hljs-number">2</span>*N+<span class="hljs-number">1</span>-<span class="hljs-built_in">i</span>)+w1*(<span class="hljs-built_in">i</span>-N<span class="hljs-number">-2</span>)+w0;<br>    <span class="hljs-keyword">end</span><br><br>    <span class="hljs-keyword">for</span> <span class="hljs-built_in">i</span>=<span class="hljs-number">0</span>:N<span class="hljs-number">-1</span><br>        H1( <span class="hljs-built_in">i</span>+N+<span class="hljs-number">2</span>, <span class="hljs-built_in">i</span>+<span class="hljs-number">1</span> )=g(<span class="hljs-number">4</span>)*<span class="hljs-built_in">sqrt</span>(N-<span class="hljs-built_in">i</span>);<br>    <span class="hljs-keyword">end</span><br>    <span class="hljs-keyword">for</span> <span class="hljs-built_in">i</span>=<span class="hljs-number">1</span>:N<br>        H1( <span class="hljs-built_in">i</span>+N+<span class="hljs-number">1</span>, <span class="hljs-built_in">i</span>+<span class="hljs-number">1</span> )=g(<span class="hljs-number">3</span>)*<span class="hljs-built_in">sqrt</span>(<span class="hljs-built_in">i</span>);<br>    <span class="hljs-keyword">end</span><br>    <span class="hljs-keyword">for</span> <span class="hljs-built_in">i</span>=<span class="hljs-number">0</span>:N<span class="hljs-number">-1</span><br>        H1( <span class="hljs-built_in">i</span>+<span class="hljs-number">2</span>, <span class="hljs-built_in">i</span>+N+<span class="hljs-number">2</span> )=g(<span class="hljs-number">1</span>)*<span class="hljs-built_in">sqrt</span>(<span class="hljs-built_in">i</span>+<span class="hljs-number">1</span>);<br>    <span class="hljs-keyword">end</span><br>    <span class="hljs-keyword">for</span> <span class="hljs-built_in">i</span>=<span class="hljs-number">1</span>:N<br>        H1( <span class="hljs-built_in">i</span>, <span class="hljs-built_in">i</span>+N+<span class="hljs-number">1</span> )=g(<span class="hljs-number">2</span>)*<span class="hljs-built_in">sqrt</span>(N-<span class="hljs-built_in">i</span>+<span class="hljs-number">1</span>);<br>    <span class="hljs-keyword">end</span><br>    H=H1+H0;<br>    <span class="hljs-keyword">end</span><br></code></pre></div></td></tr></table></figure></p>
+\end{array}</script><p>这是一些非对角元上的元素。<br>我们通过matlab来实现这一点<br><div class="hljs"><pre><code class="hljs matlab"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">[ H ]</span> = <span class="hljs-title">doubleh</span><span class="hljs-params">( N, w0, w1, w2, g)</span></span>
+    <span class="hljs-comment">%其中：N ——总粒子数；w0 ——原子的振动频率；</span>
+    <span class="hljs-comment">%w1 ——第一个光场的振动频率；w2 ——第二个光场的振动频率</span>
+    <span class="hljs-keyword">if</span> class(g) == <span class="hljs-string">'double'</span> 
+        g=g*<span class="hljs-built_in">eye</span>(<span class="hljs-number">4</span>);
+    <span class="hljs-keyword">end</span>
+    <span class="hljs-comment">%g 为耦合系数，可以是double 类型，也可以是行向量类型</span>
+    H0 =<span class="hljs-built_in">eye</span>(<span class="hljs-number">2</span>*N+<span class="hljs-number">1</span>);
+    H1 = <span class="hljs-built_in">eye</span>(<span class="hljs-number">2</span>*N+<span class="hljs-number">1</span>);
+    <span class="hljs-keyword">for</span> <span class="hljs-built_in">i</span>=<span class="hljs-number">1</span>:N+<span class="hljs-number">1</span>
+        H0(<span class="hljs-built_in">i</span>,<span class="hljs-built_in">i</span>) = w1*(<span class="hljs-built_in">i</span><span class="hljs-number">-1</span>)+w2*(N-<span class="hljs-built_in">i</span>+<span class="hljs-number">1</span>)-w0;
+    <span class="hljs-keyword">end</span> 
+    <span class="hljs-keyword">for</span> <span class="hljs-built_in">i</span>=N+<span class="hljs-number">2</span>:<span class="hljs-number">2</span>*N+<span class="hljs-number">1</span>
+        H0(<span class="hljs-built_in">i</span>,<span class="hljs-built_in">i</span>) = w2*(<span class="hljs-number">2</span>*N+<span class="hljs-number">1</span>-<span class="hljs-built_in">i</span>)+w1*(<span class="hljs-built_in">i</span>-N<span class="hljs-number">-2</span>)+w0;
+    <span class="hljs-keyword">end</span>
+
+    <span class="hljs-keyword">for</span> <span class="hljs-built_in">i</span>=<span class="hljs-number">0</span>:N<span class="hljs-number">-1</span>
+        H1( <span class="hljs-built_in">i</span>+N+<span class="hljs-number">2</span>, <span class="hljs-built_in">i</span>+<span class="hljs-number">1</span> )=g(<span class="hljs-number">4</span>)*<span class="hljs-built_in">sqrt</span>(N-<span class="hljs-built_in">i</span>);
+    <span class="hljs-keyword">end</span>
+    <span class="hljs-keyword">for</span> <span class="hljs-built_in">i</span>=<span class="hljs-number">1</span>:N
+        H1( <span class="hljs-built_in">i</span>+N+<span class="hljs-number">1</span>, <span class="hljs-built_in">i</span>+<span class="hljs-number">1</span> )=g(<span class="hljs-number">3</span>)*<span class="hljs-built_in">sqrt</span>(<span class="hljs-built_in">i</span>);
+    <span class="hljs-keyword">end</span>
+    <span class="hljs-keyword">for</span> <span class="hljs-built_in">i</span>=<span class="hljs-number">0</span>:N<span class="hljs-number">-1</span>
+        H1( <span class="hljs-built_in">i</span>+<span class="hljs-number">2</span>, <span class="hljs-built_in">i</span>+N+<span class="hljs-number">2</span> )=g(<span class="hljs-number">1</span>)*<span class="hljs-built_in">sqrt</span>(<span class="hljs-built_in">i</span>+<span class="hljs-number">1</span>);
+    <span class="hljs-keyword">end</span>
+    <span class="hljs-keyword">for</span> <span class="hljs-built_in">i</span>=<span class="hljs-number">1</span>:N
+        H1( <span class="hljs-built_in">i</span>, <span class="hljs-built_in">i</span>+N+<span class="hljs-number">1</span> )=g(<span class="hljs-number">2</span>)*<span class="hljs-built_in">sqrt</span>(N-<span class="hljs-built_in">i</span>+<span class="hljs-number">1</span>);
+    <span class="hljs-keyword">end</span>
+    H=H1+H0;
+    <span class="hljs-keyword">end</span></code></pre></div></p>
 <h4 id="计算结果-1"><a href="#计算结果-1" class="headerlink" title="计算结果"></a>计算结果</h4><p>参数：cavity frequency1——<script type="math/tex">w1 = 1.0 \times 2 \times \pi</script>，cavity frequency2——<script type="math/tex">w2 = 2.0  \times 2 \times \pi</script>， atom frequencyatom frequency——<script type="math/tex">w0 = 1.0  * 2 * pi</script> ，<br>耦合常熟<script type="math/tex">g=[1 \ 1\ 1\ 1]\times \pi</script></p>
 <ol>
 <li>当N=3时<script type="math/tex; mode=display">
@@ -361,15 +500,83 @@ H_{JC} = \omega_{r}(a^{\dagger}a+\frac{1}{2})+\frac{\omega_q}{2}\sigma_z + g(a^{
  \hline 0 & 0 & 3.149 & 5.44 & 0 & 0 & 19.80 \\
  \hline
  \end{array}</script></li>
-<li>当N=5时<br><img src="/img_qe/4.png" srcset="/img/loading.gif" lazyload alt=""></li>
+<li>当N=5时<br><img src="/img_qe/4.png" srcset="/child/img/loading.gif" alt=""></li>
 </ol>
-<h3 id="时间演化-1"><a href="#时间演化-1" class="headerlink" title="时间演化"></a>时间演化</h3><p>同上述讨论，可以直接写出双光场下的时间演化<br><figure class="highlight matlab"><table><tr><td class="gutter"><div class="hljs"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></div></td><td class="code"><div class="hljs"><pre><code class="hljs matlab"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">[ H ]</span> = <span class="hljs-title">doubleh</span><span class="hljs-params">( N, w0, w1, w2, g)</span></span><br>    clear all<br>    <span class="hljs-comment">%set h=0</span><br>    N=<span class="hljs-number">3</span>;<br>    w1 = <span class="hljs-number">1.0</span>  * <span class="hljs-number">2</span> * <span class="hljs-built_in">pi</span>;  <span class="hljs-comment">% cavity frequency1</span><br>    w2 = <span class="hljs-number">2.0</span>  * <span class="hljs-number">2</span> * <span class="hljs-built_in">pi</span>;  <span class="hljs-comment">% cavity frequency2</span><br>    w0 = <span class="hljs-number">1.0</span>  * <span class="hljs-number">2</span> * <span class="hljs-built_in">pi</span> ; <span class="hljs-comment">% atom frequency</span><br>    g=[<span class="hljs-number">1</span> <span class="hljs-number">1</span> <span class="hljs-number">1</span> <span class="hljs-number">1</span>]* <span class="hljs-built_in">pi</span>;<br>    H = doubleh(N, w0, w1, w2, g);<br>    [U,V]= eig(H); <br>    <span class="hljs-comment">%U represent eigvector; V represent eigvalue</span><br>    t=<span class="hljs-number">0</span>;<br>    phy_t0=<span class="hljs-built_in">zeros</span>(<span class="hljs-number">2</span>*N+<span class="hljs-number">1</span>,<span class="hljs-number">1</span>);<br>    <span class="hljs-comment">%set initial state</span><br>    phy_t0(<span class="hljs-number">1</span>)=<span class="hljs-number">1</span>;<br>    <span class="hljs-comment">%save the wight of the initial state</span><br>    wight_2=<span class="hljs-built_in">zeros</span>(<span class="hljs-number">100</span>,<span class="hljs-number">1</span>);<br><br>    <span class="hljs-comment">%creat the amtom operator</span><br>    sz_line=[-<span class="hljs-built_in">ones</span>(<span class="hljs-number">1</span>,N+<span class="hljs-number">1</span>),<span class="hljs-built_in">ones</span>(<span class="hljs-number">1</span>,N)];<br>    sz=<span class="hljs-built_in">diag</span>(sz_line);<br>    <span class="hljs-keyword">for</span> n=<span class="hljs-number">1</span>:<span class="hljs-number">1000</span><br>        t=t+<span class="hljs-number">0.01</span>;<br>        E_evolution=<span class="hljs-built_in">zeros</span>(<span class="hljs-built_in">size</span>(H));<br>        <span class="hljs-keyword">for</span> <span class="hljs-built_in">j</span>=<span class="hljs-number">1</span>:<span class="hljs-number">2</span>*N+<span class="hljs-number">1</span><br>            E_evolution(<span class="hljs-built_in">j</span>,<span class="hljs-built_in">j</span>)=<span class="hljs-built_in">exp</span>(<span class="hljs-number">-1</span><span class="hljs-built_in">i</span>*V(<span class="hljs-built_in">j</span>,<span class="hljs-built_in">j</span>)*t);<br>        <span class="hljs-keyword">end</span><br>        U_evolution=U*E_evolution/U;<br>        phy_t=U_evolution*phy_t0;<br>    <span class="hljs-comment">%     phy_wight= phy_t.* conj(phy_t);</span><br>    <span class="hljs-comment">%     wight_2(n)=phy_wight(2);</span><br>    <span class="hljs-comment">%     plot(t,phy_wight(2),'*');</span><br>    <span class="hljs-comment">%     hold on</span><br>        wight_2(n)=phy_t'*sz*phy_t;<br>    <span class="hljs-keyword">end</span><br>    <span class="hljs-comment">% hold off</span><br>    t=<span class="hljs-number">0.01</span>*(<span class="hljs-number">1</span>:<span class="hljs-number">1000</span>);<br>    <span class="hljs-built_in">plot</span>(t,wight_2)<br></code></pre></div></td></tr></table></figure></p>
+<h3 id="时间演化-1"><a href="#时间演化-1" class="headerlink" title="时间演化"></a>时间演化</h3><p>同上述讨论，可以直接写出双光场下的时间演化<br><div class="hljs"><pre><code class="hljs matlab"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">[ H ]</span> = <span class="hljs-title">doubleh</span><span class="hljs-params">( N, w0, w1, w2, g)</span></span>
+    clear all
+    <span class="hljs-comment">%set h=0</span>
+    N=<span class="hljs-number">3</span>;
+    w1 = <span class="hljs-number">1.0</span>  * <span class="hljs-number">2</span> * <span class="hljs-built_in">pi</span>;  <span class="hljs-comment">% cavity frequency1</span>
+    w2 = <span class="hljs-number">2.0</span>  * <span class="hljs-number">2</span> * <span class="hljs-built_in">pi</span>;  <span class="hljs-comment">% cavity frequency2</span>
+    w0 = <span class="hljs-number">1.0</span>  * <span class="hljs-number">2</span> * <span class="hljs-built_in">pi</span> ; <span class="hljs-comment">% atom frequency</span>
+    g=[<span class="hljs-number">1</span> <span class="hljs-number">1</span> <span class="hljs-number">1</span> <span class="hljs-number">1</span>]* <span class="hljs-built_in">pi</span>;
+    H = doubleh(N, w0, w1, w2, g);
+    [U,V]= eig(H); 
+    <span class="hljs-comment">%U represent eigvector; V represent eigvalue</span>
+    t=<span class="hljs-number">0</span>;
+    phy_t0=<span class="hljs-built_in">zeros</span>(<span class="hljs-number">2</span>*N+<span class="hljs-number">1</span>,<span class="hljs-number">1</span>);
+    <span class="hljs-comment">%set initial state</span>
+    phy_t0(<span class="hljs-number">1</span>)=<span class="hljs-number">1</span>;
+    <span class="hljs-comment">%save the wight of the initial state</span>
+    wight_2=<span class="hljs-built_in">zeros</span>(<span class="hljs-number">100</span>,<span class="hljs-number">1</span>);
+
+    <span class="hljs-comment">%creat the amtom operator</span>
+    sz_line=[-<span class="hljs-built_in">ones</span>(<span class="hljs-number">1</span>,N+<span class="hljs-number">1</span>),<span class="hljs-built_in">ones</span>(<span class="hljs-number">1</span>,N)];
+    sz=<span class="hljs-built_in">diag</span>(sz_line);
+    <span class="hljs-keyword">for</span> n=<span class="hljs-number">1</span>:<span class="hljs-number">1000</span>
+        t=t+<span class="hljs-number">0.01</span>;
+        E_evolution=<span class="hljs-built_in">zeros</span>(<span class="hljs-built_in">size</span>(H));
+        <span class="hljs-keyword">for</span> <span class="hljs-built_in">j</span>=<span class="hljs-number">1</span>:<span class="hljs-number">2</span>*N+<span class="hljs-number">1</span>
+            E_evolution(<span class="hljs-built_in">j</span>,<span class="hljs-built_in">j</span>)=<span class="hljs-built_in">exp</span>(<span class="hljs-number">-1</span><span class="hljs-built_in">i</span>*V(<span class="hljs-built_in">j</span>,<span class="hljs-built_in">j</span>)*t);
+        <span class="hljs-keyword">end</span>
+        U_evolution=U*E_evolution/U;
+        phy_t=U_evolution*phy_t0;
+    <span class="hljs-comment">%     phy_wight= phy_t.* conj(phy_t);</span>
+    <span class="hljs-comment">%     wight_2(n)=phy_wight(2);</span>
+    <span class="hljs-comment">%     plot(t,phy_wight(2),'*');</span>
+    <span class="hljs-comment">%     hold on</span>
+        wight_2(n)=phy_t'*sz*phy_t;
+    <span class="hljs-keyword">end</span>
+    <span class="hljs-comment">% hold off</span>
+    t=<span class="hljs-number">0.01</span>*(<span class="hljs-number">1</span>:<span class="hljs-number">1000</span>);
+    <span class="hljs-built_in">plot</span>(t,wight_2)</code></pre></div></p>
 <h4 id="结果展示-1"><a href="#结果展示-1" class="headerlink" title="结果展示"></a>结果展示</h4><p>同上节一样，计算原子的平均值。-1表示在<script type="math/tex">|g \rangle</script>态上，1表示在<script type="math/tex">|g \rangle</script>态上，图中纵坐标代表原子的平均值<br>参数：cavity frequency1——<script type="math/tex">w1 = 1.0\times 2\times \pi</script>，cavity frequency2——<script type="math/tex">w2 = 2.0  \times 2 \times \pi</script>， atom frequencyatom frequency——<script type="math/tex">w0 = 1.0 \times 2 \times pi</script>， 耦合常熟<script type="math/tex">g=[1\ 1\ 1\ 1]\times \pi</script></p>
 <ol>
-<li>当N=3时<br><img src="/img_qe/5.png" srcset="/img/loading.gif" lazyload alt=""><br><img src="/img_qe/6.png" srcset="/img/loading.gif" lazyload alt=""><br><img src="/img_qe/7.png" srcset="/img/loading.gif" lazyload alt=""></li>
-<li>当N=5时<br><img src="/img_qe/8.png" srcset="/img/loading.gif" lazyload alt=""><br><img src="/img_qe/9.png" srcset="/img/loading.gif" lazyload alt=""></li>
+<li>当N=3时<br><img src="/img_qe/5.png" srcset="/child/img/loading.gif" alt=""><br><img src="/img_qe/6.png" srcset="/child/img/loading.gif" alt=""><br><img src="/img_qe/7.png" srcset="/child/img/loading.gif" alt=""></li>
+<li>当N=5时<br><img src="/img_qe/8.png" srcset="/child/img/loading.gif" alt=""><br><img src="/img_qe/9.png" srcset="/child/img/loading.gif" alt=""></li>
 </ol>
-<h4 id="使用qutip经行验证"><a href="#使用qutip经行验证" class="headerlink" title="使用qutip经行验证"></a>使用qutip经行验证</h4><p>可以使用qutip包中mcsolve函数来计算生成的H的时间演化<br><figure class="highlight angelscript"><table><tr><td class="gutter"><div class="hljs"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></div></td><td class="code"><div class="hljs"><pre><code class="hljs angelscript">%reset<br>    %matplotlib inline<br>    <span class="hljs-keyword">import</span> matplotlib.pyplot as plt<br>    <span class="hljs-keyword">import</span> numpy as np<br>    <span class="hljs-keyword">from</span> qutip <span class="hljs-keyword">import</span> *<br>    x = np.<span class="hljs-built_in">array</span>([[<span class="hljs-number">32.4159265358979</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">5.44139809270265</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>],<br>    [<span class="hljs-number">0</span>,<span class="hljs-number">26.1327412287183</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">3.14159265358979</span>,<span class="hljs-number">4.44288293815837</span>,<span class="hljs-number">0</span>],<br>    [<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">19.8495559215388</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">4.44288293815837</span>,<span class="hljs-number">3.14159265358979</span>],<br>    [<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">13.5663706143592</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">5.44139809270265</span>],<br>    [<span class="hljs-number">5.44139809270265</span>,<span class="hljs-number">3.14159265358979</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">32.4159265358979</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>],<br>    [<span class="hljs-number">0</span>,<span class="hljs-number">4.44288293815837</span>,<span class="hljs-number">4.44288293815837</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">26.1327412287183</span>,<span class="hljs-number">0</span>],<br>    [<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">3.14159265358979</span>,<span class="hljs-number">5.44139809270265</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">19.8495559215388</span>]])<br>    sm_m=np.<span class="hljs-built_in">array</span>([[<span class="hljs-number">-1</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>],<br>                    <span class="hljs-number">0</span>,<span class="hljs-number">-1</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>],<br>                    [<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">-1</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>],<br>                    [<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">-1</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>],<br>                    [<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">1</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>],<br>                    [<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">1</span>,<span class="hljs-number">0</span>],<br>                    [<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">1</span>]])<br>    step = <span class="hljs-number">1001</span><br>    H=Qobj(x)<br>    psi0 = Qobj(np.<span class="hljs-built_in">array</span>([[<span class="hljs-number">1</span>],[<span class="hljs-number">0</span>],[<span class="hljs-number">0</span>],[<span class="hljs-number">0</span>],[<span class="hljs-number">0</span>],[<span class="hljs-number">0</span>],[<span class="hljs-number">0</span>]]))<br>    t_list = np.linspace(<span class="hljs-number">0</span>,<span class="hljs-number">10.0</span>,step)<br>    sm=Qobj(sm_m)<br>    result0 = mcsolve(H,psi0,t_list,[],[sm])<br>    n_a_0 = result0.expect[<span class="hljs-number">0</span>]<br>    fig,axes = plt.subplots(<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,figsize = (<span class="hljs-number">10</span>,<span class="hljs-number">6</span>))<br>    axes.plot(t_list,n_a_0,label = <span class="hljs-string">'Atom'</span>)<br>    axes.legend(loc = <span class="hljs-string">'best'</span>)<br>    axes.set_xlabel(<span class="hljs-string">'Time'</span>)<br>    axes.set_ylabel(<span class="hljs-string">'Occupation probability'</span>)<br>    axes.set_title(<span class="hljs-string">'Vacuum Rabi oscillations'</span>)<br></code></pre></div></td></tr></table></figure><br>计算结果如下：<br><img src="/img_cqe/10.png" srcset="/img/loading.gif" lazyload alt=""><br>可见，此方法计算时间演化是可行的。</p>
+<h4 id="使用qutip经行验证"><a href="#使用qutip经行验证" class="headerlink" title="使用qutip经行验证"></a>使用qutip经行验证</h4><p>可以使用qutip包中mcsolve函数来计算生成的H的时间演化<br><div class="hljs"><pre><code class="hljs angelscript">%reset
+    %matplotlib inline
+    <span class="hljs-keyword">import</span> matplotlib.pyplot as plt
+    <span class="hljs-keyword">import</span> numpy as np
+    <span class="hljs-keyword">from</span> qutip <span class="hljs-keyword">import</span> *
+    x = np.<span class="hljs-built_in">array</span>([[<span class="hljs-number">32.4159265358979</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">5.44139809270265</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>],
+    [<span class="hljs-number">0</span>,<span class="hljs-number">26.1327412287183</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">3.14159265358979</span>,<span class="hljs-number">4.44288293815837</span>,<span class="hljs-number">0</span>],
+    [<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">19.8495559215388</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">4.44288293815837</span>,<span class="hljs-number">3.14159265358979</span>],
+    [<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">13.5663706143592</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">5.44139809270265</span>],
+    [<span class="hljs-number">5.44139809270265</span>,<span class="hljs-number">3.14159265358979</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">32.4159265358979</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>],
+    [<span class="hljs-number">0</span>,<span class="hljs-number">4.44288293815837</span>,<span class="hljs-number">4.44288293815837</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">26.1327412287183</span>,<span class="hljs-number">0</span>],
+    [<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">3.14159265358979</span>,<span class="hljs-number">5.44139809270265</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">19.8495559215388</span>]])
+    sm_m=np.<span class="hljs-built_in">array</span>([[<span class="hljs-number">-1</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>],
+                    <span class="hljs-number">0</span>,<span class="hljs-number">-1</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>],
+                    [<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">-1</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>],
+                    [<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">-1</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>],
+                    [<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">1</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>],
+                    [<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">1</span>,<span class="hljs-number">0</span>],
+                    [<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">1</span>]])
+    step = <span class="hljs-number">1001</span>
+    H=Qobj(x)
+    psi0 = Qobj(np.<span class="hljs-built_in">array</span>([[<span class="hljs-number">1</span>],[<span class="hljs-number">0</span>],[<span class="hljs-number">0</span>],[<span class="hljs-number">0</span>],[<span class="hljs-number">0</span>],[<span class="hljs-number">0</span>],[<span class="hljs-number">0</span>]]))
+    t_list = np.linspace(<span class="hljs-number">0</span>,<span class="hljs-number">10.0</span>,step)
+    sm=Qobj(sm_m)
+    result0 = mcsolve(H,psi0,t_list,[],[sm])
+    n_a_0 = result0.expect[<span class="hljs-number">0</span>]
+    fig,axes = plt.subplots(<span class="hljs-number">1</span>,<span class="hljs-number">1</span>,figsize = (<span class="hljs-number">10</span>,<span class="hljs-number">6</span>))
+    axes.plot(t_list,n_a_0,label = <span class="hljs-string">'Atom'</span>)
+    axes.legend(loc = <span class="hljs-string">'best'</span>)
+    axes.set_xlabel(<span class="hljs-string">'Time'</span>)
+    axes.set_ylabel(<span class="hljs-string">'Occupation probability'</span>)
+    axes.set_title(<span class="hljs-string">'Vacuum Rabi oscillations'</span>)</code></pre></div><br>计算结果如下：<br><img src="/img_cqe/10.png" srcset="/child/img/loading.gif" alt=""><br>可见，此方法计算时间演化是可行的。</p>
 <h2 id="问题与后续工作"><a href="#问题与后续工作" class="headerlink" title="问题与后续工作"></a>问题与后续工作</h2><ol>
 <li>在计算哈密顿量的过程中，我们想当然的忽略了$(a^{\dagger}a+\frac{1}{2})$中的$\frac{1}{2}$。而这样的忽略并没有有利的证据，可能在计算一些其他的物理量的平均值时会产生不一样的结果。当然这不是一件麻烦事，可以在后续的工作中在程序中加上$\frac{1}{2}$这一项。并且在每个物理量计算时都使用两个程序来看一看结果会不会不一样。</li>
 <li>对于一些参数诸如初始状态，光场与原子的振动频率，耦合系数等等的选取还需进一步探究。比如：若不同光场对原子的耦合系数不一样会有什么现象。</li>
